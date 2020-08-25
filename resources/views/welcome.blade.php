@@ -264,8 +264,11 @@
           <div class="center">
             <div class="icon"> <img src="{{ asset('images/it_service/i1.png') }}" alt="#" /> </div>
           </div>
-          <h4 class="theme_color">120 Cas confirmés</h4>
-          <p>Total : 44555 cas confirmés</p>
+          
+          <h4 class="theme_color">{{ $malades }} Cas confirmés</h4>    
+          
+          
+          <p>Total : {{ $maladestotal }} cas confirmés</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -273,8 +276,8 @@
           <div class="center">
             <div class="icon"> <img src="{{ asset('images/it_service/i2.png') }}" alt="#" /> </div>
           </div>
-          <h4 class="theme_color">120 Cas guéris</h4>
-          <p>Total : 5555 cas guéris</p>
+          <h4 class="theme_color">{{ $guerris }}  Cas guéris</h4>
+          <p>Total : {{$guerristotal}} cas guéris</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -282,8 +285,8 @@
           <div class="center">
             <div class="icon"> <img src="{{ asset('images/it_service/i3.png') }}" alt="#" /> </div>
           </div>
-          <h4 class="theme_color">5 cas décédés </h4>
-          <p>Total : 45654 décédés</p>
+          <h4 class="theme_color">{{ $morts }} cas décédés </h4>
+          <p>Total : {{$mortstotal}} décédés</p>
         </div>
       </div>
      

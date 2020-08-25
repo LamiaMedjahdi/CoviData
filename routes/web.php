@@ -13,17 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+
+Route::get('/acceuil', 'HomeStatsController@datacases');
+// Route::get('/acceuil', 'HomeStatsController@datatotals');
+
+
 
 Route::get('index', function () {
     return view('index');
 });
+
+Route::get('stats','StatController@index');
+Route::get('stats/create', 'StatController@create');
+Route::post('stats', 'StatController@store');
+Route::get('stats/{id}/edit', 'StatController@edit');
+Route::put('stats/update', 'StatController@update');
+Route::delete('stats/{id}', 'StatController@delete');
+
+
 
 
 
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
+
 
