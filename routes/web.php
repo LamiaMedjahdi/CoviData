@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/acceuil', 'HomeStatsController@datacases');
-// Route::get('/acceuil', 'HomeStatsController@datatotals');
+
+Route::get('/publications', 'DisplayPublicationController@Publications');
 
 
 

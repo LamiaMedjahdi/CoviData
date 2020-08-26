@@ -684,54 +684,36 @@
       <div class="col-md-12">
         <div class="full">
           <div class="main_heading text_align_left">
-            <h2>Publications des citoyens</h2>
+            <h2>Publications récentes</h2>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
+
+      @foreach ($publications as $publication)
+           <div class="col-md-4">
         <div class="full blog_colum">
-          <div class="blog_feature_img"> <img src="{{ asset('images/it_service/post-03.jpg') }}" alt="#" /> </div>
+          <div class="blog_feature_img"> <img src="{{ asset('images/it_service/' . $publication->image) }}" alt="#" /> </div>
           <div class="post_time">
-            <p><i class="fa fa-clock-o"></i> April 16, 2018 ( In Maintenance )</p>
+            <p><i class="fa fa-clock-o"></i>  {{ Carbon\Carbon::parse($publication->created_at)->diffForHumans() }}</p>
+            
           </div>
           <div class="blog_feature_head">
-            <h4>Why Your Computer Hates You</h4>
+            <h4>{{ $publication->titre }}</h4>
           </div>
           <div class="blog_feature_cont">
-            <p>Lorem ipsum dolor sit amet, consectetur quam justo, pretium adipiscing elit. Vestibulum quam justo, pretium eu tempus ut, ...</p>
+            
+            <p>{{ \Illuminate\Support\Str::limit($publication->contenu, 50) }} </p>
+            <a class="btn-link" href="{{ asset('it_contact.html') }}">Lire la suite</a>
+            
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="full blog_colum">
-          <div class="blog_feature_img"> <img src="{{ asset('images/it_service/post-04.jpg') }}" alt="#" /> </div>
-          <div class="post_time">
-            <p><i class="fa fa-clock-o"></i> April 16, 2018 ( In Maintenance )</p>
-          </div>
-          <div class="blog_feature_head">
-            <h4>Easy Tips To Computer Repair</h4>
-          </div>
-          <div class="blog_feature_cont">
-            <p>Lorem ipsum dolor sit amet, consectetur quam justo, pretium adipiscing elit. Vestibulum quam justo, pretium eu tempus ut, ...</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="full blog_colum">
-          <div class="blog_feature_img"> <img src="{{ asset('images/it_service/post-06.jpg') }}" alt="#" /> </div>
-          <div class="post_time">
-            <p><i class="fa fa-clock-o"></i> April 16, 2018 ( In Maintenance )</p>
-          </div>
-          <div class="blog_feature_head">
-            <h4>Computer Maintenance 2018</h4>
-          </div>
-          <div class="blog_feature_cont">
-            <p>Lorem ipsum dolor sit amet, consectetur quam justo, pretium adipiscing elit. Vestibulum quam justo, pretium eu tempus ut, ...</p>
-          </div>
-        </div>
-      </div>
+      @endforeach
+     
+     
+     
     </div>
   </div>
 </div>

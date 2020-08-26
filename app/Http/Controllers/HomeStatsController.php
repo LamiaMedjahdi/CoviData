@@ -18,7 +18,8 @@ class HomeStatsController extends Controller
         $maladestotal =   DB::table('stats')->get()->sum('nbrmal');
         $guerristotal = DB::table('stats')->sum('nbrgue');
         $mortstotal = DB::table('stats')->sum('nbrmort');
-        return view('welcome',compact('malades','guerris','morts', 'maladestotal', 'guerristotal', 'mortstotal'));
+        $publications =   DB::table('informations')->orderBy('created_at', 'desc')->limit(3)->get();
+        return view('welcome',compact('malades','guerris','morts', 'maladestotal', 'guerristotal', 'mortstotal','publications'));
     }
 
    
