@@ -23,6 +23,7 @@ Route::get('/acceuil', 'HomeStatsController@datacases');
 
 Route::get('/publications', 'DisplayPublicationController@Publications');
 
+Route::get('/publication/{id}', 'DisplayPublicationController@Publication_detail');
 
 
 Route::get('index', function () {

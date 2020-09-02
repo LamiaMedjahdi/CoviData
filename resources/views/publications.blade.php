@@ -11,7 +11,7 @@
             <div class="title-holder-cell text-left">
               <h1 class="page-title">Publications </h1>
               <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('/acceuil') }}">Acceuil</a></li>
                 <li class="active">Publications</li>
               </ol>
             </div>
@@ -28,25 +28,23 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
         <div class="full">
-         @auth
+         {{-- @auth
 
          @foreach ($postscondition as $postc)
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="images/it_service/post-06.jpg" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $publication->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $postc->titre}}</p>
               <div class="post_info">
                 <ul>
                   <li><i class="fa fa-user" aria-hidden="true"></i> Marketing</li>
                   <li><i class="fa fa-comment" aria-hidden="true"></i> 5</li>
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i> 12 Aug 2017</li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i>@php echo date('d F Y', strtotime($post->created_at)); @endphp</li>
                 </ul>
               </div>
-              <p>Consectetur, assumenda provident lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae laboriosam sunt hic perspiciatis, 
-                asperiores mollitia excepturi voluptatibus sequi nostrum ipsam veniam omnis nihil! A ea maiores corporis. Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p>{{ \Illuminate\Support\Str::limit($postc->contenu, 150) }}. </p>
               <div class="bottom_info">
-                <div class="pull-left"><a class="btn sqaure_bt" href="it_blog_detail.html">Read More<i class="fa fa-angle-right"></i></a></div>
+                <div class="pull-left"><a class="btn sqaure_bt" href="it_blog_detail.html">Lire l'article<i class="fa fa-angle-right"></i></a></div>
                 <div class="pull-right">
                   <div class="shr">Share: </div>
                   <div class="social_icon">
@@ -63,29 +61,45 @@
           </div>
          @endforeach
              
-         @endauth
+         @endauth --}}
+    
+       
+         {{-- @foreach ($ids1 as $id)
+            <p>
+             {{ $ids }}
 
-          @guest
+         </p>  
+         @endforeach --}}
+
+         {{-- @foreach ($ids2 as $id2)
+            <p>
+             {{ $id2->pro_id }}
+
+         </p>  
+         @endforeach --}}
+
+         
+
+           @guest
 
          @foreach ($allposts as $post)
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="images/it_service/post-06.jpg" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $post->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $post->titre}}</p>
               <div class="post_info">
                 <ul>
-                  <li><i class="fa fa-user" aria-hidden="true"></i> Marketing</li>
+                  
+                  
                   <li><i class="fa fa-comment" aria-hidden="true"></i> 5</li>
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i> 12 Aug 2017</li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($post->created_at)); @endphp </li>
                 </ul>
               </div>
-              <p>Consectetur, assumenda provident lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae laboriosam sunt hic perspiciatis, 
-                asperiores mollitia excepturi voluptatibus sequi nostrum ipsam veniam omnis nihil! A ea maiores corporis. Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p>{{ \Illuminate\Support\Str::limit($post->contenu, 150) }} </p>
               <div class="bottom_info">
-                <div class="pull-left"><a class="btn sqaure_bt" href="it_blog_detail.html">Read More<i class="fa fa-angle-right"></i></a></div>
+                <div class="pull-left"><a class="btn sqaure_bt" href="{{ url('/publication/'.$post->id) }}">Lire l'article<i class="fa fa-angle-right"></i></a></div>
                 <div class="pull-right">
-                  <div class="shr">Share: </div>
+                  <div class="shr">Partager: </div>
                   <div class="social_icon">
                     <ul>
                       <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -100,7 +114,7 @@
           </div>
          @endforeach
              
-         @endguest
+         @endguest 
          
           <div class="center">
             <ul class="pagination style_1">
@@ -124,30 +138,12 @@
                 </span> </div>
             </div>
           </div>
-          <div class="side_bar_blog">
-            <h4>ABOUT AUTHOR</h4>
+          {{-- <div class="side_bar_blog">
+            <h4>Autheur</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. sed do eiusmod tempor.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div class="side_bar_blog">
-            <h4>RECENT POST</h4>
-            <div class="recent_post">
-              <ul>
-                <li>
-                  <p class="post_head"><a href="#">How To Look Up</a></p>
-                  <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20, 2017</p>
-                </li>
-                <li>
-                  <p class="post_head"><a href="#">Compatible Inkjet Cartridge</a></p>
-                  <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20, 2017</p>
-                </li>
-                <li>
-                  <p class="post_head"><a href="#">Treat That Oral Thrush Now</a></p>
-                  <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20, 2017</p>
-                </li>
-              </ul>
-            </div>
-          </div>
+          </div> --}}
+          
           <div class="side_bar_blog">
             <h4>CATEGORIES</h4>
             <div class="categary">
@@ -172,18 +168,7 @@
               </ul>
             </div>
           </div>
-          <div class="side_bar_blog">
-            <h4>CATEGORIES</h4>
-            <div class="categary">
-              <ul>
-                <li><a href="#"><i class="fa fa-caret-right"></i> June (12)</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> January (12)</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> March (12)</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> November (12)</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> December (12)</a></li>
-              </ul>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
