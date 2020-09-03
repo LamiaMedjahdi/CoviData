@@ -88,15 +88,20 @@
           </div> --}}
           
           
+              
+          
           <div class="side_bar_blog">
             <h4>TAG</h4>
+           
             <div class="tags">
               <ul>
-                <li><a href="#">Bootstrap</a></li>
-                <li><a href="#">HTML5</a></li>
-                <li><a href="#">Wordpress</a></li>
-                <li><a href="#">Bootstrap</a></li>
-                <li><a href="#">HTML5</a></li>
+                  @foreach ($tags as $tag)
+                      <li><a href="#">{{ $tag->nom }}</a></li>
+                  @endforeach
+                      
+                  
+                
+               
               </ul>
             </div>
           </div>

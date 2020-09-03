@@ -44,10 +44,29 @@ class DisplayPublicationController extends Controller
     public function Publication_detail($id)
     {
         $postdetail = DB::table('informations')->find($id);
-       
+        // $tags = DB::table('tags')
+        //  ->join->on('poststag', function ($q) {
+        //     $q->where('poststag.tags_id', '=', 'tags.id')->where('poststag.information_id', '=', 3);
+        // })->get();
+
+
+        $tags =  DB::table('tags')
+        ->join('poststag', function ($join) {
+            $join->on('poststag.tags_id', '=', 'tags.id')
+            ->where('poststag.information_id', '=', 3);
+        })
+            ->get();
+
+
+        // join('poststag', 'poststag.tags_id', '=', 'tags.id  ')
+        // ->where('poststag.information_id', '=', 3)
+        // ->select('nom')
+        // ->get();
+
+        
               
 
 
-        return view('publication', compact('postdetail'));
+        return view('publication', compact('postdetail', 'tags'));
     }
 }
