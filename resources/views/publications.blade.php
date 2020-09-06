@@ -98,17 +98,7 @@
               <p>{{ \Illuminate\Support\Str::limit($post->contenu, 150) }} </p>
               <div class="bottom_info">
                 <div class="pull-left"><a class="btn sqaure_bt" href="{{ url('/publication/'.$post->id) }}">Lire l'article<i class="fa fa-angle-right"></i></a></div>
-                <div class="pull-right">
-                  <div class="shr">Partager: </div>
-                  <div class="social_icon">
-                    <ul>
-                      <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                      <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                      <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                      <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Information;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -48,9 +49,30 @@ class DisplayPublicationController extends Controller
         ->join('poststag', function ($join) use ($id) {
             $join->on('poststag.tags_id', '=', 'tags.id')
             ->where('poststag.information_id', '=', $id);
-        })
-            ->get();
+        })->get();
 
         return view('publication', compact('postdetail', 'tags'));
     }
+
+
+
+ public function Publication_by_tags($id)
+    {
+        $poststag = DB::table('informations')
+        ->join('poststag', function ($join) use ($id) {
+            $join->on('informations.id', '=', 'poststag.information_id')
+            ->where('poststag.tags_id', '=', $id);
+        })->get();
+
+        $tag= DB::table('tags')->find($id);
+
+
+        return view('pubstag', compact('poststag', 'tag'));
+
+        
+    }
 }
+
+
+
+

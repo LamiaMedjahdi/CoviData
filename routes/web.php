@@ -25,6 +25,8 @@ Route::get('/publications', 'DisplayPublicationController@Publications');
 
 Route::get('/publication/{id}', 'DisplayPublicationController@Publication_detail');
 
+Route::get('/pubstag/{id}', 'DisplayPublicationController@Publication_by_tags');
+
 
 Route::get('index', function () {
     return view('index');

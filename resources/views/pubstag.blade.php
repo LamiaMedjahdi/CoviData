@@ -9,11 +9,11 @@
         <div class="full">
           <div class="title-holder">
             <div class="title-holder-cell text-left">
-              <h1 class="page-title">{{ $postdetail->titre}} </h1>
+              <h1 class="page-title">Tag : {{ $tag->nom}} </h1>
               <ol class="breadcrumb">
                 <li><a href="index.html">Acceuil</a></li>
-                <li class="active"><a href="{{ url('/publications') }}">Publications</a></li>
-                <li class="active">{{ $postdetail->titre}}</li>
+                <li class="active"><a href="#">Publications</a></li>
+              <li class="active">{{ $tag->nom}}</li>
               </ol>
             </div>
           </div>
@@ -29,23 +29,30 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
         <div class="full">
-                
 
-           @guest
 
-      
+
+
+
+
+
+               
+
+           
+
+      @foreach ($poststag as $poststags)
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postdetail->image) }}" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $poststags->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
-              <p class="blog_head">{{ $postdetail->titre}}</p>
+              <p class="blog_head">{{ $poststags->titre}}</p>
               <div class="post_info">
                 <ul>
                   <li><i class="fa fa-user" aria-hidden="true"></i> admin </li>
                   
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($postdetail->created_at)); @endphp </li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($poststags->created_at)); @endphp </li>
                 </ul>
               </div>
-              <p>{{ $postdetail->contenu }} </p>
+              <p>{{ $poststags->contenu }} </p>
               <div class="bottom_info">
           
                 <div class="pull-right">
@@ -62,9 +69,11 @@
               </div>
             </div>
           </div>
+
+          @endforeach
         
              
-         @endguest 
+         
          
          
         </div>
@@ -90,13 +99,13 @@
           
               
           
-          <div class="side_bar_blog">
+          {{-- <div class="side_bar_blog">
             <h4>TAG</h4>
            
             <div class="tags">
               <ul>
                   @foreach ($tags as $tag)
-                      <li><a href="{{ url('/pubstag/'.$tag->id) }}">{{ $tag->nom }}</a></li>
+                      <li><a href="{{ url('/pubstag/'.$tag->nom) }}">{{ $tag->nom }}</a></li>
                   @endforeach
                       
                   
@@ -104,7 +113,7 @@
                
               </ul>
             </div>
-          </div>
+          </div> --}}
           
         </div>
       </div>
