@@ -27,10 +27,19 @@ Route::get('/publication/{id}', 'DisplayPublicationController@Publication_detail
 
 Route::get('/pubstag/{id}', 'DisplayPublicationController@Publication_by_tags');
 
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+
+Route::get('login', 'SessionsController@create');
+Route::post('login', 'SessionsController@store');
+Route::get('logout', 'SessionsController@destroy');
+
 
 Route::get('index', function () {
     return view('index');
 });
+
+
 
 Route::get('stats','StatController@index');
 Route::get('stats/create', 'StatController@create');
@@ -43,7 +52,7 @@ Route::delete('stats/{id}', 'StatController@delete');
 
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
