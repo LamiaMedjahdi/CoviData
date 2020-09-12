@@ -253,7 +253,8 @@
         <div class="full">
           <div class="main_heading text_align_center">
             <h2>Bilan du jour</h2>
-            <p class="large">Bilan journalier des cas en Algérie</p>
+            {{Carbon\Carbon::setLocale( 'fr')}}
+            <p class="large">Dernière mise à jour : {{ Carbon\Carbon::parse($maj)->subHours(1)->diffForHumans() }} </p>
           </div>
         </div>
       </div>
