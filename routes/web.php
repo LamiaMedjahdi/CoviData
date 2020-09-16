@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+ Route::get('/idee', function () {
+     return view('idees');
+ });
 
 
 
@@ -35,9 +35,10 @@ Route::post('login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
 
 
-Route::get('index', function () {
-    return view('index');
-});
+Route::get('index', 'HomeStatsController@indexinfos');
+Route::get('index', 'HomeStatsController@ideedisplay');
+
+Route::get('index2', 'HomeStatsController@indexinfos');
 
 
 

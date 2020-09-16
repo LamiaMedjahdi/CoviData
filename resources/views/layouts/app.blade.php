@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Covidata</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -39,7 +39,12 @@
                         <!-- Authentication Links -->
                       @if(Auth::check())
                             <li class="nav-item">
-                            <a class="nav-link" href="#">{{ Auth::user()->nom}}</a>
+                                @if (Auth::user()->roles=0)
+                                    <a class="nav-link" href="{{ url('/index2/') }}">{{ Auth::user()->nom}}</a>
+                                @else
+                                <a class="nav-link" href="{{ url('/index/') }}">{{ Auth::user()->nom}}</a>
+                                @endif
+                            
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" href="/logout">Déconnexion</a>

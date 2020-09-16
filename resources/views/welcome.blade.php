@@ -706,12 +706,14 @@
           <div class="blog_feature_cont">
             
             <p>{{ \Illuminate\Support\Str::limit($publication->contenu, 50) }} </p>
-            <a class="btn-link" href="{{ asset('it_contact.html') }}">Lire la suite</a>
+            <a class="btn-link" href="{{ url('/publication/'.$publication->id) }}">Lire la suite</a>
             
           </div>
         </div>
       </div>
       @endforeach
+       <div class="button_Section_cont"> <a class="btn " href="{{ asset('it_contact.html') }}">Toutes les publications</a> </div>
+
      
      
      

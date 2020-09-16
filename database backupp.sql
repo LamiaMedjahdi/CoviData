@@ -11,11 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table coronavirus19.admins: ~0 rows (approximately)
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-
--- Dumping data for table coronavirus19.categories: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.categories: ~4 rows (approximately)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT INTO `categories` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(1, 'commerce', '2020-09-09 01:13:56', '2020-09-09 01:13:56'),
@@ -24,17 +20,27 @@ INSERT INTO `categories` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(4, 'securité', '2020-09-09 01:14:36', '2020-09-09 01:14:37');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.citoyens: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.citoyens: ~11 rows (approximately)
 /*!40000 ALTER TABLE `citoyens` DISABLE KEYS */;
-INSERT INTO `citoyens` (`id`, `nom`, `prenom`, `email`, `password`, `image`, `com_id`, `pro_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'amine', 'amine', 'amine@gmail.com', '12345', 'gjgjggj', 1, 1, 'kjkjkjkj', '2020-09-09 01:15:31', '2020-09-09 01:15:32');
+INSERT INTO `citoyens` (`id`, `nom`, `prenom`, `email`, `password`, `image`, `com_id`, `pro_id`, `remember_token`, `roles`, `created_at`, `updated_at`) VALUES
+	(1, 'amine', 'amine', 'amine@gmail.com', '12345', 'gjgjggj', 1, 1, 'kjkjkjkj', 0, '2020-09-09 01:15:31', '2020-09-09 01:15:32'),
+	(2, 'salim', 'dzlimz', 'salim@gmail.com', '12345', 'fffff', 2, 5, 'fgfdfdfd', 0, '2020-09-11 02:38:03', '2020-09-11 02:38:04'),
+	(3, 'salut', 'cava', 'salut@gmail.com', '$2y$10$zcQM1qE//R3uE5fNCDYK5ukOP0ug3IC3gQq.U57pjZdFgFBn34QAq', '1', 1, 1, NULL, 0, '2020-09-11 02:10:35', '2020-09-11 02:10:35'),
+	(5, 'aminz', 'meghraoui', 'salut@gmail.fr', '$2y$10$wQM3GuLFNLCIBXFh8Pk5tuY7/2go5Hue/slbr61awM74e3pn3lKci', '1', 1, 1, NULL, 0, '2020-09-11 02:13:02', '2020-09-11 02:13:02'),
+	(6, 'cc', 'cc', 'cc@gmail.com', '$2y$10$riTxO0jsBv2LMoCMTPp6terj4n/SPvjjuE/nbPnUaehRpjrw.FS3i', '1', 1, 1, NULL, 0, '2020-09-11 02:32:22', '2020-09-11 02:32:22'),
+	(7, 'hello', 'itsme', 'itsme@gmail.com', '$2y$10$jRn5HZ3iqRxYeI9cugaB2O1FvkEdUNKXXeXl8f3heGLTt.PFnivzS', '1', 1, 1, NULL, 0, '2020-09-11 20:31:04', '2020-09-11 20:31:04'),
+	(8, 'cccc', 'ccc', 'cccc@gmail.com', '$2y$10$ziDKUnOYGXEjhKalVdNZC.hHfASS22dxWDmxWZwPWxWPig3oitAga', '1', 1, 1, NULL, 0, '2020-09-11 20:36:53', '2020-09-11 20:36:53'),
+	(10, 'cccccc', 'cccc', 'ccccc@gmail.com', '$2y$10$R7tXn9sJlMgdYj3a852POubd7sZ9FsvQ7nWk8wzl8e3v7DiP6E3ZW', '1', 1, 1, NULL, 0, '2020-09-11 20:37:13', '2020-09-11 20:37:13'),
+	(12, 'ccccccc', 'c', 'cccgcc@gmail.com', '$2y$10$7Hn.KcCyK9b1dD.N4GgM9eQZDtXttkIaY9MVsgCV7cf4K5nUirMia', '1', 1, 1, NULL, 0, '2020-09-11 20:40:26', '2020-09-11 20:40:26'),
+	(13, 'hi', 'how', 'are@gmail.com', '$2y$10$JpeRiQ5qgmBYZRPXLA5e2uYrsU50yzeN913.fN/l8Dsls8dxZbrai', '1', 1, 1, NULL, 0, '2020-09-11 22:02:40', '2020-09-11 22:02:40'),
+	(14, 'lamia', 'medjahdi', 'medj.lam@gmail.com', '$2y$10$T4leDsNKJSEATEwdBZr8purf1FE3H3ic5J47.3KWLgn.vuFzMs91C', '1', 1, 1, NULL, 1, '2020-09-11 22:12:51', '2020-09-11 22:12:51');
 /*!40000 ALTER TABLE `citoyens` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.citoyen_maladies: ~0 rows (approximately)
 /*!40000 ALTER TABLE `citoyen_maladies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `citoyen_maladies` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.communes: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.communes: ~2 rows (approximately)
 /*!40000 ALTER TABLE `communes` DISABLE KEYS */;
 INSERT INTO `communes` (`id`, `nom`, `wilaya_id`, `created_at`, `updated_at`) VALUES
 	(1, 'imama', 13, '2020-09-09 01:04:37', '2020-09-09 01:04:38'),
@@ -49,27 +55,28 @@ INSERT INTO `communes` (`id`, `nom`, `wilaya_id`, `created_at`, `updated_at`) VA
 /*!40000 ALTER TABLE `favoris` DISABLE KEYS */;
 /*!40000 ALTER TABLE `favoris` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.idees: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.idees: ~2 rows (approximately)
 /*!40000 ALTER TABLE `idees` DISABLE KEYS */;
 INSERT INTO `idees` (`id`, `titre`, `contenu`, `image`, `etat`, `cat_id`, `cit_id`, `created_at`, `updated_at`) VALUES
 	(1, 'idee 1', 'flskjsdlkjlkjd', 'ljlkjlkjkj', 0, 4, 1, '2020-09-09 01:27:08', '2020-09-09 01:27:08'),
 	(2, 'idee 2 ', 'fdkgfjgkljfkgdjfklgjdlfkj', 'lfdgjdlfjk', 0, 2, 1, '2020-09-09 01:27:24', '2020-09-09 01:27:25');
 /*!40000 ALTER TABLE `idees` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.informations: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.informations: ~5 rows (approximately)
 /*!40000 ALTER TABLE `informations` DISABLE KEYS */;
 INSERT INTO `informations` (`id`, `titre`, `contenu`, `lien`, `image`, `date`, `mal_id`, `pro_id`, `sou_id`, `wilaya_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Covid 19 - mars 2020', 'dfgjdflkgjdflkgjflkgjfdlgjdlfkgjflkgjfjgdfklj', 'kfjdsfkjkk', 'kjkjkkj', '2020-09-09', NULL, 5, 1, 44, '2020-09-09 00:58:04', '2020-09-09 00:58:05'),
 	(2, 'Surcharge des Hopitaux', 'dflgkfdlgjfdlkgjfdlgjflhjfg;;n,g:;n,ghk:,hgn,gfb,f:;,gfh,fg;:bhf,gg;,fg:h;,:;,', ':;,:,:lljkkhjkhk', 'lkjlkjkj', '2020-09-09', NULL, 5, 2, 23, '2020-09-09 00:58:45', '2020-09-09 00:58:47'),
 	(3, 'Pénurie des matieres essentielles de réanimation', 'dflgjdkflgjlkhgmljumkjtmfhjtdlgjet:klhkmtlhklyfhfkhkfgljbdlkgkkrrtfmk', 'kk', 'juhh', '2020-09-09', NULL, 2, 2, 6, '2020-09-09 01:06:25', '2020-09-09 00:59:26'),
-	(4, 'Détresse respiratoire', 'gfldfkjgflkgdfjkgfj', 'fldgjdkflj', 'dlfgfgdjkgj', '2020-09-09', NULL, 5, 1, 44, '2020-09-09 01:21:04', '2020-09-09 01:21:06');
+	(4, 'Détresse respiratoire', 'gfldfkjgflkgdfjkgfj', 'fldgjdkflj', 'dlfgfgdjkgj', '2020-09-09', NULL, 5, 1, 44, '2020-09-09 01:21:04', '2020-09-09 01:21:06'),
+	(5, 'Covid 19 - avancement en algérie', 'sfksdmflkmldfksmdldk', 'sfkdsfskmdlk', 'dsmflksdmfkdsmlf', '2020-09-12', NULL, 4, 1, 16, '2020-09-12 02:50:14', '2020-09-12 02:50:15');
 /*!40000 ALTER TABLE `informations` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.maladies: ~0 rows (approximately)
 /*!40000 ALTER TABLE `maladies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `maladies` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.migrations: ~16 rows (approximately)
+-- Dumping data for table coronavirus19.migrations: ~17 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_100000_create_password_resets_table', 1),
@@ -87,14 +94,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(13, '2020_09_02_204024_create_poststag_table', 7),
 	(14, '2020_08_20_112047_create_signals_table', 8),
 	(15, '2020_08_20_112103_create_idees_table', 8),
-	(16, '2020_08_20_112029_create_favoris_table', 9);
+	(16, '2020_08_20_112029_create_favoris_table', 9),
+	(17, '2020_09_11_011945_add_roles_to_citoyens', 10);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.password_resets: ~0 rows (approximately)
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.poststag: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.poststag: ~2 rows (approximately)
 /*!40000 ALTER TABLE `poststag` DISABLE KEYS */;
 INSERT INTO `poststag` (`id`, `information_id`, `tags_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1, '2020-09-09 01:03:33', '2020-09-09 01:03:34'),
@@ -102,7 +110,7 @@ INSERT INTO `poststag` (`id`, `information_id`, `tags_id`, `created_at`, `update
 	(3, 1, 3, '2020-09-09 01:04:01', '2020-09-09 01:04:02');
 /*!40000 ALTER TABLE `poststag` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.professions: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.professions: ~4 rows (approximately)
 /*!40000 ALTER TABLE `professions` DISABLE KEYS */;
 INSERT INTO `professions` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(1, 'architecte', '2020-09-09 00:56:38', '2020-09-09 00:56:38'),
@@ -114,16 +122,18 @@ INSERT INTO `professions` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 
 -- Dumping data for table coronavirus19.signals: ~0 rows (approximately)
 /*!40000 ALTER TABLE `signals` DISABLE KEYS */;
+INSERT INTO `signals` (`id`, `contenu`, `localisation`, `image`, `etat`, `date`, `cat_id`, `wilaya_id`, `cit_id`, `created_at`, `updated_at`) VALUES
+	(1, 'hausse de prix', 'imama', 'kfdlkfdlfk', '0', '2020-09-12', 3, 46, 6, '2020-09-12 02:55:53', '2020-09-12 02:55:53');
 /*!40000 ALTER TABLE `signals` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.sources: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.sources: ~2 rows (approximately)
 /*!40000 ALTER TABLE `sources` DISABLE KEYS */;
 INSERT INTO `sources` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(1, 'ministere de la santé', '2020-09-09 00:56:18', '2020-09-09 00:56:18'),
 	(2, 'agence nationale des statistiques', '2020-09-09 00:56:29', '2020-09-09 00:56:29');
 /*!40000 ALTER TABLE `sources` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.stats: ~5 rows (approximately)
+-- Dumping data for table coronavirus19.stats: ~9 rows (approximately)
 /*!40000 ALTER TABLE `stats` DISABLE KEYS */;
 INSERT INTO `stats` (`id`, `nbrmal`, `nbrgue`, `nbrmort`, `date`, `wilaya_id`, `created_at`, `updated_at`) VALUES
 	(1, 25, 25, 25, '2020-09-09', 25, '2020-09-09 00:41:44', '2020-09-09 00:41:45'),
@@ -131,10 +141,15 @@ INSERT INTO `stats` (`id`, `nbrmal`, `nbrgue`, `nbrmort`, `date`, `wilaya_id`, `
 	(3, 20, 22, 99, '2020-09-09', 29, '2020-09-09 00:42:33', '2020-09-09 00:42:34'),
 	(4, 88, 99, 55, '2020-09-09', 13, '2020-09-09 00:42:47', '2020-09-09 00:42:48'),
 	(5, 28, 98, 78, '2020-09-09', 48, '2020-09-09 00:43:01', '2020-09-09 00:43:04'),
-	(6, 99, 58, 54, '2020-09-09', 16, '2020-09-09 00:45:41', '2020-09-09 00:45:42');
+	(6, 99, 58, 54, '2020-09-09', 16, '2020-09-09 00:45:41', '2020-09-09 00:45:42'),
+	(7, 25, 20, 10, '2020-09-12', 44, '2020-09-12 00:26:35', '2020-09-12 00:26:36'),
+	(8, 15, 15, 15, '2020-09-12', 44, '2020-09-12 00:27:02', '2020-09-12 00:27:03'),
+	(9, 50, 50, 50, '2020-09-12', 16, '2020-09-12 15:32:22', '2020-09-12 00:32:23'),
+	(10, 15, 0, 0, '2020-09-12', 1, '2020-09-12 00:41:17', '2020-09-12 00:41:18'),
+	(11, 10, 25, 25, '2020-09-12', 44, '2020-09-12 01:06:43', '2020-09-12 01:06:44');
 /*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.tags: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.tags: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 INSERT INTO `tags` (`id`, `nom`) VALUES
 	(1, 'covid'),
