@@ -11,7 +11,7 @@
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels: ['January', 'hh', 'March', 'April', 'May', 'June', 'July'],
           type: 'line',
           datasets: [{
             data: [78, 81, 80, 45, 34, 12, 40],
@@ -253,7 +253,7 @@
     const brandService = 'rgba(0,173,95,0.8)'
 
     var elements = 10
-    var data1 = [52, 60, 55, 50, 65, 80, 57, 70, 105, 115]
+    var data1 = [150, 120, 12, 120, 65, 80, 57, 70, 105, 115]
     var data2 = [102, 70, 80, 100, 56, 53, 80, 75, 65, 90]
 
     var ctx = document.getElementById("recent-rep-chart");

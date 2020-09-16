@@ -55,7 +55,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
           <!-- logo start -->
-          <div class="logo"> <a href="{{ asset('it_home.html') }}"><img src="{{ asset('images/logos/it_logo.png') }}" alt="logo" /></a> </div>
+          <div class="logo"> <a href="{{ url('/acceuil') }}"><img src="{{ asset('images/logos/it_logo.png') }}" alt="logo" /></a> </div>
           <!-- logo end -->
         </div>
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -63,11 +63,8 @@
           <div class="menu_side">
             <div id="navbar_menu">
               <ul class="first-ul">
-                <li> <a class="active" href="{{ asset('it_home.html') }}">Acceuil</a>
-                  <ul>
-                    <li><a href="{{ asset('it_home.html') }}">It Home Page</a></li>
-                    <li><a href="{{ asset('it_home_dark.html') }}">It Dark Home Page</a></li>
-                  </ul>
+                <li> <a class="active" href="{{ url('/acceuil') }}">Acceuil</a>
+                  
                 </li>
                 <li><a href="{{ asset('it_about.html') }}">CoviData ?</a></li>
                 <li> <a href="{{ asset('it_service.html') }}">Idées</a>
@@ -77,12 +74,8 @@
                     <li><a href="{{ asset('it_service_detail.html') }}">Services Detail</a></li>
                   </ul>
                 </li>
-                <li> <a href="{{ asset('it_blog.html') }}">Publications</a>
-                  <ul>
-                    <li><a href="{{ asset('it_blog.html') }}">Blog List</a></li>
-                    <li><a href="{{ asset('it_blog_grid.html') }}">Blog Grid</a></li>
-                    <li><a href="{{ asset('it_blog_detail.html') }}">Blog Detail</a></li>
-                  </ul>
+                <li> <a href="{{ url('/publications') }}">Publications</a>
+                  
                 </li>
                 {{-- <li> <a href="#">Pages</a>
                   <ul>
@@ -109,11 +102,7 @@
                 </li>
               </ul>
             </div>
-            <div class="search_icon">
-              <ul>
-                <li><a href="#" data-toggle="modal" data-target="#search_bar"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-              </ul>
-            </div>
+           
           </div>
           <!-- menu end -->
         </div>

@@ -13,20 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+ Route::get('/idee', function () {
+     return view('idees');
+ });
 
 
 
 Route::get('/acceuil', 'HomeStatsController@datacases');
-// Route::get('/acceuil', 'HomeStatsController@datatotals');
+
+Route::get('/publications', 'DisplayPublicationController@Publications');
+
+Route::get('/publication/{id}', 'DisplayPublicationController@Publication_detail');
+
+Route::get('/pubstag/{id}', 'DisplayPublicationController@Publication_by_tags');
+
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+
+Route::get('login', 'SessionsController@create');
+Route::post('login', 'SessionsController@store');
+Route::get('logout', 'SessionsController@destroy');
 
 
+Route::get('index', 'HomeStatsController@indexinfos');
+Route::get('index', 'HomeStatsController@ideedisplay');
 
-Route::get('index', function () {
-    return view('index');
-});
+Route::get('index2', 'HomeStatsController@indexinfos');
+
+
 
 Route::get('stats','StatController@index');
 Route::get('stats/create', 'StatController@create');
@@ -39,7 +53,7 @@ Route::delete('stats/{id}', 'StatController@delete');
 
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
