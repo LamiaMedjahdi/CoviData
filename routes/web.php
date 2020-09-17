@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/idee', function () {
-     return view('idees');
- });
+//  Route::get('/idees', function () {
+//      return view('idees');
+//  });
 
 
 
@@ -39,7 +39,10 @@ Route::get('index', 'HomeStatsController@indexinfos');
 Route::get('index', 'HomeStatsController@ideedisplay');
 
 Route::get('index2', 'HomeStatsController@indexinfos');
+Route::get('idees', 'IdeesController@idees');
+Route::get('idee/{id}', 'IdeesController@idee');
 
+Route::post('idees/store', 'IdeesController@store');
 
 
 Route::get('stats','StatController@index');

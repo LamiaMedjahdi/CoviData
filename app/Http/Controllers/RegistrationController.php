@@ -22,7 +22,7 @@ class RegistrationController extends Controller
     {
         //register
             $citoyen = new Citoyen; 
-            $citoyen -> nom=$request->fullname;
+            $citoyen ->nom=$request->fullname;
             $citoyen->prenom = $request->firstname;
             $citoyen->email = $request->email;
             $citoyen->password = bcrypt($request->password);
