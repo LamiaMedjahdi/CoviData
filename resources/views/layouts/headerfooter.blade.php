@@ -67,7 +67,7 @@
                   
                 </li>
                 <li><a href="{{ asset('it_about.html') }}">CoviData ?</a></li>
-                <li> <a href="{{ asset('it_service.html') }}">Idées</a>
+                <li> <a href="{{ url('idees') }}">Idées</a>
                     <li> <a href="{{ asset('it_service.html') }}">Signalements</a>
                   <ul>
                     <li><a href="{{ asset('it_service_list.html') }}">Services list</a></li>
@@ -315,6 +315,8 @@
       </script>
 <!-- google map js -->
 <script src="{{ asset('images/fevicon/fevicon.png') }}https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+
+
 <!-- end google map js -->
 </body>
 </html>

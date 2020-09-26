@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//  Route::get('/idees', function () {
-//      return view('idees');
-//  });
+  Route::get('/contentuser', function () {
+      return view('idees_signals_user');
+  });
 
 
 
@@ -30,19 +30,22 @@ Route::get('/pubstag/{id}', 'DisplayPublicationController@Publication_by_tags');
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
-Route::get('login', 'SessionsController@create');
-Route::post('login', 'SessionsController@store');
+Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
 
 
 Route::get('index', 'HomeStatsController@indexinfos');
 Route::get('index', 'HomeStatsController@ideedisplay');
-
 Route::get('index2', 'HomeStatsController@indexinfos');
+
 Route::get('idees', 'IdeesController@idees');
 Route::get('idee/{id}', 'IdeesController@idee');
-
 Route::post('idees/store', 'IdeesController@store');
+
+Route::get('signals', 'SignalsController@signals');
+Route::get('signal/{id}', 'SignalsController@signal');
+Route::post('signals/store', 'SignalsController@store');
 
 
 Route::get('stats','StatController@index');

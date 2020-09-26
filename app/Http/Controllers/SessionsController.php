@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class SessionsController extends Controller
 {
@@ -12,15 +13,18 @@ class SessionsController extends Controller
         return view('login');
     }
 
-    public function store()
+    public function store(Request $request)
     {
 
-        if(!auth()->attempt(request(['email','password'])))
-        {
+
+         $credentials = $request->only(['email', 'password']);
+        if (!Auth::attempt($credentials)) {
+          
             return back()->withErrors([
                 'message' => 'Email ou mot de passe incorrecte',
             ]);
         }
+   
         return redirect('/acceuil');
     }
 
