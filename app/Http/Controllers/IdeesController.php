@@ -40,11 +40,14 @@ class IdeesController extends Controller
 
     public function store(Request $request)
     {
-        //  $this->validate(request(),[
-        //      'title' => 'required|max:50|string',
-        //      'content' => 'required|min:20|string',
-        //      // 'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-        //  ]);
+    //    
+        // $this->validate($request, array([
+        //  'title' => 'required|max:50|string',
+        //  'content' => 'required|min:20|string',
+        //  'image' => 'image|mimes:jpg,jpeg,png|max:2048',
+        // ]));
+
+        
         
         $idee = new Idee;
         $idee->titre = $request->titre;
@@ -70,6 +73,21 @@ class IdeesController extends Controller
             
 
          return Redirect('/idees');
+    }
+
+    public function ideesbycat($cat, $id)
+    {
+
+        if (Idee::where('id', $id)->exists()) {
+            $idees = DB::table('idees')
+            ->where('cat_id', $id)->get();
+            $categorie = $cat;
+
+
+
+
+            return view('ideesbycat', compact('idees', 'categorie'));
+        } else  return Redirect::to('idees');
     }
 
 }

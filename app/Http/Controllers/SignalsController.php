@@ -41,11 +41,12 @@ class SignalsController extends Controller
 
     public function store(Request $request)
     {
-        //  $this->validate(request(),[
-        //      'title' => 'required|max:50|string',
-        //      'content' => 'required|min:20|string',
-        //      // 'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-        //  ]);
+
+        // $this->validate(request(),[
+        //     'title' => 'required|max:50|string',
+        //     'content' => 'required|min:20|string',
+        //      'image' => 'image|mimes:jpg,jpeg,png|max:2048',
+        // ]);
 
         $signal = new Signal;
         $signal->contenu = $request->contenu;
@@ -54,6 +55,7 @@ class SignalsController extends Controller
         $signal->cat_id = $request->categorie;
         $signal->date = $request->date;
         $signal->wilaya_id = $request->wilaya;
+        $signal->localisation = $request->commune;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -71,5 +73,25 @@ class SignalsController extends Controller
 
 
         return Redirect('/signals');
+    }
+
+    public function signalbycat($cat,$id)
+    {
+
+        if (Signal::where('id', $id)->exists() ) {
+            $signals = DB::table('signals')
+                ->where('cat_id',$id)->get();
+                $categorie = $cat;
+            
+            
+            
+
+            return view('signalbycat', compact('signals', 'categorie'));
+        } else  return Redirect::to('signals');
+    }
+
+    public function GetCommuneEdit($id)
+    {
+        echo json_encode(DB::table('communes')->where('wilaya_id', $id)->get());
     }
 }

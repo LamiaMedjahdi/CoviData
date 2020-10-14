@@ -1,6 +1,11 @@
 @extends('layouts.headerfooter')
 
+
+
 @section('body')
+
+
+
 
 
 <!-- end header -->
@@ -38,10 +43,16 @@
 
             
            
-            
+            <div class="btn-group" role="group" aria-label="Basic example">
+                @foreach ($categories as $cat)
+                    <a href="{{ url('/signal-par-categorie/'.$cat->label.'/'.$cat->id) }}" style="color:white;" type="button" class="btn btn-secondary">{{ $cat->label }}</a>
+                    @endforeach
+ 
+ 
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contant_form">
-              <h4>Vous avez une idée à proposer ?</h4>
-              <p>Exposez votre idée pour aider la communauté à mieux gérer cette crise sanitaire, expliquez les solutions envisageables et illustrez votre idée par une image</p>
+              <h4>Vous voulez signaler un dépassement ou un comportement ?</h4>
+              <p>Exposez votre signalement pour aider la communauté et les autorités concernés à améliorer le service / résoudre le problème, Indiquez le lieu , la date , et une image si nécessaire </p>
              @if(Auth::check())
               <div class="form_section">
               <form method="POST" action="signals/store" enctype="multipart/form-data">
@@ -71,34 +82,48 @@
                     
                
                 </div>
+                
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                        <label for="exampleFormControlSelect1">Indiquez le lieu concerné par votre signalement</label>
-                      <input type="text" name="localisation"  value="" class="form-control"  >  
-                  </div>
+                      <input type="text" name="localisation"  id="mapsearch" class="form-control"  >  
+                  </div> --}}
 
                  <div class="form-group">
                     <label for="exampleFormControlSelect1">Wilaya</label>
-                    <select class="form-control" name="wilaya" id="exampleFormControlSelect1">
+                    <select class="form-control formselect required" name="wilaya" id="wilayaid">
+                      <option value="0" disabled selected>Selectionnez une wilaya </option>
                         @foreach ($wilayas as $wilaya)
                             <option value="{{$wilaya->id}}"> {{$wilaya->nom}} </option>
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Commune</label>
+                    <select class="form-control formselect required" name="commune" id="communeid">
+                      
+                    </select>
+                </div>
+
+             
+
+                
+              
 
                  <div class="form-group">
                     <label for="exampleFormControlFile1">Illustrez votre signalement par une image </label>
                     <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                 </div>
+                
 
-                 <div class="form-group" id="map" style="height: 500px; width=:1000px; ">
-                    
+              
+                      <button type="submit" class="btn btn-primary">envoyer</button>  
                 </div>
                 
                
-                <button type="submit" class="btn btn-primary">envoyer</button>
+            
                 </form>
-                <br><br>
+               
               </div>
               @else 
               <ul class="navbar-nav ml-auto">
@@ -107,15 +132,17 @@
               
               </ul>
               @endif 
-              <br><br><br><br>
+              <br><br><br><br><br>
             </div>
+            
+            <br><br><br>
             @foreach ($signals as $signal)
             
                 <div class="row">
                   
           <div class="col-lg-6 col-md-6 col-sm-12 about_cont_blog" style="padding:0 15px;">
             <div class="full text_align_left">
-              <h3>Catégorie : {{$signal->label}}</h3>
+              <h4>Catégorie : {{$signal->label}}</h4>
               <p>{{$signal->contenu}}..</p>
               <p>{{$signal->nom}}..</p>
               
@@ -125,10 +152,15 @@
             
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 about_feature_img">
-          <div class="full text_align_center"> <img class="img-responsive" src="images/signals/{{$signal->image}}"  alt="#"> </div>
-          </div>
-         <div class="center"><a class="btn main_bt" href="{{ url('/signal/'.$signal->id) }}">Voir l'idée en détail</a></div>
+            
+                <div class="full text_align_center"> <img class="img-responsive" src="images/signals/{{$signal->image}}"  alt="#"> </div>
+            
           
+          </div>
+          
+         <div><a class="btn btn-primary" href="{{ url('/signal/'.$signal->id) }}">Lire la suite</a></div>
+         
+          <br><br>
 
           
         </div>
@@ -148,5 +180,32 @@
 
 
 
+
+
 @endsection
+
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+        
+    <script>
+                $(document).ready(function () {
+                $('#wilayaid').on('change', function () {
+                let id = $(this).val();
+                $('#communeid').empty();
+                $('#communeid').append(`<option value="0" disabled selected>Selection en cours...</option>`);
+                $.ajax({
+                type: 'GET',
+                url: 'GetCommuneEdit/' + id,
+                success: function (response) {
+                var response = JSON.parse(response);
+                console.log(response);   
+                $('#communeid').empty();
+                $('#communeid').append(`<option value="0" disabled selected>Selectionnez une commune *</option>`);
+                response.forEach(element => {
+                    $('#communeid').append(`<option value="${element['nom']}">${element['nom']}</option>`);
+                    });
+                }
+            });
+        });
+    });
+    </script>
 

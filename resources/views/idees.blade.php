@@ -26,6 +26,8 @@
 </div>
 
 
+
+
 <!-- end inner page banner -->
 <div class="section padding_layout_1">
   <div class="container">
@@ -35,7 +37,13 @@
         <div class="row">
           <div class="full">
 
-
+  <div class="btn-group" role="group" aria-label="Basic example">
+                @foreach ($categories as $cat)
+                    <a href="{{ url('/idees-par-categorie/'.$cat->label.'/'.$cat->id) }}" style="color:white;" type="button" class="btn btn-secondary">{{ $cat->label }}</a>
+                    @endforeach
+ 
+ 
+            </div>
             
            
             
@@ -48,12 +56,14 @@
                   {{ csrf_field() }}
                 <div class="form-group">
                       <input type="text" name="user" hidden value="{{ Auth::user()->id}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">  
-                    <input type="text" name="titre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titre de l'idée">
-                   
+                    <input type="text"  name="titre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titre de l'idée">
+                   @error('titre')
+                       {{$message}}
+                   @enderror
                 </div>
                 <div class="form-group">
                     
-                     <textarea name="contenu" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Contenu de l'idée"></textarea>
+                     <textarea name="contenu" required class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Contenu de l'idée"></textarea>
                 </div>
                <div class="form-group">
                     <label for="exampleFormControlSelect1">Catégorie</label>
@@ -69,7 +79,12 @@
                 </div>
                 <button type="submit" class="btn btn-primary">envoyer</button>
                 </form>
+                
                 <br><br>
+              </div>
+
+              <div>
+               
               </div>
               @else 
               <ul class="navbar-nav ml-auto">
@@ -99,7 +114,10 @@
             
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 about_feature_img">
-          <div class="full text_align_center"> <img class="img-responsive" src="images/idees/{{$idee->image}}"  alt="#"> </div>
+         @if ($idee->image)
+              <div class="full text_align_center"> <img class="img-responsive" src="images/idees/{{$idee->image}}"  alt="#"> </div>
+         @endif
+           
           </div>
 
           

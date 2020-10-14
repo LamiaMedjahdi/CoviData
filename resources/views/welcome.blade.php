@@ -715,7 +715,7 @@
        
  <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ asset('it_contact.html') }}">Toutes les publications</a> </div>
      
-     
+    
      
     </div>
   </div>
