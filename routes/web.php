@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-  Route::get('/contentuser', function () {
-      return view('idees_signals_user');
-  });
+  // Route::get('/contributionss', function () {
+  //     return view('idees_signals_user');
+  // });
 
 
 
@@ -47,6 +47,7 @@ Route::get('idees-par-categorie/{cat}/{id}', 'IdeesController@ideesbycat');
 
 Route::get('signals', 'SignalsController@signals');
 Route::get('signal/{id}', 'SignalsController@signal');
+Route::get('contributions/{nom}/{id}', 'SignalsController@contributions');
 Route::post('signals/store', 'SignalsController@store');
 Route::get('signal-par-categorie/{cat}/{id}', 'SignalsController@signalbycat');
 Route::get('GetCommuneEdit/{id}', 'SignalsController@GetCommuneEdit');

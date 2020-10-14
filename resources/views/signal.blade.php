@@ -13,7 +13,7 @@
               <ol class="breadcrumb">
                 <li><a href="index.html">Acceuil</a></li>
                 <li class="active"><a href="{{ url('/signals') }}">Signalements</a></li>
-                <li class="active">Signalement par : {{ $citoyen->nom}}</li>
+                <li class="active">Signalement par : {{ $citoyensign->nom}}</li>
               </ol>
             </div>
           </div>
@@ -38,7 +38,7 @@
               
               <div class="post_info">
                 <ul>
-                  <li><i class="fa fa-user" aria-hidden="true"></i> <a href="{{ url('/signal/'.$citoyen->id) }}"> {{$citoyen->nom}}</a> </li>
+                  <li><i class="fa fa-user" aria-hidden="true"></i> <a href="{{ url('/signal/'.$citoyensign->id) }}"> {{$citoyensign->nom}}</a> </li>
                   
                   
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($signal->created_at)); @endphp </li>
@@ -46,7 +46,8 @@
               </div>
               <p>{{ $signal->contenu }} </p>
               <div class="bottom_info">
-          
+                
+          <a href="{{ url('/contributions/'.$citoyensign->nom.'/'.$citoyensign->id) }}"> Voir toutes les contributions de : {{$citoyensign->nom}}</a>
                
               </div>
             </div>
@@ -60,13 +61,9 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
         <div class="side_bar">
           <div class="side_bar_blog">
-            <h4>Rechercher</h4>
+            <h4>Localisation du signalement</h4>
             <div class="side_bar_search">
-              <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
-                <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
+             <iframe width="400" height="300" src="http://maps.google.com/maps?q={{$signal->localisation}}  &output=embed"></iframe>
             </div>
           </div>
           {{-- <div class="side_bar_blog">

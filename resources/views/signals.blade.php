@@ -64,11 +64,11 @@
                 </div>
                 <div class="form-group">
                     
-                     <textarea name="contenu" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Contenu du signalement"></textarea>
+                     <textarea name="contenu" class="form-control" required id="exampleFormControlTextarea1" rows="3" placeholder="Contenu du signalement"></textarea>
                 </div>
                <div class="form-group">
                     <label for="exampleFormControlSelect1">Catégorie</label>
-                    <select class="form-control" name="categorie" id="exampleFormControlSelect1">
+                    <select class="form-control" name="categorie" id="exampleFormControlSelect1" required>
                         @foreach ($categories as $cat)
                             <option value="{{$cat->id}}"> {{$cat->label}} </option>
                         @endforeach
@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Date :</label>
                     
-                    <input type="date" id="date" name="date" class="form-control">
+                    <input type="date" id="date" name="date" class="form-control" required>
                     
                
                 </div>
@@ -91,7 +91,7 @@
 
                  <div class="form-group">
                     <label for="exampleFormControlSelect1">Wilaya</label>
-                    <select class="form-control formselect required" name="wilaya" id="wilayaid">
+                    <select class="form-control formselect required" name="wilaya" id="wilayaid" required>
                       <option value="0" disabled selected>Selectionnez une wilaya </option>
                         @foreach ($wilayas as $wilaya)
                             <option value="{{$wilaya->id}}"> {{$wilaya->nom}} </option>
@@ -100,11 +100,16 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Commune</label>
-                    <select class="form-control formselect required" name="commune" id="communeid">
+                    <select class="form-control formselect required" name="commune" id="communeid" required>
                       
                     </select>
                 </div>
-
+                 <div class="form-group">
+                   <label for="exampleFormControlSelect1">Décrire l'endroit par des mots clés (ex : lycée ahmed ben zekri)</label>
+                      <input type="text" name="motcles"  class="form-control"  >  
+                  
+                   
+                </div>
              
 
                 
@@ -136,15 +141,30 @@
             </div>
             
             <br><br><br>
+            <div class="full text_align_center">
+            <h3>Signalements des citoyens</h3>
+            <hr>
+            </div>
+            
+            
             @foreach ($signals as $signal)
+            
             
                 <div class="row">
                   
           <div class="col-lg-6 col-md-6 col-sm-12 about_cont_blog" style="padding:0 15px;">
             <div class="full text_align_left">
-              <h4>Catégorie : {{$signal->label}}</h4>
+              <p hidden> {{Carbon\Carbon::setLocale( 'fr')}}.</p>
+              
+              <h5>{{$signal->nom}}  a signalé dans la catégorie  : {{$signal->label}}</h5>
+              <p>{{ Carbon\Carbon::parse($signal->created_at)->subHours(1)->diffForHumans() }}</p>
+               
               <p>{{$signal->contenu}}..</p>
-              <p>{{$signal->nom}}..</p>
+              
+              
+              <br>
+            
+              <iframe width="300" height="200" src="http://maps.google.com/maps?q={{$signal->localisation}}  &output=embed"></iframe>
               
               
              
@@ -158,7 +178,8 @@
           
           </div>
           
-         <div><a class="btn btn-primary" href="{{ url('/signal/'.$signal->id) }}">Lire la suite</a></div>
+        <div  class="col-lg-6 col-md-6 col-sm-12"><a  href="{{ url('/signal/'.$signal->id) }}">Lire la suite</a></div>
+        
          
           <br><br>
 
@@ -199,13 +220,16 @@
                 var response = JSON.parse(response);
                 console.log(response);   
                 $('#communeid').empty();
-                $('#communeid').append(`<option value="0" disabled selected>Selectionnez une commune *</option>`);
+                // $('#communeid').append(`<option value="0" disabled selected>Selectionnez une commune *</option>`);
                 response.forEach(element => {
                     $('#communeid').append(`<option value="${element['nom']}">${element['nom']}</option>`);
+                            });
+                            }
+                        });
                     });
-                }
-            });
-        });
-    });
+                });
+
+
+                
     </script>
 
