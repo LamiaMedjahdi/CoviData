@@ -19,6 +19,8 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- site icons -->
 <link rel="icon" href="{{ asset('images/fevicon/fevicon.png') }}" type="image/gif" />
 <!-- bootstrap css -->

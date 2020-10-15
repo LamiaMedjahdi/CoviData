@@ -8,17 +8,20 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\input;
 use App\Idee;
 
+use App\Like;
+
 class IdeesController extends Controller
 {
     public function idees()
     {
         $idees = DB::table('idees')
-        ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom', 'idees.image', 'idees.like','idees.dislike')
+        ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom','idees.image', 'likes.like')
          ->join('categories', 'categories.id', '=', 'idees.cat_id')
         ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
+            ->join('likes', 'likes.idee_id', '=', 'idees.id')
         ->where('idees.etat', '=', 1)
-        ->orderBy('like','desc')
         ->get();
+        
         $categories = DB::table('categories')->get();
         return view('idees', compact('idees', 'categories'));
     }
@@ -30,9 +33,9 @@ class IdeesController extends Controller
            $idee = DB::table('idees')
             ->find($id);
         $categorie= DB::table('categories')-> where('id', $idee->cat_id)->first();
-        $citoyen = DB::table('citoyens')->where('id', $idee->cit_id)->first();
+        $citoyenidea = DB::table('citoyens')->where('id', $idee->cit_id)->first();
         
-        return view('idee', compact('idee', 'categorie', 'citoyen'));
+        return view('idee', compact('idee', 'categorie', 'citoyenidea'));
         }
         else  return Redirect::to('idees');
         

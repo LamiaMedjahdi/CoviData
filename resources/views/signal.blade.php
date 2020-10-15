@@ -46,6 +46,9 @@
               </div>
               <p>{{ $signal->contenu }} </p>
               <div class="bottom_info">
+
+                      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
                 
           <a href="{{ url('/contributions/'.$citoyensign->nom.'/'.$citoyensign->id) }}"> Voir toutes les contributions de : {{$citoyensign->nom}}</a>
                
@@ -81,5 +84,7 @@
     </div>
   </div>
 </div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87423722e35b06"></script>
+
     
 @endsection

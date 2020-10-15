@@ -38,17 +38,25 @@
               <p class="blog_head">{{ $idee->titre}}</p>
               <div class="post_info">
                 <ul>
-                  <li><i class="fa fa-user" aria-hidden="true"></i> <a href="{{ url('/idee/'.$citoyen->id) }}"> {{$citoyen->nom}}</a> </li>
+                  <li><i class="fa fa-user" aria-hidden="true"></i> <a href="{{ url('/idee/'.$citoyenidea->id) }}"> {{$citoyenidea->nom}}</a> </li>
                   
                   
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($idee->created_at)); @endphp </li>
                 </ul>
+                  <ul>
+              
+                <li>  <a href="#" class="like"><i class="fa fa-thumbs-up" style="color:green"></i> j'aime</a></li>
+                <li>5 <a href="#" class="like"><i class="fa fa-thumbs-down" style="color:red"></i> je n'aime pas</a></li>
+                
+                
+                
+              </ul>
               </div>
               <p>{{ $idee->contenu }} </p>
               <div class="bottom_info">
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <div class="addthis_inline_share_toolbox"></div>
-            
+             <a href="{{ url('/contributions/'.$citoyenidea->nom.'/'.$citoyenidea->id) }}"> Voir toutes les contributions de : {{$citoyenidea->nom}}</a>
           
                
               </div>
