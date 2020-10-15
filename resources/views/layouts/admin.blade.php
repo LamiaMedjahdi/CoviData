@@ -183,9 +183,7 @@
 							<a class="js-arrow" href="#">
 								<i class="fas fa-clock-o"></i>En attente</a>
 							<ul class="list-unstyled navbar__sub-list js-sub-list">
-								<li>
-									<a href="{{ asset('publications.html') }}">Publications</a>
-								</li>
+								
 								<li>
 									<a href="{{ asset('signalements-waiting.html') }}">Signalement</a>
 								</li>

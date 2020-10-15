@@ -8,17 +8,20 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\input;
 use App\Idee;
 
+use App\Like;
+
 class IdeesController extends Controller
 {
     public function idees()
     {
         $idees = DB::table('idees')
-        ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom', 'idees.image', 'idees.like','idees.dislike')
+        ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom','idees.image', 'likes.like')
          ->join('categories', 'categories.id', '=', 'idees.cat_id')
         ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
+            ->join('likes', 'likes.idee_id', '=', 'idees.id')
         ->where('idees.etat', '=', 1)
-        ->orderBy('like','desc')
         ->get();
+        
         $categories = DB::table('categories')->get();
         return view('idees', compact('idees', 'categories'));
     }
@@ -30,9 +33,9 @@ class IdeesController extends Controller
            $idee = DB::table('idees')
             ->find($id);
         $categorie= DB::table('categories')-> where('id', $idee->cat_id)->first();
-        $citoyen = DB::table('citoyens')->where('id', $idee->cit_id)->first();
+        $citoyenidea = DB::table('citoyens')->where('id', $idee->cit_id)->first();
         
-        return view('idee', compact('idee', 'categorie', 'citoyen'));
+        return view('idee', compact('idee', 'categorie', 'citoyenidea'));
         }
         else  return Redirect::to('idees');
         
@@ -40,11 +43,14 @@ class IdeesController extends Controller
 
     public function store(Request $request)
     {
-        //  $this->validate(request(),[
-        //      'title' => 'required|max:50|string',
-        //      'content' => 'required|min:20|string',
-        //      // 'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-        //  ]);
+    //    
+        // $this->validate($request, array([
+        //  'title' => 'required|max:50|string',
+        //  'content' => 'required|min:20|string',
+        //  'image' => 'image|mimes:jpg,jpeg,png|max:2048',
+        // ]));
+
+        
         
         $idee = new Idee;
         $idee->titre = $request->titre;
@@ -70,6 +76,21 @@ class IdeesController extends Controller
             
 
          return Redirect('/idees');
+    }
+
+    public function ideesbycat($cat, $id)
+    {
+
+        if (Idee::where('id', $id)->exists()) {
+            $idees = DB::table('idees')
+            ->where('cat_id', $id)->get();
+            $categorie = $cat;
+
+
+
+
+            return view('ideesbycat', compact('idees', 'categorie'));
+        } else  return Redirect::to('idees');
     }
 
 }

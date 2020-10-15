@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  
 <!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +19,8 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- site icons -->
 <link rel="icon" href="{{ asset('images/fevicon/fevicon.png') }}" type="image/gif" />
 <!-- bootstrap css -->
@@ -35,10 +39,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}" />
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
+
+
+
 </head>
 <body id="default_theme" class="it_service">
 <!-- loader -->
@@ -67,12 +70,9 @@
                   
                 </li>
                 <li><a href="{{ asset('it_about.html') }}">CoviData ?</a></li>
-                <li> <a href="{{ asset('it_service.html') }}">Idées</a>
-                    <li> <a href="{{ asset('it_service.html') }}">Signalements</a>
-                  <ul>
-                    <li><a href="{{ asset('it_service_list.html') }}">Services list</a></li>
-                    <li><a href="{{ asset('it_service_detail.html') }}">Services Detail</a></li>
-                  </ul>
+                <li> <a href="{{ url('idees') }}">Idées</a>
+                    <li> <a href="{{ url('signals') }}">Signalements</a>
+              
                 </li>
                 <li> <a href="{{ url('/publications') }}">Publications</a>
                   
@@ -315,6 +315,9 @@
       </script>
 <!-- google map js -->
 <script src="{{ asset('images/fevicon/fevicon.png') }}https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+
+@yield('script');
+
 <!-- end google map js -->
 </body>
 </html>

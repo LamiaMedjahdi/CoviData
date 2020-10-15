@@ -62,6 +62,29 @@
                                     <label>Email</label>
                                     <input class="au-input au-input--full" type="email" name="email" >
                                 </div>
+
+                                
+
+                                <div class="form-group">
+                                    <label>Commune</label>
+                                    <select class="au-input au-input--full"  name="commune" >
+                                        @foreach ($communes as $com)
+                                        <option value="{{$com->id}}"> {{$com->nom}} </option>
+                                            
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Indiquez votre profession</label>
+                                    <select class="au-input au-input--full"  name="profession" >
+                                        @foreach ($professions as $prof)
+                                        <option value="{{$prof->id}}"> {{$prof->nom}} </option>
+                                            
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label>Mot de passe</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
@@ -69,12 +92,7 @@
                                 
                                
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">S'inscrire</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
-                                    </div>
-                                </div>
+                               
                             </form>
                             <div class="register-link">
                                 <p>

@@ -43,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
         $idees =   DB::table('idees')->where('etat', '=', 0)->get()->count();
         $idees1 =   DB::table('idees')->where('etat', '=', 1)->get()->count();
         $signals1 =   DB::table('signals')->where('etat', '=', 1)->get()->count();
+        $categories = DB::table('categories')->get();
+        $communes = DB::table('communes')->get();
+        $professions = DB::table('professions')->get();
 
         View::share('maladestotal', $maladestotal);
         View::share('guerristotal', $guerristotal);
@@ -58,6 +61,9 @@ class AppServiceProvider extends ServiceProvider
         View::share('idees', $idees);
         View::share('idees1', $idees1);
         View::share('signals1', $signals1);
+        View::share('categories', $categories);
+        View::share('communes', $communes);
+        View::share('professions', $professions);
         
         
 

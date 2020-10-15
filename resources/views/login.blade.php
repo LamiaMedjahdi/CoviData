@@ -47,7 +47,7 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="login" method="post">
+                            <form action="/login" method="post">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label>Email </label>
@@ -71,6 +71,18 @@
                                     </div>
                                 </div> --}}
                             </form>
+
+                            <div class="form-group">
+                                @foreach ($errors->all() as $error)
+
+                                {{$error}} <br>
+                                    
+                                @endforeach
+
+                            </div>
+
+
+
                             <div class="register-link">
                                 <p>
                                     Vous n'avez pas de compte ?
