@@ -39,14 +39,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function likes()
-    {
-        return $this->hasMany('App\Like');
-    }
-    public function idee()
-    {
-        return $this->hasMany('App\Idee');
-    }
+   
 
     protected $table = 'citoyens'; // eh da kman ?? ana ghayart al users table to citoyens , kan lazim a3melelha ta3rif as protected hone
     //let me see you phpmyadmin keda ? ana ma3am eshtaghil 3al phpmyadmin , achouf el database men hon fi laragon tmam wait a min

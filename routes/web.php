@@ -44,6 +44,8 @@ Route::get('idees', 'IdeesController@idees');
 Route::get('idee/{id}', 'IdeesController@idee');
 Route::post('idees/store', 'IdeesController@store');
 Route::get('idees-par-categorie/{cat}/{id}', 'IdeesController@ideesbycat');
+Route::get('like/{id}', 'IdeesController@like');
+Route::get('dislike/{id}', 'IdeesController@dislike');
 
 Route::get('signals', 'SignalsController@signals');
 Route::get('signal/{id}', 'SignalsController@signal');

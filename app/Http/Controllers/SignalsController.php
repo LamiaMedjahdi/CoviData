@@ -122,7 +122,8 @@ class SignalsController extends Controller
             $signals = DB::table('signals')
             ->where('cit_id', $id)->get();
             $idees = DB::table('idees')
-            ->where('cit_id', $id)->get();
+             ->where('cit_id', $id)->get();
+            
             $nom = $nom;
 
 

@@ -12,8 +12,5 @@ class Idee extends Model
         'titre' , 'contenu','image','cat_id','cit_id'
     ];
 
-    public function likes()
-    {
-        return $this->hasMany('App\Like');
-    }
+   
 }

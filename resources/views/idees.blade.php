@@ -104,14 +104,7 @@
               <h3>{{$idee->titre}} - catégorie : {{$idee->label}}</h3>
               <p>{{$idee->contenu}}..</p>
               
-              <ul>
-              
-                <li>{{$idee->like}} <a href="#" class="like"><i class="fa fa-thumbs-up" style="color:green"></i>j'aime</a></li>
-                <li>5 <a href="#" class="like">{{$idee->like}}<i class="fa fa-thumbs-down" style="color:red"></i>je n'aime pas</a></li>
-                
-                
-                
-              </ul>
+             
               <div class="center"><a class="btn main_bt" href="{{ url('/idee/'.$idee->id) }}">Voir l'idée en détail</a></div>
             </div>
             
