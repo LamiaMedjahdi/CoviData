@@ -64,8 +64,7 @@
               <div class="post_info">
                 <ul>
                   <li><i class="fa fa-user" aria-hidden="true"></i> {{$nom}}</li>
-                  <li><i class="fa fa-thumbs-up" aria-hidden="true"></i>  {{$idee->like}}</li>
-                  <li><i class="fa fa-thumbs-down" aria-hidden="true"></i> {{$idee->dislike}}</li>
+                  
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ date('d F Y', strtotime($idee->created_at))}}</li>
                 </ul>
               </div>
@@ -126,8 +125,7 @@
               <div class="post_info">
                 <ul>
                   <li><i class="fa fa-user" aria-hidden="true"></i> {{$nom}}</li>
-                  <li><i class="fa fa-thumbs-up" aria-hidden="true"></i> 5</li>
-                  <li><i class="fa fa-thumbs-down" aria-hidden="true"></i> 5</li>
+
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ date('d F Y', strtotime($signal->created_at))}}</li>
                 </ul>
               </div>

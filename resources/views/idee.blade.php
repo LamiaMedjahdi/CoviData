@@ -44,10 +44,17 @@
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($idee->created_at)); @endphp </li>
                 </ul>
                   <ul>
+
+              @if(Auth::check())
               
-                <li>  <a href="#" class="like"><i class="fa fa-thumbs-up" style="color:green"></i> j'aime</a></li>
-                <li>5 <a href="#" class="like"><i class="fa fa-thumbs-down" style="color:red"></i> je n'aime pas</a></li>
-                
+              {{-- <button class="btn btn-success btn-sm"  onclick="loadlike({{$idee->id}})"><i class="fa fa-thumbs-up"> j'aime ({{$likeCount}}) </i> </button> --}}
+                    
+                  <li>  {{$likeCount}} <a href="{{ url('/like/'.$idee->id) }}"   id="like"><i class="fa fa-thumbs-up" style="color:green"></i> j'aime</a></li>
+                  <li>{{$dislikeCount}} <a href="{{ url('/dislike/'.$idee->id) }}" id="{{$idee->id}}" class="dislike"><i class="fa fa-thumbs-down" style="color:red"></i> je n'aime pas</a></li>
+                @else 
+                      <li>  {{$likeCount}} <a href="/login" class="like"><i class="fa fa-thumbs-up" style="color:green"></i> j'aime</a></li>
+                      <li>  {{$dislikeCount}} <a href="/login" class="like"><i class="fa fa-thumbs-down" style="color:red"></i> je n'aime pas</a></li>
+                @endif 
                 
                 
               </ul>
@@ -71,13 +78,16 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
         <div class="side_bar">
           <div class="side_bar_blog">
-            <h4>Rechercher</h4>
+            <h4>Rechercher des idées</h4>
             <div class="side_bar_search">
+              <form action="/Idea-search" method="POST">
+                @csrf
               <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
+                <input name="recherche" class="form-control" placeholder="Search" type="text">
                 <span class="input-group-addon">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </span> </div>
+              </form>
             </div>
           </div>
           {{-- <div class="side_bar_blog">
@@ -98,6 +108,29 @@
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87423722e35b06"></script>
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+
+{{-- <script type="text/javascript">
+
+ function loadlike(id){
+
+  var myRequest= new XMLHttpRequest();
+  
+  myRequest.onreadystatechange=function(){
+    
+      if(this.readyState===4 && this.status===200)
+      {
+          console.log(this.responseText);
+          
+      }
+  };
+  myRequest.open("GET","/like/"+id,true);
+  myRequest.send();
+ }
+ 
+  
+</script> --}}
 
     
 @endsection

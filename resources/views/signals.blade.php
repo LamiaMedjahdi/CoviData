@@ -178,7 +178,7 @@
           
           </div>
           
-        <div  class="col-lg-6 col-md-6 col-sm-12"><a  href="{{ url('/signal/'.$signal->id) }}">Lire la suite</a></div>
+        <div  class="col-lg-6 col-md-6 col-sm-12"><a  class="btn main_bt" href="{{ url('/signal/'.$signal->id) }}">Lire la suite</a></div>
         
          
           <br><br>

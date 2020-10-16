@@ -122,7 +122,8 @@ class SignalsController extends Controller
             $signals = DB::table('signals')
             ->where('cit_id', $id)->get();
             $idees = DB::table('idees')
-            ->where('cit_id', $id)->get();
+             ->where('cit_id', $id)->get();
+            
             $nom = $nom;
 
 
@@ -130,6 +131,27 @@ class SignalsController extends Controller
 
             return view('idees_signals_user', compact('signals','idees', 'nom'));
         } else  return redirect()->back();
+    }
+
+    public function searchsignal(Request $request)
+    {
+        $request->validate([
+            'recherche' => 'required'
+        ]);
+
+        $q = $request->recherche;
+        $filtre = Signal::where('etat', '=', '1')
+        ->where(function ($query) use ($q) {
+            $query->where('localisation', 'like', '%' . $q . '%')
+                ->orWhere('contenu', 'like', '%' . $q . '%');
+        })->get();
+
+
+        if ($filtre!=NULL) {
+            return view('/searchSignal', compact('filtre'));
+        } else {
+            return "pas de resultat pour cette recherche";
+        }
     }
 
     
