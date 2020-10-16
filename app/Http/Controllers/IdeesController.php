@@ -142,4 +142,28 @@ class IdeesController extends Controller
         } else  return Redirect::to('idees');
     }
 
+
+    public function searchidea(Request $request)
+    {
+        $request->validate([
+            'recherche' => 'required'
+        ]);
+
+        $q=$request->recherche;
+        $filtre = Idee::where('etat', '=', '1')
+                        ->where(function ($query) use ($q) {
+                            $query->where('titre', 'like', '%' . $q . '%')
+                              ->orWhere('contenu', 'like', '%' . $q . '%');})->get();  
+
+                              
+             if($filtre){
+                 return view('searchIdea', compact('filtre'));
+             }  
+             else {
+
+             }
+                        
+
+    }
+
 }

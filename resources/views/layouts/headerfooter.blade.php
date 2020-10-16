@@ -119,20 +119,24 @@
 <footer class="footer_style_2">
   <div class="container-fuild">
     <div class="row">
-      <div class="map_section">
-        <div id="map"></div>
+      <div  style="padding-left: 50px; padding-top: 100px;">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FChuTlemcen-1179379938767431&tabs=timeline&width=350&height=450&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
       </div>
       <div class="footer_blog">
         <div class="row">
           <div class="col-md-6">
             <div class="main-heading left_text">
-              <h2>It Next Theme</h2>
+              <h2>CoviData</h2>
             </div>
             <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>
             <ul class="social_icons">
-              <li class="social-icon fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li class="social-icon tw"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li class="social-icon gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+              
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            
+
+
+              
             </ul>
           </div>
           <div class="col-md-6">
@@ -319,6 +323,7 @@
 @yield('script');
 
 <!-- end google map js -->
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87423722e35b06"></script>
 </body>
 </html>
 

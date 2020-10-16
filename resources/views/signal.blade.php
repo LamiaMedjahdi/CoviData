@@ -69,11 +69,19 @@
              <iframe width="400" height="300" src="http://maps.google.com/maps?q={{$signal->localisation}}  &output=embed"></iframe>
             </div>
           </div>
-          {{-- <div class="side_bar_blog">
-            <h4>Autheur</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. sed do eiusmod tempor.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div> --}}
+           <div class="side_bar_blog">
+            <h4>Rechercher parmi les signalements </h4>
+            <div class="side_bar_search">
+              <form action="/Signal-search" method="POST">
+                @csrf
+              <div class="input-group stylish-input-group">
+                <input name="recherche" class="form-control" placeholder="Search" type="text">
+                <span class="input-group-addon">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span> </div>
+              </form>
+            </div>
+          
           
           
               

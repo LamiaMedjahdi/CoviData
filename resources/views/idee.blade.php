@@ -80,7 +80,7 @@
           <div class="side_bar_blog">
             <h4>Rechercher des idées</h4>
             <div class="side_bar_search">
-              <form action="" method>
+              <form action="/Idea-search" method="POST">
                 @csrf
               <div class="input-group stylish-input-group">
                 <input name="recherche" class="form-control" placeholder="Search" type="text">

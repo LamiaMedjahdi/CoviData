@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-  // Route::get('/contributionss', function () {
-  //     return view('idees_signals_user');
+  // Route::get('/idea-search', function () {
+  //     return view('searchIdea');
   // });
 
 
@@ -62,6 +62,10 @@ Route::post('stats', 'StatController@store');
 Route::get('stats/{id}/edit', 'StatController@edit');
 Route::put('stats/update', 'StatController@update');
 Route::delete('stats/{id}', 'StatController@delete');
+
+//searchs routes
+Route::post('Idea-search', 'IdeesController@searchidea');
+Route::post('Signal-search', 'SignalsController@searchsignal');
 
 
 
