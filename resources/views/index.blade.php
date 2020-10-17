@@ -86,7 +86,7 @@
                       
                         <div class="row">
                             <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Statistiques par Wilayas aujourd'hui</h2>
+                                <h2 class="title-1 m-b-25">Statistiques du : {{ date('d F Y', strtotime(Carbon\Carbon::now()->toDateTimeString()))}} </h2>
                                 <div class="table-responsive table--no-card m-b-40">
                                     <table class="table table-borderless table-striped table-earning">
                                         <thead>
@@ -94,9 +94,9 @@
                                                 <th>date</th>
                                                 <th>Code Wilaya</th>
                                                 <th>Wilaya</th>
-                                                <th class="text-right">Total des cas</th>
-                                                <th class="text-right">Total des décés</th>
-                                                <th class="text-right">Total de guérisons</th>
+                                                <th class="text-right">Nombre de cas</th>
+                                                <th class="text-right">Nombre de décés</th>
+                                                <th class="text-right">Nombre de guérisons</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -158,8 +158,8 @@
                                                         </div>
                                                         <div class="au-message__item-time">
                                                             <span>{{ Carbon\Carbon::parse($idee2->created_at)->subHours(1)->diffForHumans() }}</span><hr/>
-                                                            <i class="fa fa-thumbs-up" > {{$idee2->like}}</i>
-                                                            <i class="fa fa-thumbs-down" >  {{$idee2->dislike}}</i>
+                                                            {{-- <i class="fa fa-thumbs-up" > {{$idee2->like}}</i>
+                                                            <i class="fa fa-thumbs-down" >  {{$idee2->dislike}}</i> --}}
                                                         </div>
                                                     </div>
                                                 </div>

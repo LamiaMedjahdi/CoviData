@@ -130,15 +130,15 @@ class IdeesController extends Controller
     public function ideesbycat($cat, $id)
     {
 
-        if (Idee::where('id', $id)->exists()) {
-            $idees = DB::table('idees')
+        if (Idee::where('cat_id', $id)->exists()) {
+            $ideees = DB::table('idees')
             ->where('cat_id', $id)->get();
             $categorie = $cat;
 
 
 
 
-            return view('ideesbycat', compact('idees', 'categorie'));
+            return view('ideesbycat', compact('ideees', 'categorie'));
         } else  return Redirect::to('idees');
     }
 

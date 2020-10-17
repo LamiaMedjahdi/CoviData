@@ -71,6 +71,44 @@ class DisplayPublicationController extends Controller
 
         
     }
+
+
+   
+
+
+     public function searchinformation(Request $request)
+     {
+         $request->validate([
+             'recherche' => 'required'
+         ]);
+         $q = $request->recherche;
+         $filtre = DB::table('informations')
+         ->where('titre', 'like', '%' . $q . '%')
+         ->orWhere('contenu', 'like', '%' . $q . '%')
+         ->orWhere('lien', 'like', '%' . $q . '%')->get();
+
+         if ($filtre != NULL) {
+             return view('searchinformation', compact('filtre','q'));
+         } 
+     }
+
+    public function searchinformations(Request $request)
+    {
+        $request->validate([
+            'recherche' => 'required'
+        ]);
+        $q = $request->recherche;
+        $filtre = DB::table('informations')
+        ->where('titre', 'like', '%' . $q . '%')
+            ->orWhere('contenu', 'like', '%' . $q . '%')
+            ->orWhere('lien', 'like', '%' . $q . '%')->get();
+
+        if ($filtre != NULL) {
+            return view('searchinformations', compact('filtre', 'q'));
+        }
+    }
+
+
 }
 
 

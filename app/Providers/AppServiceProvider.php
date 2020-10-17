@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         $categories = DB::table('categories')->get();
         $communes = DB::table('communes')->get();
         $professions = DB::table('professions')->get();
+        $tags = DB::table('tags')->get();
 
         View::share('maladestotal', $maladestotal);
         View::share('guerristotal', $guerristotal);
@@ -64,6 +65,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('categories', $categories);
         View::share('communes', $communes);
         View::share('professions', $professions);
+        View::share('tags', $tags);
         
         
 

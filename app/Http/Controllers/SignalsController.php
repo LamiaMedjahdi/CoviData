@@ -99,9 +99,8 @@ class SignalsController extends Controller
     public function signalbycat($cat,$id)
     {
 
-        if (Signal::where('id', $id)->exists() ) {
-            $signals = DB::table('signals')
-                ->where('cat_id',$id)->get();
+        if (Signal::where('cat_id', $id)->exists() ) {
+            $signals = Signal::where('cat_id',$id)->get();
                 $categorie = $cat;
             
             

@@ -32,27 +32,19 @@ class HomeStatsController extends Controller
     
 
 
-    public function indexinfos()
+    public function indexinfosadmin()
     {
        $subscribers =   DB::table('citoyens')->get()->sum('id');
         $publications =   DB::table('informations')->whereDate('date', \Carbon\Carbon::today())->get()->count();
         $signals =   DB::table('signals')->where('etat','=', 0)->get()->count();
         $idees =   DB::table('idees')->where('etat', '=', 0)->get()->count();
 
-      
-
-        return view('index', compact('subscribers', 'publications', 'signals', 'idees'));
-    }
-
-    public function ideedisplay()
-    {
-       
         $idees2 = DB::table('idees')
-        ->join('categories', 'categories.id', '=', 'idees.cat_id')
-        ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
-        ->where('idees.etat', '=', 1)
-        ->orderBy('like','desc')->limit(4)
-        ->get();
+            ->join('categories', 'categories.id', '=', 'idees.cat_id')
+            ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
+            ->where('idees.etat', '=', 1)
+            ->limit(4)
+            ->get();
 
         $parwilayas = DB::table('stats')
             ->join('wilayas', 'wilayas.id', '=', 'stats.wilaya_id')
@@ -61,15 +53,17 @@ class HomeStatsController extends Controller
         $signals2 = DB::table('signals')
         ->join('categories', 'categories.id', '=', 'signals.cat_id')
         ->join('citoyens', 'citoyens.id', '=', 'signals.cit_id')
-            ->join('wilayas', 'wilayas.id', '=', 'signals.wilaya_id')
+        ->join('wilayas', 'wilayas.id', '=', 'signals.wilaya_id')
         ->where('signals.etat', '=', 1)
-        ->limit(4)
-        ->get();            
+            ->limit(4)
+            ->get();  
 
+      
 
-
-        return view('index', compact('idees2', 'parwilayas','signals2'));
+        return view('index', compact('subscribers', 'publications', 'signals', 'idees', 'idees2', 'parwilayas', 'signals2'));
     }
+
+
 
     
 

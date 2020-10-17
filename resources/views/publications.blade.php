@@ -119,13 +119,16 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
         <div class="side_bar">
           <div class="side_bar_blog">
-            <h4>SEARCH</h4>
+            <h4>Rechercher une publication</h4>
             <div class="side_bar_search">
+             <form action="/informations-search" method="POST">
+                @csrf
               <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
+                <input name="recherche" class="form-control" placeholder="Search" type="text">
                 <span class="input-group-addon">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </span> </div>
+              </form>
             </div>
           </div>
           {{-- <div class="side_bar_blog">
@@ -150,11 +153,11 @@
             <h4>TAG</h4>
             <div class="tags">
               <ul>
-                <li><a href="#">Bootstrap</a></li>
-                <li><a href="#">HTML5</a></li>
-                <li><a href="#">Wordpress</a></li>
-                <li><a href="#">Bootstrap</a></li>
-                <li><a href="#">HTML5</a></li>
+                @foreach ($tags as $tag)
+                   <li><a href="#">{{$tag->nom}}</a></li> 
+                @endforeach
+                
+               
               </ul>
             </div>
           </div>

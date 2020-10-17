@@ -35,7 +35,10 @@
 
       
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postdetail->image) }}" alt="#"> </div>
+                @if ($postdetail->image)
+                     <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postdetail->image) }}" alt="#"> </div>
+                @endif
+           
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $postdetail->titre}}</p>
               <div class="post_info">
@@ -52,10 +55,7 @@
                   <div class="shr">Partager: </div>
                   <div class="social_icon">
                     <ul>
-                      <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                      <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                      <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                      <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                      <div class="addthis_inline_share_toolbox"></div>
                     </ul>
                   </div>
                 </div>
@@ -72,14 +72,20 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
         <div class="side_bar">
           <div class="side_bar_blog">
-            <h4>Rechercher</h4>
+            <h4>Rechercher des publications</h4>
+            
             <div class="side_bar_search">
+            <form action="/information-search" method="POST">
+              @csrf
               <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
+                <input class="form-control" name="recherche" placeholder="Search" type="text">
                 <span class="input-group-addon">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
+                </span>
+              </div>
+              </form>
             </div>
+            
           </div>
           {{-- <div class="side_bar_blog">
             <h4>Autheur</h4>

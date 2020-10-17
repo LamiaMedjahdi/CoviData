@@ -58,12 +58,7 @@
                 <div class="pull-right">
                   <div class="shr">Partager: </div>
                   <div class="social_icon">
-                    <ul>
-                      <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                      <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                      <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                      <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                    </ul>
+                   <div class="addthis_inline_share_toolbox"></div>
                   </div>
                 </div>
               </div>
@@ -80,40 +75,13 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
         <div class="side_bar">
-          <div class="side_bar_blog">
-            <h4>Rechercher</h4>
-            <div class="side_bar_search">
-              <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
-                <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
-            </div>
-          </div>
-          {{-- <div class="side_bar_blog">
-            <h4>Autheur</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. sed do eiusmod tempor.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div> --}}
+          
+         
           
           
               
           
-          {{-- <div class="side_bar_blog">
-            <h4>TAG</h4>
-           
-            <div class="tags">
-              <ul>
-                  @foreach ($tags as $tag)
-                      <li><a href="{{ url('/pubstag/'.$tag->nom) }}">{{ $tag->nom }}</a></li>
-                  @endforeach
-                      
-                  
-                
-               
-              </ul>
-            </div>
-          </div> --}}
+       
           
         </div>
       </div>

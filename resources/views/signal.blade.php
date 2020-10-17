@@ -32,7 +32,7 @@
                 
       
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="../images/signals/{{$signal->image}}" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" width="400" height="350" src="../images/signals/{{$signal->image}}" alt="#"> </div>
             <div class="blog_feature_cantant">
                 <p class="blog_head">Catégorie : {{ $categorie->label}}</p>
               

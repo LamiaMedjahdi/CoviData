@@ -1,7 +1,5 @@
 @extends('layouts.headerfooter')
 
-
-
 @section('body')
 
 
@@ -55,7 +53,7 @@
             <br><br><br>
 
            
-            @foreach ($signals as $signal)
+             @foreach ($signals as $signal)
             
                 <div class="row">
                   
@@ -63,7 +61,8 @@
             <div class="full text_align_left">
               
               <p>Contenu du signalement :<br> {{$signal->contenu}}..</p>
-             <br> <p><a  href="{{ url('/signal/'.$signal->id) }}">Lire la suite...</a></p>
+                {{-- <button class="btn btn-success btn-sm"  onclick="loadlike({{$idee->id}})"><i class="fa fa-thumbs-up"> j'aime ({{$likeCount}}) </i> </button> --}}
+             <br> <p><a  class="btn btn-success btn-sm" href="{{ url('/signal/'.$signal->id) }}">Lire la suite...</a></p>
               
               
              
@@ -72,7 +71,7 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 about_feature_img">
             
-              <div class="blog_feature_img"> <img class="img-responsive" src="{{ URL::to('/images/signals/' . $signal->image) }}" alt="#"> </div>
+              <div class="blog_feature_img"> <img class="img-responsive"  src="{{ URL::to('/images/signals/' . $signal->image) }}" alt="#"> </div>
             
           
           </div>
@@ -85,7 +84,7 @@
           
         </div>
          <br><br><br>
-            @endforeach
+            @endforeach 
             
               
        

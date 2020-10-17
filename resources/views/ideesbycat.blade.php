@@ -55,7 +55,7 @@
             <br><br><br>
 
            
-            @foreach ($idees as $idee)
+            @foreach ($ideees as $idee)
             
                 <div class="row">
                   
@@ -63,7 +63,7 @@
             <div class="full text_align_left">
               <h3>Titre de l'idée : {{$idee->titre}} </h3>
               <p>Contenu du signalement :<br> {{$idee->contenu}}..</p>
-             <br> <p><a  href="{{ url('/idee/'.$idee->id) }}">Lire la suite...</a></p>
+             <br> <p><a  class="btn btn-success btn-sm" href="{{ url('/idee/'.$idee->id) }}">Lire la suite...</a></p>
               
               
              

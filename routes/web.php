@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-  // Route::get('/idea-search', function () {
-  //     return view('searchIdea');
-  // });
+  //  Route::get('/results', function () {
+  //      return view('noresult');
+  //  });
+
+Route::get('/signal-par-categorie/{cat}/{id}', 'SignalsController@signalbycat');
 
 
 
@@ -36,9 +38,9 @@ Route::post('/login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
 
 
-Route::get('index', 'HomeStatsController@indexinfos');
-Route::get('index', 'HomeStatsController@ideedisplay');
-Route::get('index2', 'HomeStatsController@indexinfos');
+Route::get('index', 'HomeStatsController@indexinfosadmin');
+
+// Route::get('index2', 'HomeStatsController@indexinfos');
 
 Route::get('idees', 'IdeesController@idees');
 Route::get('idee/{id}', 'IdeesController@idee');
@@ -51,7 +53,7 @@ Route::get('signals', 'SignalsController@signals');
 Route::get('signal/{id}', 'SignalsController@signal');
 Route::get('contributions/{nom}/{id}', 'SignalsController@contributions');
 Route::post('signals/store', 'SignalsController@store');
-Route::get('signal-par-categorie/{cat}/{id}', 'SignalsController@signalbycat');
+// Route::get('signal-par-categorie', 'SignalsController@signalbycat');
 Route::get('GetCommuneEdit/{id}', 'SignalsController@GetCommuneEdit');
 
 
@@ -66,6 +68,9 @@ Route::delete('stats/{id}', 'StatController@delete');
 //searchs routes
 Route::post('Idea-search', 'IdeesController@searchidea');
 Route::post('Signal-search', 'SignalsController@searchsignal');
+Route::post('information-search', 'DisplayPublicationController@searchinformation');
+Route::post('informations-search', 'DisplayPublicationController@searchinformations');
+
 
 
 
