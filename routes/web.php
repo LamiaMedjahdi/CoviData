@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-  //  Route::get('/results', function () {
-  //      return view('noresult');
-  //  });
+    // Route::get('/users-search', function () {
+    //     return view('searchusers');
+    // });
 
 Route::get('/signal-par-categorie/{cat}/{id}', 'SignalsController@signalbycat');
 
@@ -70,6 +70,7 @@ Route::post('Idea-search', 'IdeesController@searchidea');
 Route::post('Signal-search', 'SignalsController@searchsignal');
 Route::post('information-search', 'DisplayPublicationController@searchinformation');
 Route::post('informations-search', 'DisplayPublicationController@searchinformations');
+Route::post('users-search', 'UsersController@searchusers');
 
 
 

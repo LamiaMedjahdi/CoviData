@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>{{$publications}}</h2>
-                                                <span>Nouvelles {{ $maladestotal}} - 24h</span>
+                                                <span>Nouvelles publications - 24h</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">

@@ -34,7 +34,7 @@ class HomeStatsController extends Controller
 
     public function indexinfosadmin()
     {
-       $subscribers =   DB::table('citoyens')->get()->sum('id');
+       $subscribers =   DB::table('citoyens')->get()->count('id');
         $publications =   DB::table('informations')->whereDate('date', \Carbon\Carbon::today())->get()->count();
         $signals =   DB::table('signals')->where('etat','=', 0)->get()->count();
         $idees =   DB::table('idees')->where('etat', '=', 0)->get()->count();

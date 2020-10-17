@@ -166,7 +166,7 @@
 						</li>
 						<li>
 							<a class="js-arrow" href="{{ asset('tab.html') }}">
-								<i class="fas fa-info-circle"></i>Informations</a>
+								<i class="fas fa-info-circle"></i>Publications</a>
 							
                         </li>
                         <li>
@@ -234,8 +234,31 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Rechercher des informations &amp; des données..." />
+                            <form class="form-header" action="/users-search" method="POST">
+                                @csrf
+                                <input class="au-input au-input--xl" type="text" name="recherche" placeholder="Rechercher des utilisateurs" />
+                                 <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                            <select class="js-select2 au-select-dark" name="commune">
+                                                <option value="0" disabled selected>Commune</option>
+                                                @foreach ($communes as $commune)
+                                            <option value="{{$commune->id}}">{{$commune->nom}}</option>
+                                                
+                                                @endforeach
+                                                
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                  <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                            <select class="js-select2 au-select-dark" name="profession">
+                                                <option value="0" disabled selected>Profession</option>
+                                                @foreach ($professions as $profession)
+                                            <option value="{{$profession->id}}">{{$profession->nom}}</option>
+                                                
+                                                @endforeach
+                                                
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
