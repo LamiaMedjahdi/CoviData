@@ -28,6 +28,75 @@ class IdeesController extends Controller
         return view('idees', compact('idees', 'categories'));
     }
 
+    // admin 
+    public function displayidees()
+    {
+        $idees = DB::table('idees')
+            ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'idees.image')
+            ->join('categories', 'categories.id', '=', 'idees.cat_id')
+            ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
+            ->where('idees.etat', '=', 1)
+            ->get();
+
+        $categories = DB::table('categories')->get();
+        return view('idees-admin', compact('idees', 'categories'));
+    }
+
+
+    public function displayideesenattente()
+    {
+        $idees = DB::table('idees')
+        ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'idees.image')
+        ->join('categories', 'categories.id', '=', 'idees.cat_id')
+        ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
+        ->where('idees.etat', '=', 0)
+        ->get();
+
+        $categories = DB::table('categories')->get();
+        return view('idees-en-attente', compact('idees', 'categories'));
+    }
+
+    public function displayidee($id)
+        {
+        
+            if (Idee::where('id', $id)->exists()) {
+            $idee = DB::table('idees')->where('etat', '!=', '2')
+                ->find($id);
+            $categorie= DB::table('categories')-> where('id', $idee->cat_id)->first();
+            $citoyenidea = DB::table('citoyens')->where('id', $idee->cit_id)->first();
+            $likeIdea=Idee::find($id);
+            $likeCount=Like::where('idee_id', $likeIdea->id)->count();
+            $dislikeCount = Dislike::where('idee_id', $likeIdea->id)->count();
+            
+            
+            return view('idee-admin', compact('idee', 'categorie', 'citoyenidea','likeCount','dislikeCount'));
+            }
+            else  return Redirect::to('idees');
+            
+        }
+
+    public function approuver_idee($id)
+    {
+
+        if (Auth::check() and Auth::user()->roles == 1) {
+            $query = DB::table('idees')
+            ->where('id', $id)
+                ->update(['etat' => "1"]);
+            return redirect()->back();
+        } else  return Redirect::to('signalements');
+    }
+    public function refuser_idee($id)
+    {
+
+        if (Auth::check() and Auth::user()->roles == 1) {
+            $query = DB::table('idees')
+            ->where('id', $id)
+                ->update(['etat' => "2"]);
+            return Redirect::to('idees-en-attente');
+        } else  return Redirect::to('idees-admin');
+    }
+    
+
     public function idee($id)
     {
        
@@ -46,6 +115,8 @@ class IdeesController extends Controller
         else  return Redirect::to('idees');
         
     }
+
+    
 
 
     public function like($id)

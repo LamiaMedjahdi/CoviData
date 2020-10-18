@@ -251,6 +251,7 @@ section {
 }
 
 .section__content--p30 {
+    padding-top: -50px;
     padding: 0 30px;
 }
 
@@ -316,7 +317,7 @@ section {
 }
 
 .main-content {
-    padding-top: 116px;
+    padding-top: 100px;
     min-height: 100vh;
 }
 
