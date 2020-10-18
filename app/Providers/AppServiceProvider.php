@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
         $idees1 =   DB::table('idees')->where('etat', '=', 1)->get()->count();
         $signals1 =   DB::table('signals')->where('etat', '=', 1)->get()->count();
         $categories = DB::table('categories')->get();
-        
+        $messagesnonluscount =   DB::table('messages')->where('is_read', '=', 0)->get()->count();
         $communes = DB::table('communes')->get();
         $professions = DB::table('professions')->get();
         $tags = DB::table('tags')->get();
@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('communes', $communes);
         View::share('professions', $professions);
         View::share('tags', $tags);
-        
+        View::share('messagesnonluscount', $messagesnonluscount);
         
 
               Schema::defaultStringLength(191);

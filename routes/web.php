@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-    // Route::get('/users-search', function () {
-    //     return view('searchusers');
-    // });
+     Route::get('/contact', function () {
+         return view('contact');
+     });
 
 Route::get('/signal-par-categorie/{cat}/{id}', 'SignalsController@signalbycat');
 
@@ -27,6 +27,8 @@ Route::get('/acceuil', 'HomeStatsController@datacases');
 Route::get('/publications', 'DisplayPublicationController@Publications');
 
 Route::get('/publication/{id}', 'DisplayPublicationController@Publication_detail');
+
+Route::get('/favoris/{id}/{userid}', 'DisplayPublicationController@favoris');
 
 Route::get('/pubstag/{id}', 'DisplayPublicationController@Publication_by_tags');
 
@@ -73,6 +75,24 @@ Route::post('informations-search', 'DisplayPublicationController@searchinformati
 Route::post('users-search', 'UsersController@searchusers');
 
 
+//make admins - users 
+Route::get('make-admin/{id}', 'UsersController@makeadmin');
+Route::get('remove-admin/{id}', 'UsersController@makeuser');
+//users list
+Route::get('users', 'UsersController@displayusers');
+//modifier compte 
+Route::get('/mon-compte', function () {
+         return view('account');
+     });
+
+
+Route::get('envoyer-message/{$id}', 'MessagesController@find()');
+Route::post('modifier-compte', 'UsersController@modifyuser');
+Route::post('contact-admin', 'MessagesController@sendmessagetoadmin');
+Route::post('send-message', 'MessagesController@sendmessagetouser');
+// Route::post('envoyer-message', 'MessagesController@sendmessagetouser');
+Route::get('messages', 'MessagesController@displaymessage');
+Route::get('message/{id}', 'MessagesController@displaymessagebyid');
 
 
 

@@ -4,13 +4,13 @@
 
 
 
-@if ($filtre->count()>0)
+@if ($users->count()>0)
 
 <div class="col-md-12">
                                 <!-- USER DATA-->
                                 <div class="user-data m-b-30">
-                                    <h3 class="title-3 m-b-30">
-                                        <i class="zmdi zmdi-account-calendar"></i>Utilisateurs trouvés pour cette recherche :</h3>
+                                    <h3 class="title-3 m-b-30" style="text-transform:none;">
+                                        <i class="zmdi zmdi-account-calendar"></i>Liste des utilisateurs du site :</h3>
                                    
                                     <div class="table-responsive table-data">
                                         <table class="table">
@@ -29,7 +29,7 @@
                                                 </tr>
                                             </thead>
 
-                                            @foreach ($filtre as $res)
+                                            @foreach ($users as $res)
                                                <tbody>
                                             
                                                 <tr>
@@ -62,18 +62,10 @@
                                                       <a href="{{ url('/make-admin/'.$res->id) }}">   <span class="role admin" ><i class="zmdi zmdi-swap"> Administrateur</i></span></a>
                                                     </td> 
                                                     @else
-                                                    @if ($res->id==Auth::user()->id)
-                                                       <td>
-                                                       <span class="role admin"><i class="zmdi zmdi-swap"> Utilisateur</i></span>
-                                                       
-                                                    </td>  
-                                                    @else
-                                                 <td>
+                                                    <td>
                                                       <a href="{{ url('/remove-admin/'.$res->id) }}"> <span class="role admin"><i class="zmdi zmdi-swap"> Utilisateur</i></span></a>
                                                        
-                                                    </td>  
-                                                    @endif
-                                                   
+                                                    </td>
                                                         
                                                     @endif
                                                     </tr>
@@ -92,7 +84,7 @@
                                     <div style="padding-left: 50px;">
                                           <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show" >
 											<span class="badge badge-pill badge-danger">Oups !!!</span>
-                                            Nous avons trouvé aucun résultat pour cette recherche, reessayez !
+                                            Il n y a aucun utilisateur inscrit pour le moment !
                                             
 											
 										</div>

@@ -26,9 +26,9 @@ class RegistrationController extends Controller
             $citoyen->prenom = $request->firstname;
             $citoyen->email = $request->email;
             $citoyen->password = bcrypt($request->password);
-            $citoyen->com_id = 1;
-            $citoyen->pro_id = 1;
-            $citoyen->image = 1;
+            $citoyen->com_id = $request->commune;
+            $citoyen->pro_id = $request->profession;
+            $citoyen->image = '1602464763.jpg';
             $citoyen->roles = 0;
             $citoyen->save();
 

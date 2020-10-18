@@ -31,7 +31,7 @@
         <div class="full">
                 
 
-           @guest
+           
 
       
               <div class="blog_section">
@@ -47,10 +47,32 @@
                   
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($postdetail->created_at)); @endphp </li>
                 </ul>
+                
               </div>
               <p>{{ $postdetail->contenu }} </p>
               <div class="bottom_info">
+           <?php
+           $userid=Auth::user()->id;
+           ?>
           
+                  <div class="pull-left"><a class="btn sqaure_bt" href="{{ url('/publication/'.$postdetail->id) }}">Lire l'article<i class="fa fa-angle-right"></i></a></div>
+                   <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('/favoris/'.$postdetail->id.'/'.$userid) }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
+                  {{-- <a class="favoris" href="javascript:;" onClick="like(this);" rel="http://www.tumblr.com/like/fGKvAJgQ?id=16664837215">like it</a>
+
+
+function like(placeholder) {
+        $.ajax({
+            url: $(placeholder).attr('rel'),
+            type: "GET",
+            success:function(){
+                alert("done");
+            },
+            error:function (){
+                alert("testing error");
+            }
+        });
+        return false;
+} --}}
                 <div class="pull-right">
                   <div class="shr">Partager: </div>
                   <div class="social_icon">
@@ -64,7 +86,7 @@
           </div>
         
              
-         @endguest 
+         
          
          
         </div>
@@ -80,7 +102,7 @@
               <div class="input-group stylish-input-group">
                 <input class="form-control" name="recherche" placeholder="Search" type="text">
                 <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i>
                 </span>
               </div>
               </form>

@@ -178,7 +178,18 @@
 							<a class="js-arrow" href="{{ asset('idees.html') }}">
 								<i class="fas fa-lightbulb-o"></i>Idées</a>
 							
-						</li>
+                        </li>
+                         <li>
+							<a class="js-arrow" href="{{ url('/users') }}">
+								<i class="fas fa-users"></i>Utilisateurs</a>
+							
+                        </li>
+                         <li>
+							<a class="js-arrow" href="{{ url('/mon-compte') }}">
+								<i class="fas fa-cog"></i>Paramètres du compte</a>
+							
+                        </li>
+                        
 						<li class="has-sub">
 							<a class="js-arrow" href="#">
 								<i class="fas fa-clock-o"></i>En attente</a>
@@ -189,9 +200,16 @@
 								</li>
 								<li>
 									<a href="{{ asset('forget-pass.html') }}">Idées</a>
-								</li>
+                                </li>
+                               
 							</ul>
-						</li>
+                        </li>
+                         <li>
+							<a class="js-arrow" href="{{ url('/messages') }}">
+                                <i class="fas fa-envelope"></i>Messages</a>
+                                
+							
+                        </li>
 						<li>
 							<a href="{{ asset('table.html') }}">
 								<i class="fas fa-table"></i>Tables</a>
@@ -263,12 +281,52 @@
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
+
+                             @php
+                                             $notifications = $messagesnonluscount+$signals+$idees;   
+                                            @endphp
+                             <div class="noti__item js-item-menu">
+                                        <i class="zmdi zmdi-notifications"></i>
+                             <span class="quantity">{{$notifications}}</span>
+                                        <div class="notifi-dropdown js-dropdown">
+                                           
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="zmdi zmdi-email-open"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <a href="{{ url('/messages') }}">
+                                                <p>Vous avez {{$messagesnonluscount}} message(s) non lus</p>
+                                               </a>
+                                             </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40">
+                                                    <i class="zmdi zmdi-alert-triangle"></i>
+                                                </div>
+                                                <div class="content">
+                                                <p>Vous avez {{$signals}} signalements non vérifiés</p>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40">
+                                                    <i class="zmdi zmdi-file-text"></i>
+                                                </div>
+                                                <div class="content">
+                                                <p>Vous avez {{$idees}} idées non approuvées</p>
+                                                    
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
                             <div class="header-button">
                                
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                            <img src="../images/users/{{Auth::user()->image}}" alt="John Doe" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
@@ -277,7 +335,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                                        <img src="../images/users/{{Auth::user()->image}}" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -289,17 +347,10 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                    <a href="{{ url('/mon-compte') }}">
+                                                        <i class="zmdi zmdi-account"></i>Compte</a>
                                                 </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
+                                                
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="/logout">

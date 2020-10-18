@@ -159,9 +159,7 @@ class IdeesController extends Controller
              if($filtre){
                  return view('searchIdea', compact('filtre'));
              }  
-             else {
-
-             }
+           
                         
 
     }

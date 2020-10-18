@@ -1,7 +1,13 @@
 @extends('layouts.headerfooter')
 
 @section('body')
+@if(session()->has('message'))
 
+<script>
+  alert("<?php echo session()->get('message'); ?>")
+</script>
+  
+@endif
 <div id="inner_banner" class="section inner_banner_section">
   <div class="container">
     <div class="row">
@@ -28,32 +34,31 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
         <div class="full">
-         {{-- @auth
+         @auth
 
-         @foreach ($postscondition as $postc)
+         @foreach ($postcondition as $postc)
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $publication->image) }}" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postc->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $postc->titre}}</p>
               <div class="post_info">
                 <ul>
                   <li><i class="fa fa-user" aria-hidden="true"></i> Marketing</li>
                   <li><i class="fa fa-comment" aria-hidden="true"></i> 5</li>
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i>@php echo date('d F Y', strtotime($post->created_at)); @endphp</li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i>@php echo date('d F Y', strtotime($postc->created_at)); @endphp</li>
                 </ul>
               </div>
               <p>{{ \Illuminate\Support\Str::limit($postc->contenu, 150) }}. </p>
               <div class="bottom_info">
-                <div class="pull-left"><a class="btn sqaure_bt" href="it_blog_detail.html">Lire l'article<i class="fa fa-angle-right"></i></a></div>
+                <div class="pull-left"><a class="btn sqaure_bt" href="{{ url('/publication/'.$postc->id) }}">Lire l'article<i class="fa fa-angle-right"></i></a></div>
+                <?php
+                  $userid=Auth::user()->id;
+                ?>
+                  <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('/favoris/'.$postc->id.'/'.$userid) }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
                 <div class="pull-right">
-                  <div class="shr">Share: </div>
+                  <div class="shr">Partager: </div>
                   <div class="social_icon">
-                    <ul>
-                      <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                      <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                      <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                      <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                    </ul>
+                  <div class="addthis_inline_share_toolbox"></div>
                   </div>
                 </div>
               </div>
@@ -61,7 +66,7 @@
           </div>
          @endforeach
              
-         @endauth --}}
+         @endauth
     
        
          {{-- @foreach ($ids1 as $id)
@@ -137,24 +142,13 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div> --}}
           
-          <div class="side_bar_blog">
-            <h4>CATEGORIES</h4>
-            <div class="categary">
-              <ul>
-                <li><a href="#"><i class="fa fa-caret-right"></i> Change Oil and Filter</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> Brake Pads Replacement</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> Timing Belt Replacement</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> Pre-purchase Car Inspection</a></li>
-                <li><a href="#"><i class="fa fa-caret-right"></i> Starter Replacement</a></li>
-              </ul>
-            </div>
-          </div>
+         
           <div class="side_bar_blog">
             <h4>TAG</h4>
             <div class="tags">
               <ul>
                 @foreach ($tags as $tag)
-                   <li><a href="#">{{$tag->nom}}</a></li> 
+                   <li><a href="{{ url('/pubstag/'.$tag->id) }}">{{$tag->nom}}</a></li> 
                 @endforeach
                 
                
