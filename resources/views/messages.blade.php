@@ -12,9 +12,9 @@
                                         <div class="bg-overlay bg-overlay--blue"></div>
                                         <h3>
                                             <i class="zmdi zmdi-comment-alt-text"></i>Boite de récéption</h3>
-                                        <button class="au-btn-plus">
+                                        <a href="{{ url('/envoyer-message') }}" class="au-btn-plus">
                                             <i class="zmdi zmdi-plus"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                     <div class="au-task js-list-load">
                                         <div class="au-task__title">

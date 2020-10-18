@@ -28,7 +28,7 @@
                                             </div>
                                            <p hidden>{{Carbon\Carbon::setLocale( 'fr')}}</p>
                                                 <div class="recei-mess-wrap">
-                                                    <span class="mess-time"> {{ Carbon\Carbon::parse($messagesnonlus->created_at)->subHours(1)->diffForHumans() }}</span>
+                                                    <span class="mess-time"> {{ Carbon\Carbon::parse($messagesnonlus->created_at)->diffForHumans() }}</span>
                                                     <div class="recei-mess__inner">
                                                         <div class="avatar avatar--tiny" style="scroll-padding-left: 50px;">
                                                             <img src="../images/users/{{$citoyensmessage->image}}" alt="John Smith">

@@ -53,7 +53,7 @@ public function sendmessagetouser(Request $request)
             $message->created_at = NOW();
             $message->updated_at = NOW();
             $message->save();
-            return redirect("/contact")->with('message', 'Votre message a bien été envoyé');
+            return redirect("/messages")->with('message', 'Votre message a bien été envoyé');
         }
         else return redirect("/login")->with('message', 'Connectez vous pour pouvoir envoyer des messages aux administrateurs');
 
@@ -86,11 +86,11 @@ public function sendmessagetouser(Request $request)
         return view('messages', compact('messagesnonlus', 'messageslus'));
     }
 
-    public function find($id)
+    public function showform()
     {
 
         if (Auth::check() and Auth::user()->roles == 1) {
-            $iduser=$id;
+            
             return view('/envoyer-message', compact('iduser'));
           
         } else return redirect("/index");

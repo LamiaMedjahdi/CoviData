@@ -48,6 +48,8 @@ class AppServiceProvider extends ServiceProvider
         $communes = DB::table('communes')->get();
         $professions = DB::table('professions')->get();
         $tags = DB::table('tags')->get();
+        $users = DB::table('citoyens')->get();
+        $notifications = $messagesnonluscount + $signals + $idees; 
 
         View::share('maladestotal', $maladestotal);
         View::share('guerristotal', $guerristotal);
@@ -68,8 +70,10 @@ class AppServiceProvider extends ServiceProvider
         View::share('professions', $professions);
         View::share('tags', $tags);
         View::share('messagesnonluscount', $messagesnonluscount);
-        
+        View::share('users', $users);
+        View::share('notifications', $notifications);
 
+        
               Schema::defaultStringLength(191);
     }
 }

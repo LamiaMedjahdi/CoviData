@@ -53,7 +53,7 @@
                                                         
                                                     </td>
                                                           <td>
-                                                    <a href="{{ url('/envoyer-message/'.$res->id) }}"><span class="role admin">contacter</span></a>
+                                                    <a href="{{ url('/envoyer-message') }}"><span class="role admin">contacter</span></a>
                                                     </td>
                                                   
                                                     @if ($res->roles==0)

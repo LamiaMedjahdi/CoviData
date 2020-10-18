@@ -170,7 +170,7 @@
 							
                         </li>
                         <li>
-							<a class="js-arrow" href="{{ asset('signalements.html') }}">
+							<a class="js-arrow" href="{{ url('/signalements') }}">
 								<i class="fas fa-exclamation-triangle"></i>Signalements</a>
 							
                         </li>
@@ -196,7 +196,7 @@
 							<ul class="list-unstyled navbar__sub-list js-sub-list">
 								
 								<li>
-									<a href="{{ asset('signalements-waiting.html') }}">Signalement</a>
+									<a href="{{ url('/signalements-en-attente') }}">Signalement</a>
 								</li>
 								<li>
 									<a href="{{ asset('forget-pass.html') }}">Idées</a>
@@ -282,9 +282,6 @@
                                 </button>
                             </form>
 
-                             @php
-                                             $notifications = $messagesnonluscount+$signals+$idees;   
-                                            @endphp
                              <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
                              <span class="quantity">{{$notifications}}</span>

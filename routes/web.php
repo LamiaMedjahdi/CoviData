@@ -86,7 +86,7 @@ Route::get('/mon-compte', function () {
      });
 
 
-Route::get('envoyer-message/{$id}', 'MessagesController@find()');
+Route::get('/envoyer-message', 'MessagesController@showform');
 Route::post('modifier-compte', 'UsersController@modifyuser');
 Route::post('contact-admin', 'MessagesController@sendmessagetoadmin');
 Route::post('send-message', 'MessagesController@sendmessagetouser');
@@ -94,7 +94,19 @@ Route::post('send-message', 'MessagesController@sendmessagetouser');
 Route::get('messages', 'MessagesController@displaymessage');
 Route::get('message/{id}', 'MessagesController@displaymessagebyid');
 
+//admin - signalements
+Route::get('/signalements', 'SignalsController@displaysignals');
+Route::get('/signalements-en-attente', 'SignalsController@displaysignalsenattente');
+Route::get('/signalement/{id}', 'SignalsController@displaysignal');
+Route::get('/refuser-signal/{id}', 'SignalsController@refuser_signal');
+Route::get('/approuver-signal/{id}', 'SignalsController@approuver_signal');
 
+//admin - idees
+Route::get('/idees-admin', 'IdeesController@displayidees');
+Route::get('/idees-en-attente', 'IdeesController@displayideesenattente');
+Route::get('/idee-admin/{id}', 'IdeesController@displayidee');
+Route::get('/refuser-idee/{id}', 'IdeesController@refuser_idee');
+Route::get('/approuver-idee/{id}', 'IdeesController@approuver_idee');
 
 
 // Auth::routes();
