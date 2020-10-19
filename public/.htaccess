@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+	RewriteBase C:\laragon\www\CoviData
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .

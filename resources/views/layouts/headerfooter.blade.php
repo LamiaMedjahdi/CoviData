@@ -39,7 +39,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}" />
-
+<link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/maps-algerie.css') }}" />
 
 
 </head>
@@ -202,6 +202,7 @@
 <!-- revolution js files -->
 <script src="{{ asset('revolution/js/jquery.themepunch.tools.min.js') }}"></script>
 <script src="{{ asset('revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('revolution/js/maps-javascript.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
@@ -211,6 +212,11 @@
 <script src="{{ asset('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/dz/dz-all.js"></script>
+
 <!-- map js -->
 <script>
          // This example adds a marker to indicate the position of Bondi Beach in Sydney,

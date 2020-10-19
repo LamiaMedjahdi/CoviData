@@ -163,17 +163,31 @@
 						<li>
 							<a href="{{ asset('map.html') }}">
 								<i class="fas fa-map-marker-alt"></i>Carte</a>
-						</li>
+                        </li>
+                        <li class="has-sub">
+							<a class="js-arrow" href="#">
+								<i class="fas fa-clock-o"></i>Statistiques</a>
+							<ul class="list-unstyled navbar__sub-list js-sub-list">
+								
+								<li>
+									<a href="{{ url('/statistiques') }}">Liste des statistiques</a>
+								</li>
+								<li>
+									<a href="{{ url('/ajouter-statistiques') }}">Ajouter une statistique</a>
+                                </li>
+                               
+							</ul>
+                        </li>
 						<li class="has-sub">
 							<a class="js-arrow" href="#">
 								<i class="fas fa-clock-o"></i>Publications</a>
 							<ul class="list-unstyled navbar__sub-list js-sub-list">
 								
 								<li>
-									<a href="{{ url('/signalements-en-attente') }}">Liste des publications</a>
+									<a href="{{ url('/publications-admin') }}">Liste des publications</a>
 								</li>
 								<li>
-									<a href="{{ url('/idees-en-attente') }}">Ajouter une publication</a>
+									<a href="{{ url('/ajouter-publication') }}">Ajouter une publication</a>
                                 </li>
                                
 							</ul>
@@ -311,8 +325,9 @@
                                                     <i class="zmdi zmdi-alert-triangle"></i>
                                                 </div>
                                                 <div class="content">
+                                                    <a href="{{ url('/signalements-en-attente') }}">
                                                 <p>Vous avez {{$signals}} signalements non vérifiés</p>
-                                                    
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="notifi__item">

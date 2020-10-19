@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,9 +114,55 @@ Route::post('/modifier-signal', 'SignalsController@modifier_signal');
 // admin publications
 
 Route::get('/publications-admin', 'DisplayPublicationController@publicationsadmin');
-Route::get('/publication-admin/{$id}', 'DisplayPublicationController@publicationbyid');
-Route::get('/modifier-publication/{$id}', 'DisplayPublicationController@modifier_pub');
-Route::get('/supprimer-publication/{$id}', 'DisplayPublicationController@supprimer_pub');
+// Route::get('/publication-admin/{$id}', 'DisplayPublicationController@publicationbyid');
+Route::post('/modifier-publication', 'DisplayPublicationController@publicationbyid');
+Route::post('/modif-pub', 'DisplayPublicationController@modifier_pub');
+Route::post('/supprimer-pub', 'DisplayPublicationController@supprimer_pub');
+Route::post('/ajouter-pub', 'DisplayPublicationController@ajouter_pub');
+Route::post('/ajouter-tag', 'DisplayPublicationController@ajouter_tag');
+Route::post('/ajouter-profession', 'DisplayPublicationController@ajouter_profession');
+Route::post('/ajouter-source', 'DisplayPublicationController@ajouter_source');
+
+Route::get('/map', 'HomeStatsController@map');
+
+//  Route::get('/map', function ()
+//   {
+//    return view('map');
+//  });
+
+
+Route::get('/ajouter-publication', function()
+ {
+   if (Auth::check() AND Auth::user()->roles==1 )
+  return view('ajouter-publication');
+   elseif(Auth::check() and Auth::user()->roles == 0)
+  return redirect("/index");
+  elseif(!Auth::check())
+  return redirect("/login");
+   
+ });
+
+
+Route::get('/ajouter-statistiques', function () {
+  if (Auth::check() and Auth::user()->roles == 1)
+  return view('ajouter-statistiques');
+  elseif (Auth::check() and Auth::user()->roles == 0)
+  return redirect("/index");
+  elseif (!Auth::check())
+  return redirect("/login");
+});
+
+Route::get('/statistiques', 'StatController@statistiquestoday');
+
+Route::post('/ajouter-stat', 'StatController@ajouter_stat');
+
+
+//modifier statistiques 
+
+Route::post('/modifier-statistique', 'StatController@statistiquebyid');
+Route::post('/supprimer-statistique', 'StatController@supprimer_stat');
+Route::post('/modifstat', 'StatController@modifier_stat');
+
 
 // Auth::routes();
 

@@ -253,7 +253,7 @@
         <div class="full">
           <div class="main_heading text_align_center">
             <h2>Bilan du jour</h2>
-            {{Carbon\Carbon::setLocale( 'fr')}}
+          <p hidden>  {{Carbon\Carbon::setLocale( 'fr')}}</p>
             <p class="large">Dernière mise à jour : {{ Carbon\Carbon::parse($maj)->subHours(1)->diffForHumans() }} </p>
           </div>
         </div>
@@ -335,6 +335,15 @@
               , ou pour améliorer un service sur votre ville  </p>
           <p><a class="btn main_bt" href="#">Je propose</a></p>
           <p><a class="btn main_bt" href="#">je dénonce</a></p>
+        </div>
+      </div>
+
+       <div class="col-md-12">
+         <div class="main_heading text_align_center">
+        <div class="full" style="margin-top: 35px;">
+          <h3>Carte intéractive du nombres de cas dans les wilayas d'Algérie ?</h3>
+          <div id="maps-algerie" style="width: 100%; height:300px"></div>
+        </div>
         </div>
       </div>
     </div>

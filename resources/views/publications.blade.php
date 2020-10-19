@@ -1,6 +1,7 @@
 @extends('layouts.headerfooter')
 
 @section('body')
+
 @if(session()->has('message'))
 
 <script>
