@@ -27,6 +27,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @if ($signals->count()>0)
+                                                
+                                            
                                             @foreach ($signals as $signal)
                                                 <tr class="tr-shadow">
                                                
@@ -51,7 +54,16 @@
                                             </tr>
                                             <tr class="spacer"></tr>
                                             @endforeach
-											
+                                            
+                                            @else
+
+                                             <div class="alert alert-primary" role="alert">
+                                                <h4 class="alert-heading"></h4>
+                                                <p>  Vous n'avez contribué avec aucun signalement pour le moment !</p>
+                                                <hr>
+                                                
+                                            </div>
+                                            @endif
 											
                                         </tbody>
                                     </table>

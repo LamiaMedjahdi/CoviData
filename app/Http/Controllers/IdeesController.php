@@ -31,12 +31,24 @@ class IdeesController extends Controller
     // admin 
     public function displayidees()
     {
+        if (Auth::check() and Auth::user()->roles == 1) {
         $idees = DB::table('idees')
             ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'idees.image')
             ->join('categories', 'categories.id', '=', 'idees.cat_id')
             ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
             ->where('idees.etat', '=', 1)
             ->get();
+            
+
+        } elseif (Auth::check() and Auth::user()->roles == 0)
+        {
+            $idees = DB::table('idees')
+            ->select('idees.id', 'idees.titre', 'idees.contenu', 'idees.created_at', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'idees.image')
+            ->join('categories', 'categories.id', '=', 'idees.cat_id')
+            ->join('citoyens', 'citoyens.id', '=', 'idees.cit_id')
+            ->where('idees.etat', '=', 1)->where('idees.cit_id', Auth::user()->id)
+            ->get();
+        }
 
         $categories = DB::table('categories')->get();
         return view('idees-admin', compact('idees', 'categories'));
@@ -233,6 +245,75 @@ class IdeesController extends Controller
            
                         
 
+    }
+
+//modier idee
+    public function modifier_idee(Request $request)
+    {
+
+        $titre = $request->titre;
+        $id = $request->ideeid;
+        $contenu = $request->contenu;
+        $cit_id = $request->cit_id;
+        $cat_id = $request->categorie;
+
+
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/idees/', $filename);
+            $image = $filename;
+        } else {
+            $image = $request->imageancienne;
+        }
+
+        if ($titre != NULL and $contenu != NULL) {
+            $query = DB::table('idees')
+            ->where('id', $id)
+                ->update([
+                    'titre' => $titre,
+                    'contenu' => $contenu,
+                    'cit_id' => $cit_id,
+                    'cat_id' => $cat_id,
+                    'image' => $image
+                ]);
+        }
+        elseif ($titre == NULL and $contenu != NULL) {
+            $query = DB::table('idees')
+                ->where('id', $id)
+                ->update([
+                    
+                    'contenu' => $contenu,
+                    'cit_id' => $cit_id,
+                    'cat_id' => $cat_id,
+                    'image' => $image
+                ]);
+        }
+        elseif ($titre != NULL and $contenu == NULL) {
+            $query = DB::table('idees')
+                ->where('id', $id)
+                ->update([
+                    'titre' => $titre,
+                    
+                    'cit_id' => $cit_id,
+                    'cat_id' => $cat_id,
+                    'image' => $image
+                ]);
+        }
+        else {
+            $query = DB::table('idees')
+            ->where('id', $id)
+                ->update([
+
+                'cit_id' => $cit_id,
+                'cat_id' => $cat_id,
+                'image' => $image
+                ]);
+        }
+
+        return redirect()->back();
     }
 
 }

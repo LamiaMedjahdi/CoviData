@@ -66,6 +66,74 @@
                                @endif
                               
 							</div>
+							<br>
+{{-- formulaire de modification du signalement  --}}
+							@if ($signal->cit_id==Auth::user()->id)
+
+							<div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">Modifier ce signalement</div>
+                                    <div class="card-body card-block">
+                                        <form action="/modifier-signal" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                   
+													 <input type="text" hidden name="signalid" hidden value="{{$signal->id}}"  class="form-control-file">
+                                                      <input type="text" hidden name="imageancienne" value="{{$signal->image}}"  class="form-control-file">
+												
+													 
+                                                    <input type="text"  id="username" name="cit_id" hidden value="{{Auth::user()->id}}" placeholder="Nom" class="form-control">
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-align-left"></i>
+													</div>
+													
+													<textarea   id="c" name="contenu"  placeholder="Nom" class="form-control">{{$signal->contenu}} </textarea>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-list-alt"></i>
+                                                    </div>
+                                                   <select name="categorie" id="selectLg" class="form-control-lg form-control">
+                                                        
+                                                        @foreach ($categories as $categorie)
+                                                   <option value="{{$categorie->id}}" selected >{{$categorie->label}}</option>
+                                                        @endforeach
+                                                        
+                                                        
+                                                    </select>
+                                                </div>
+											</div>
+											 <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <div class="image">
+                                                    <a href="#">
+                                                        <img src="../images/signals/{{$signal->image}}" alt="{{$signal->image}}" width="80px;" height="80px;" />
+                                                    </a>
+                                                </div>
+                                                    </div>
+                                                  
+                                                   <input type="file" name="image" id="file-input"  class="form-control-file">
+                                                </div>
+                                            </div>
+                                            <div class="form-actions form-group">
+                                                <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>		
+
+							@endif
             
 
-@endsection                                                                
+@endsection              
+                                                  

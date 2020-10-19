@@ -17,6 +17,7 @@
                                             <tr>
                                                 
                                                 <th>Posté par : </th>
+                                                <th>Titre : </th>
 												<th>Catégorie</th>
                                                 <th>Contenu</th>
                                                 <th>Aperçu</th>
@@ -26,10 +27,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @if ($idees->count()>0)
+                                                
                                             @foreach ($idees as $idee)
                                                 <tr class="tr-shadow">
                                                
                                                 <td>{{$idee->nomcit}} {{$idee->prenom}}</td>
+                                                <td>{{$idee->titre}} </td>
                                                 <td>
                                                      <span class="block-email">{{$idee->label}}</span>
                                                 </td>
@@ -50,6 +54,18 @@
                                             </tr>
                                             <tr class="spacer"></tr>
                                             @endforeach
+                                           
+                                            @else 
+                                            <div class="alert alert-primary" role="alert">
+                                                <h4 class="alert-heading"></h4>
+                                                <p>  Vous n'avez contribué avec aucune idée pour le moment !</p>
+                                                <hr>
+                                                
+                                            </div>
+
+
+                                            @endif
+                                           
 											
 											
                                         </tbody>

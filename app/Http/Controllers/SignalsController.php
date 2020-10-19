@@ -27,8 +27,12 @@ class SignalsController extends Controller
         $wilayas = DB::table('wilayas')->get();
         return view('signals', compact('signals', 'categories', 'wilayas'));
     }
+
+
+
  public function displaysignals()
     {
+        if (Auth::check() and Auth::user()->roles == 1) {
         $signals = DB::table('signals')
             ->select('signals.id', 'signals.contenu','signals.localisation', 'signals.created_at','wilayas.nom as wilaya', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'signals.image', 'signals.wilaya_id' )
             ->join('categories', 'categories.id', '=', 'signals.cat_id')
@@ -37,12 +41,26 @@ class SignalsController extends Controller
             ->where('signals.etat', '=', 1)
             ->orderBy('signals.date', 'asc')
             ->get();
+        } elseif (Auth::check() and Auth::user()->roles == 0) {
+            $signals = DB::table('signals')
+                ->select('signals.id', 'signals.contenu', 'signals.localisation', 'signals.created_at', 'wilayas.nom as wilaya', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'signals.image', 'signals.wilaya_id')
+                ->join('categories', 'categories.id', '=', 'signals.cat_id')
+                ->join('citoyens', 'citoyens.id', '=', 'signals.cit_id')
+                ->join('wilayas', 'wilayas.id', '=', 'signals.wilaya_id')
+                ->where('signals.etat', '=', 1)->where('signals.cit_id', Auth::user()->id)
+                ->orderBy('signals.date', 'asc')
+                ->get();
+        }
         $categories = DB::table('categories')->get();
         $wilayas = DB::table('wilayas')->get();
         return view('signalements', compact('signals', 'categories', 'wilayas'));
     }
+
+
+
      public function displaysignalsenattente()
     {
+        if (Auth::check() and Auth::user()->roles == 1) {
         $signals = DB::table('signals')
             ->select('signals.id', 'signals.contenu','signals.localisation', 'signals.created_at','wilayas.nom as wilaya', 'categories.label', 'citoyens.nom as nomcit', 'citoyens.prenom', 'signals.image', 'signals.wilaya_id' )
             ->join('categories', 'categories.id', '=', 'signals.cat_id')
@@ -51,9 +69,13 @@ class SignalsController extends Controller
             ->where('signals.etat', '=', 0)
             ->orderBy('signals.date', 'asc')
             ->get();
-        $categories = DB::table('categories')->get();
-        $wilayas = DB::table('wilayas')->get();
-        return view('signalements-en-attente', compact('signals', 'categories', 'wilayas'));
+            $categories = DB::table('categories')->get();
+            $wilayas = DB::table('wilayas')->get();
+            return view('signalements-en-attente', compact('signals', 'categories', 'wilayas'));
+        }
+        else return redirect()->back();
+        
+        
     }
 
     public function signal($id)
@@ -218,6 +240,51 @@ class SignalsController extends Controller
         } else {
             return "pas de resultat pour cette recherche";
         }
+    }
+
+
+    public function modifier_signal(Request $request)
+    {
+
+        
+        $id = $request->signalid;
+        $contenu = $request->contenu;
+        $cit_id = $request->cit_id;
+        $cat_id = $request->categorie;
+
+
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/signals/', $filename);
+            $image = $filename;
+        } else {
+            $image = $request->imageancienne;
+        }
+
+        if ($contenu != NULL) {
+            $query = DB::table('signals')
+            ->where('id', $id)
+                ->update([
+                    'contenu' => $contenu,
+                    'cit_id' => $cit_id,
+                    'cat_id' => $cat_id,
+                    'image' => $image
+                ]);
+        } else {
+            $query = DB::table('signals')
+            ->where('id', $id)
+                ->update([
+
+                    'cit_id' => $cit_id,
+                    'cat_id' => $cat_id,
+                    'image' => $image
+                ]);
+        }
+
+        return redirect()->back();
     }
 
     

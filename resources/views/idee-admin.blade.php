@@ -28,7 +28,11 @@
 												<div class="tab-pane fade show active" id="custom-nav-home" role="tabpanel"
 													aria-labelledby="custom-nav-home-tab">
 													<p>{{$idee->contenu}}</p>
-												</div>
+                                                </div>
+                                                 
+                                                       {{$likeCount}} <i class="fa fa-thumbs-up"></i>
+                                                      {{$dislikeCount}}  <i class="fa fa-thumbs-down"></i>
+													
 												<div class="tab-pane fade" id="custom-nav-profile" role="tabpanel"
 													aria-labelledby="custom-nav-profile-tab">
 													<div class="card">
@@ -66,6 +70,84 @@
                                @endif
                               
 							</div>
+							<br>
+
+							@if ($idee->cit_id==Auth::user()->id)
+
+							<div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">Modifier cette idée</div>
+                                    <div class="card-body card-block">
+                                        <form action="/modifier-idee" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-lightbulb-o"></i>
+													</div>
+													 <input type="text" hidden name="ideeid" hidden value="{{$idee->id}}"  class="form-control-file">
+                                                      <input type="text" hidden name="imageancienne" value="{{$idee->image}}"  class="form-control-file">
+													<input type="text" id="username" name="titre" value="{{$idee->titre}}" placeholder="Titre de l'idée" class="form-control">
+													 
+                                                    <input type="text"  id="username" name="cit_id" hidden value="{{Auth::user()->id}}" placeholder="Nom" class="form-control">
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-align-left"></i>
+													</div>
+													<textarea   id="c" name="contenu" value="{{$idee->contenu}}" placeholder="Nom" class="form-control">{{$idee->contenu}} </textarea>
+                                                    <input type="text"  id="username" name="cit_id" hidden value="{{Auth::user()->id}}" placeholder="Nom" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-list-alt"></i>
+                                                    </div>
+                                                   <select name="categorie" id="selectLg" class="form-control-lg form-control">
+                                                        
+                                                        @foreach ($categories as $categorie)
+                                                   <option value="{{$categorie->id}}" selected >{{$categorie->label}}</option>
+                                                        @endforeach
+                                                        
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                               
+                                            </div>
+                                             <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <div class="image">
+                                                    <a href="#">
+                                                        <img src="../images/idees/{{$idee->image}}" alt="{{$idee->image}}" width="80px;" height="80px;" />
+                                                    </a>
+                                                </div>
+                                                    </div>
+                                                  
+                                                   <input type="file" name="image" id="file-input"  class="form-control-file">
+                                                </div>
+                                            </div>
+                                            <div class="form-actions form-group">
+                                                <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>		
+
+							@endif
+
+
+
+{{-- modifier l'idée							 --}}
+
+
+					
             
 
 @endsection                                                                

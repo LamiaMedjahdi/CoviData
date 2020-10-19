@@ -107,7 +107,15 @@ Route::get('/idees-en-attente', 'IdeesController@displayideesenattente');
 Route::get('/idee-admin/{id}', 'IdeesController@displayidee');
 Route::get('/refuser-idee/{id}', 'IdeesController@refuser_idee');
 Route::get('/approuver-idee/{id}', 'IdeesController@approuver_idee');
+Route::post('/modifier-idee', 'IdeesController@modifier_idee');
+Route::post('/modifier-signal', 'SignalsController@modifier_signal');
 
+// admin publications
+
+Route::get('/publications-admin', 'DisplayPublicationController@publicationsadmin');
+Route::get('/publication-admin/{$id}', 'DisplayPublicationController@publicationbyid');
+Route::get('/modifier-publication/{$id}', 'DisplayPublicationController@modifier_pub');
+Route::get('/supprimer-publication/{$id}', 'DisplayPublicationController@supprimer_pub');
 
 // Auth::routes();
 

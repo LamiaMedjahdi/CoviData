@@ -12,6 +12,7 @@ class DisplayPublicationController extends Controller
 {
     public function Publications()
     {
+        
         $allposts= DB::table('informations')->get();
         $id= Auth::user()->id;
         $wilaya_id=Auth::user()->wilaya_id;
@@ -31,6 +32,36 @@ class DisplayPublicationController extends Controller
 
         return view('publications', compact('allposts', 'postcondition'));
     }
+
+    public function publicationsadmin()
+    {
+        if (Auth::check() and Auth::user()->roles == 1) {
+            $publications = DB::table('informations')->select('informations.*', 'wilayas.nom','maladies.nom as maladie','professions.nom as profession','sources.nom as source' )
+            ->join('wilayas', 'wilayas.id', '=', 'informations.wilaya_id')
+                ->join('maladies', 'maladies.id', '=', 'informations.mal_id')
+                ->join('professions', 'professions.id', '=', 'informations.pro_id')
+                ->join('sources', 'sources.id', '=', 'informations.sou_id')
+                
+            ->get();
+            return view('publications-admin', compact('publications'));
+        } elseif (Auth::check() and Auth::user()->roles == 0) {
+            return redirect()->back();
+
+        }
+    }
+
+    public function publicationbyid($id)
+    {
+        $postdetail = DB::table('informations')->find($id);
+        $tags =  DB::table('tags')
+        ->join('poststag', function ($join) use ($id) {
+            $join->on('poststag.tags_id', '=', 'tags.id')
+            ->where('poststag.information_id', '=', $id);
+        })->get();
+
+        return view('publication-admin', compact('postdetail', 'tags'));
+    }
+//admiiiiiiin 
 
     public function Publication_detail($id)
     {

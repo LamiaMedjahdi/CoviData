@@ -164,10 +164,19 @@
 							<a href="{{ asset('map.html') }}">
 								<i class="fas fa-map-marker-alt"></i>Carte</a>
 						</li>
-						<li>
-							<a class="js-arrow" href="{{ asset('tab.html') }}">
-								<i class="fas fa-info-circle"></i>Publications</a>
-							
+						<li class="has-sub">
+							<a class="js-arrow" href="#">
+								<i class="fas fa-clock-o"></i>Publications</a>
+							<ul class="list-unstyled navbar__sub-list js-sub-list">
+								
+								<li>
+									<a href="{{ url('/signalements-en-attente') }}">Liste des publications</a>
+								</li>
+								<li>
+									<a href="{{ url('/idees-en-attente') }}">Ajouter une publication</a>
+                                </li>
+                               
+							</ul>
                         </li>
                         <li>
 							<a class="js-arrow" href="{{ url('/signalements') }}">
@@ -175,7 +184,7 @@
 							
                         </li>
                         <li>
-							<a class="js-arrow" href="{{ asset('idees.html') }}">
+							<a class="js-arrow" href="{{ url('/idees-admin') }}">
 								<i class="fas fa-lightbulb-o"></i>Idées</a>
 							
                         </li>
@@ -199,7 +208,7 @@
 									<a href="{{ url('/signalements-en-attente') }}">Signalement</a>
 								</li>
 								<li>
-									<a href="{{ asset('forget-pass.html') }}">Idées</a>
+									<a href="{{ url('/idees-en-attente') }}">Idées</a>
                                 </li>
                                
 							</ul>
