@@ -43,7 +43,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="{{ asset('index.html') }}">
-                            <img src="{{ asset('images/icon/logo.png') }}" alt="CoolAdmin" />
+                            <img width="50px;" height="50px;" src="{{ asset('images/icon/logo.png') }}" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -58,83 +58,14 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
                             <a class="js-arrow" href="{{ url('/index') }}">
-                                <i class="fas fa-tachometer-alt"></i>Tableau de ord</a>
+                                <i class="fas fa-tachometer-alt"></i>Tableau de bord</a>
                             
                         </li>
-                        <li>
-                            <a href="{{ asset('chart.html') }}">
-                                <i class="fas fa-chart-bar"></i>Graphiques</a>
-                        </li>
-                        <li>
-                            <a href="{{ asset('table.html') }}">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li>
-                            <a href="{{ asset('form.html') }}">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="{{ asset('calendar.html') }}">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="{{ asset('map.html') }}">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="{{ asset('login.html') }}">Login</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('register.html') }}">Register</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('forget-pass.html') }}">Forget Password</a>
-                                </li>
+                      
+                       
                             </ul>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="{{ asset('button.html') }}">Button</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('badge.html') }}">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('tab.html') }}">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('card.html') }}">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('alert.html') }}">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('progress-bar.html') }}">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('modal.html') }}">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('switch.html') }}">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('grid.html') }}">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('fontawesome.html') }}">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('typo.html') }}">Typography</a>
-                                </li>
-                            </ul>
-                        </li>
+                     
                     </ul>
                 </div>
             </nav>
@@ -155,71 +86,90 @@
 							<a class="js-arrow" href="{{ url('/index') }}">
 								<i class="fas fa-tachometer-alt"></i>Tableau de bord</a>
 							
-						</li>
-						<li>
-							<a href="{{ asset('chart.html') }}">
-								<i class="fas fa-chart-bar"></i>Graphique</a>
-						</li>
-						<li>
-							<a href="{{ asset('map.html') }}">
-								<i class="fas fa-map-marker-alt"></i>Carte</a>
-						</li>
-						<li>
-							<a class="js-arrow" href="{{ asset('tab.html') }}">
-								<i class="fas fa-info-circle"></i>Informations</a>
-							
                         </li>
+                      
+					
+					@if (Auth::check() and Auth::user()->roles == 1)
+                        <li class="has-sub">
+							<a class="js-arrow" href="#">
+								<i class="fas fa-clock-o"></i>Statistiques</a>
+							<ul class="list-unstyled navbar__sub-list js-sub-list">
+								
+								<li>
+									<a href="{{ url('/statistiques') }}">Liste des statistiques</a>
+								</li>
+								<li>
+									<a href="{{ url('/ajouter-statistiques') }}">Ajouter une statistique</a>
+                                </li>
+                               
+							</ul>
+                        </li>
+                        @endif
+                        @if (Auth::check() and Auth::user()->roles == 1)
+						<li class="has-sub">
+							<a class="js-arrow" href="#">
+								<i class="fas fa-clock-o"></i>Publications</a>
+							<ul class="list-unstyled navbar__sub-list js-sub-list">
+								
+								<li>
+									<a href="{{ url('/publications-admin') }}">Liste des publications</a>
+								</li>
+								<li>
+									<a href="{{ url('/ajouter-publication') }}">Ajouter une publication</a>
+                                </li>
+                               
+							</ul>
+                        </li>
+                        @endif
                         <li>
-							<a class="js-arrow" href="{{ asset('signalements.html') }}">
+							<a class="js-arrow" href="{{ url('/signalements') }}">
 								<i class="fas fa-exclamation-triangle"></i>Signalements</a>
 							
                         </li>
                         <li>
-							<a class="js-arrow" href="{{ asset('idees.html') }}">
+							<a class="js-arrow" href="{{ url('/idees-admin') }}">
 								<i class="fas fa-lightbulb-o"></i>Idées</a>
 							
-						</li>
-						<li class="has-sub">
+                        </li>
+                        @if (Auth::check() and Auth::user()->roles == 1)
+                         <li>
+							<a class="js-arrow" href="{{ url('/users') }}">
+								<i class="fas fa-users"></i>Utilisateurs</a>
+							
+                        </li>
+                        @endif
+                         
+                        @if (Auth::check() and Auth::user()->roles == 1)
+                        
+                        <li class="has-sub">
 							<a class="js-arrow" href="#">
 								<i class="fas fa-clock-o"></i>En attente</a>
 							<ul class="list-unstyled navbar__sub-list js-sub-list">
 								
 								<li>
-									<a href="{{ asset('signalements-waiting.html') }}">Signalement</a>
+									<a href="{{ url('/signalements-en-attente') }}">Signalement</a>
 								</li>
 								<li>
-									<a href="{{ asset('forget-pass.html') }}">Idées</a>
-								</li>
+									<a href="{{ url('/idees-en-attente') }}">Idées</a>
+                                </li>
+                               
 							</ul>
-						</li>
-						<li>
-							<a href="{{ asset('table.html') }}">
-								<i class="fas fa-table"></i>Tables</a>
-						</li>
-						<li>
-							<a href="{{ asset('form.html') }}">
-								<i class="far fa-check-square"></i>Forms</a>
-						</li>
-						<li>
-							<a href="{{ asset('calendar.html') }}">
-								<i class="fas fa-calendar-alt"></i>Calendar</a>
-						</li>
+                        </li>
+                        @endif
+						
+                         <li>
+							<a class="js-arrow" href="{{ url('/messages') }}">
+                                <i class="fas fa-envelope"></i>Messages</a>
+                                
+							
+                        </li>
+                        <li>
+							<a class="js-arrow" href="{{ url('/mon-compte') }}">
+								<i class="fas fa-cog"></i>Paramètres du compte</a>
+							
+                        </li>
 					
-						<li class="has-sub">
-							<a class="js-arrow" href="#">
-								<i class="fas fa-copy"></i>Pages</a>
-							<ul class="list-unstyled navbar__sub-list js-sub-list">
-								<li>
-									<a href="{{ asset('login.html') }}">Login</a>
-								</li>
-								<li>
-									<a href="{{ asset('register.html') }}">Register</a>
-								</li>
-								<li>
-									<a href="{{ asset('forget-pass.html') }}">Forget Password</a>
-								</li>
-							</ul>
-						</li>
+					
 						
 					</ul>
                 </nav>
@@ -231,21 +181,93 @@
         <div class="page-container">
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
+                
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Rechercher des informations &amp; des données..." />
+                            @if (Auth::check() and Auth::user()->roles == 1)
+                            <form class="form-header" action="/users-search" method="POST">
+                                @csrf
+                                <input class="au-input au-input--xl" type="text" name="recherche" placeholder="Rechercher des utilisateurs" />
+                                 <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                            <select class="js-select2 au-select-dark" name="commune">
+                                                <option value="0" disabled selected>Commune</option>
+                                                @foreach ($communes as $commune)
+                                            <option value="{{$commune->id}}">{{$commune->nom}}</option>
+                                                
+                                                @endforeach
+                                                
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                  <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                            <select class="js-select2 au-select-dark" name="profession">
+                                                <option value="0" disabled selected>Profession</option>
+                                                @foreach ($professions as $profession)
+                                            <option value="{{$profession->id}}">{{$profession->nom}}</option>
+                                                
+                                                @endforeach
+                                                
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
+                            @endif
+
+                             <div class="noti__item js-item-menu">
+                                        <i class="zmdi zmdi-notifications"></i>
+                                        @if (Auth::check() and Auth::user()->roles == 1)
+                             <span class="quantity">{{$notifications}}</span>
+                                        @else
+                            <span class="quantity">{{$messagesnonluscount}}</span>
+                                        @endif
+                                        <div class="notifi-dropdown js-dropdown">
+                                           
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="zmdi zmdi-email-open"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <a href="{{ url('/messages') }}">
+                                                <p>Vous avez {{$messagesnonluscount}} message(s) non lus</p>
+                                               </a>
+                                             </div>
+                                            </div>
+                                            @if (Auth::check() and Auth::user()->roles == 1)
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40">
+                                                    <i class="zmdi zmdi-alert-triangle"></i>
+                                                </div>
+                                                
+                                                <div class="content">
+                                                    <a href="{{ url('/signalements-en-attente') }}">
+                                                <p>Vous avez {{$signals}} signalements non vérifiés</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40">
+                                                    <i class="zmdi zmdi-file-text"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <a href="{{ url('/idees-en-attente') }}">
+                                                <p>Vous avez {{$idees}} idées non approuvées</p>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>@endif
+                                           
+                                        </div>
+                                    </div>
                             <div class="header-button">
                                
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                            <img src="../images/users/{{Auth::user()->image}}" alt="John Doe" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
@@ -254,7 +276,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                                        <img src="../images/users/{{Auth::user()->image}}" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -266,17 +288,10 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                    <a href="{{ url('/mon-compte') }}">
+                                                        <i class="zmdi zmdi-account"></i>Compte</a>
                                                 </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
+                                                
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="/logout">

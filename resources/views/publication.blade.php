@@ -31,11 +31,14 @@
         <div class="full">
                 
 
-           @guest
+           
 
       
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postdetail->image) }}" alt="#"> </div>
+                @if ($postdetail->image)
+                     <div class="blog_feature_img"> <img class="img-responsive" width="500px;" height="350px;" src="{{ URL::to('/images/publications/' . $postdetail->image) }}" alt="#"> </div>
+                @endif
+           
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $postdetail->titre}}</p>
               <div class="post_info">
@@ -44,18 +47,42 @@
                   
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> @php echo date('d F Y', strtotime($postdetail->created_at)); @endphp </li>
                 </ul>
+                
               </div>
               <p>{{ $postdetail->contenu }} </p>
               <div class="bottom_info">
+               
           
+          
+                 
+                   @if (Auth::check())
+                
+ <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('/favoris/'.$postdetail->id.'/'.Auth::user()->id) }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
+                @else
+                  <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('login') }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
+                 @endif 
+                 
+                  {{-- <a class="favoris" href="javascript:;" onClick="like(this);" rel="http://www.tumblr.com/like/fGKvAJgQ?id=16664837215">like it</a>
+
+
+function like(placeholder) {
+        $.ajax({
+            url: $(placeholder).attr('rel'),
+            type: "GET",
+            success:function(){
+                alert("done");
+            },
+            error:function (){
+                alert("testing error");
+            }
+        });
+        return false;
+} --}}
                 <div class="pull-right">
                   <div class="shr">Partager: </div>
                   <div class="social_icon">
                     <ul>
-                      <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                      <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                      <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                      <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                      
                     </ul>
                   </div>
                 </div>
@@ -64,7 +91,7 @@
           </div>
         
              
-         @endguest 
+         
          
          
         </div>
@@ -72,14 +99,20 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
         <div class="side_bar">
           <div class="side_bar_blog">
-            <h4>Rechercher</h4>
+            <h4>Rechercher des publications</h4>
+            
             <div class="side_bar_search">
+            <form action="/information-search" method="POST">
+              @csrf
               <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
+                <input class="form-control" name="recherche" placeholder="Search" type="text">
                 <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+              </form>
             </div>
+            
           </div>
           {{-- <div class="side_bar_blog">
             <h4>Autheur</h4>

@@ -253,7 +253,7 @@
         <div class="full">
           <div class="main_heading text_align_center">
             <h2>Bilan du jour</h2>
-            {{Carbon\Carbon::setLocale( 'fr')}}
+          <p hidden>  {{Carbon\Carbon::setLocale( 'fr')}}</p>
             <p class="large">Dernière mise à jour : {{ Carbon\Carbon::parse($maj)->subHours(1)->diffForHumans() }} </p>
           </div>
         </div>
@@ -279,6 +279,10 @@
           </div>
           <h4 class="theme_color">{{ $guerris }}  Cas guéris</h4>
           <p>Total : {{$guerristotal}} cas guéris</p>
+          <br><br>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Voir les cas par wilaya sur la carte
+</button>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -303,11 +307,9 @@
                     <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Je contribues avec mes idées <i class="fa fa-angle-down"></i></a> </p>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
-                    </div>
+                    <div class="panel-body"><p> Faites-nous part de solutions, de produits ou de services qui pourraient contribuer à nos efforts d’intervention face au COVID-19 en Algérie Vous devez remplir le formulaire d’un seul coup. Il vous faudra environ que quelques minutes pour le remplir.</p>
+
+                   </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
@@ -316,9 +318,8 @@
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
+                      <p>Afin de permettre le suivi des cas COVID-19 au sein des établissements sociaux et médico-sociaux , un
+dispositif de signalement spécifique a été mis en place à l’aide d’une application en ligne :. </p>
                     </div>
                   </div>
                 </div>
@@ -333,352 +334,41 @@
           <h3>Vous voulez contribuer ?</h3>
           <p>Apportez votre contribution lors de cette crise sanitaire en proposant des idées pour réduire les risques de contaminations
               , ou pour améliorer un service sur votre ville  </p>
-          <p><a class="btn main_bt" href="#">Je propose</a></p>
-          <p><a class="btn main_bt" href="#">je dénonce</a></p>
+          <p><a class="btn main_bt" href="{{ url('/idees') }}">Je propose</a></p>
+          <p><a class="btn main_bt" href="{{ url('/signals') }}">je dénonce</a></p>
+          <p></p>
         </div>
+      </div>
+<br><br>
+    
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <iframe src="{{ url('/map') }}" style="height: 500px; width: 500px" >
+      <div class="modal-body"  style="height: 800px; width: 800px">
+        
+      </div>
+      <div class="modal-footer" style="align: center;" >
+        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+        
       </div>
     </div>
   </div>
 </div>
-<!-- end section -->
-<!-- section -->
-        {{-- <div class="section padding_layout_1 light_silver gross_layout">
-        <div class="container">
-            <div class="row">
-            <div class="col-md-12">
-                <div class="full">
-                <div class="main_heading text_align_left">
-                    <h2>Service Process</h2>
-                    <p class="large">Easy and effective way to get your device repaired.</p>
-                </div>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                <div class="col-md-4">
-                    <div class="full">
-                    <div class="service_blog_inner">
-                        <div class="icon text_align_left"><img src="{{ asset('images/it_service/si1.png') }}" alt="#" /></div>
-                        <h4 class="service-heading">Fast service</h4>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full">
-                    <div class="service_blog_inner">
-                        <div class="icon text_align_left"><img src="{{ asset('images/it_service/si2.png') }}" alt="#" /></div>
-                        <h4 class="service-heading">Secure payments</h4>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full">
-                    <div class="service_blog_inner">
-                        <div class="icon text_align_left"><img src="{{ asset('images/it_service/si3.png') }}" alt="#" /></div>
-                        <h4 class="service-heading">Expert team</h4>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full">
-                    <div class="service_blog_inner">
-                        <div class="icon text_align_left"><img src="{{ asset('images/it_service/si4.png') }}" alt="#" /></div>
-                        <h4 class="service-heading">Affordable services</h4>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full">
-                    <div class="service_blog_inner">
-                        <div class="icon text_align_left"><img src="{{ asset('images/it_service/si5.png') }}" alt="#" /></div>
-                        <h4 class="service-heading">90 Days warranty</h4>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full">
-                    <div class="service_blog_inner">
-                        <div class="icon text_align_left"><img src="{{ asset('images/it_service/si6.png') }}" alt="#" /></div>
-                        <h4 class="service-heading">Award winning</h4>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div> --}}
-<!-- end section -->
-<!-- section -->
-{{-- <div class="section padding_layout_1">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="main_heading text_align_center">
-            <h2>Our Products</h2>
-            <p class="large">We package the products with best services to make you a happy customer.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/1.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Norton Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/2.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Kaspersky Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/3.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Mcafee Livesafe Antivirus</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/4.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Norton Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/5.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Norton Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/6.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Kaspersky Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/7.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Mcafee Livesafe Antivirus</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/8.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Norton Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/1.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Norton Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/2.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Kaspersky Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/3.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Mcafee Livesafe Antivirus</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="{{ asset('images/it_service/4.jpg') }}" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4><a href="{{ asset('it_shop_detail.html') }}">Norton Internet Security</a></h4>
-            </div>
-            <div class="starratin">
-              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-            </div>
-            <div class="product_price">
-              <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-</div> --}}
-<!-- end section -->
-<!-- section -->
-                {{-- <div class="section padding_layout_1 light_silver gross_layout right_gross_layout">
-                <div class="container">
-                    <div class="row">
-                    <div class="col-md-12">
-                        <div class="full">
-                        <div class="main_heading text_align_right">
-                            <h2>Our Feedback</h2>
-                            <p class="large">Easy and effective way to get your device repaired.</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="row counter">
-                    <div class="col-md-4"> </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
-                            <div class="text_align_right"><i class="fa fa-smile-o"></i></div>
-                            <div class="text_align_right">
-                            <p class="counter-heading text_align_right">Happy Customers</p>
-                            </div>
-                            <h5 class="counter-count">2150</h5>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
-                            <div class="text_align_right"><i class="fa fa-laptop"></i></div>
-                            <div class="text_align_right">
-                            <p class="counter-heading text_align_right">Laptop Repaired</p>
-                            </div>
-                            <h5 class="counter-count">1280</h5>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
-                            <div class="text_align_right"><i class="fa fa-desktop"></i></div>
-                            <div class="text_align_right">
-                            <p class="counter-heading">Computer Repaired</p>
-                            </div>
-                            <h5 class="counter-count">848</h5>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
-                            <div class="text_align_right"><i class="fa fa-windows"></i></div>
-                            <div class="text_align_right">
-                            <p class="counter-heading">OS Installed</p>
-                            </div>
-                            <h5 class="counter-count">450</h5>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div> --}}
-<!-- end section -->
-<!-- section -->
+</div>
+ 
+
+             
 <div class="section padding_layout_1">
   <div class="container">
     <div class="row">
@@ -695,7 +385,7 @@
       @foreach ($publications as $publication)
            <div class="col-md-4">
         <div class="full blog_colum">
-          <div class="blog_feature_img"> <img src="{{ asset('images/it_service/' . $publication->image) }}" alt="#" /> </div>
+          <div class="blog_feature_img"> <img src="images/publications/{{$publication->image}}" alt="#" /> </div>
           <div class="post_time">
             <p><i class="fa fa-clock-o"></i>  {{ Carbon\Carbon::parse($publication->created_at)->subHours(1)->diffForHumans() }}</p>
             
@@ -713,7 +403,7 @@
       </div>
       @endforeach
        
- <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ asset('it_contact.html') }}">Toutes les publications</a> </div>
+ 
      
     
      
@@ -752,3 +442,6 @@
 </div>
 
 @stop
+
+
+

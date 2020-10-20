@@ -25,6 +25,7 @@
 <link rel="icon" href="{{ asset('images/fevicon/fevicon.png') }}" type="image/gif" />
 <!-- bootstrap css -->
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <!-- Site css -->
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 <!-- responsive css -->
@@ -39,7 +40,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}" />
-
+<link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/maps-algerie.css') }}" />
 
 
 </head>
@@ -69,7 +70,7 @@
                 <li> <a class="active" href="{{ url('/acceuil') }}">Acceuil</a>
                   
                 </li>
-                <li><a href="{{ asset('it_about.html') }}">CoviData ?</a></li>
+                
                 <li> <a href="{{ url('idees') }}">Idées</a>
                     <li> <a href="{{ url('signals') }}">Signalements</a>
               
@@ -86,7 +87,7 @@
                     <li><a href="{{ asset('it_error.html') }}">Error 404</a></li>
                   </ul>
                 </li> --}}
-                <li> <a href="{{ asset('it_shop.html') }}">Boutique</a>
+                
                   <ul>
                     <li><a href="{{ asset('it_shop.html') }}">Shop List</a></li>
                     <li><a href="{{ asset('it_shop_detail.html') }}">Shop Detail</a></li>
@@ -94,11 +95,8 @@
                     <li><a href="{{ asset('it_checkout.html') }}">Checkout</a></li>
                   </ul>
                 </li>
-                <li> <a href="{{ asset('it_contact.html') }}">Contact</a>
-                  <ul>
-                    <li><a href="{{ asset('it_contact.html') }}">Contact Page 1</a></li>
-                    <li><a href="{{ asset('it_contact_2.html') }}">Contact Page 2</a></li>
-                  </ul>
+                <li> <a href="{{ url('/contact') }}">Contact</a>
+                  
                 </li>
               </ul>
             </div>
@@ -128,7 +126,7 @@
             <div class="main-heading left_text">
               <h2>CoviData</h2>
             </div>
-            <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>
+            <p>Covidata est une plateforme de statistiques sur le coronavirus en Algérie, elle regroupe plusieurs fonctionnalités qui permettent aux gens et aux autorités locales de mieux gérer la pandémie en algérie en général et à tlemcen en particulier</p>
             <ul class="social_icons">
               
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -141,56 +139,57 @@
           </div>
           <div class="col-md-6">
             <div class="main-heading left_text">
-              <h2>Additional links</h2>
+              <h2>Catégories</h2>
             </div>
             <ul class="footer-menu">
-              <li><a href="{{ asset('it_about.html') }}"><i class="fa fa-angle-right"></i> About us</a></li>
-              <li><a href="{{ asset('it_term_condition.html') }}"><i class="fa fa-angle-right"></i> Terms and conditions</a></li>
-              <li><a href="{{ asset('it_privacy_policy.html') }}"><i class="fa fa-angle-right"></i> Privacy policy</a></li>
-              <li><a href="{{ asset('it_news.html') }}"><i class="fa fa-angle-right"></i> News</a></li>
-              <li><a href="{{ asset('it_contact.html') }}"><i class="fa fa-angle-right"></i> Contact us</a></li>
+              @foreach ($categories as $categorie)
+                  <li><a href="{{ url('/idee-par-categorie/'.$categorie->label.'/'.$categorie->id) }}"><i class="fa fa-angle-right"></i> {{$categorie->label}}</a></li>
+              @endforeach
+              
+            
             </ul>
           </div>
           <div class="col-md-6">
             <div class="main-heading left_text">
-              <h2>Services</h2>
+              <h2>Raccouci</h2>
             </div>
             <ul class="footer-menu">
-              <li><a href="{{ asset('it_data_recovery.html') }}"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-              <li><a href="{{ asset('it_computer_repair.html') }}"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-              <li><a href="{{ asset('it_mobile_service.html') }}"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-              <li><a href="{{ asset('it_network_solution.html') }}"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-              <li><a href="{{ asset('it_techn_support.html') }}"><i class="fa fa-angle-right"></i> Technical support</a></li>
+              <li><a href="{{ url('/register') }}"><i class="fa fa-angle-right"></i> Inscription</a></li>
+              <li><a href="{{ url('/login') }}"><i class="fa fa-angle-right"></i> Connexion</a></li>
+              <li><a href="{{ url('/logout') }}"><i class="fa fa-angle-right"></i> Déconnexion</a></li>
+              
             </ul>
           </div>
           <div class="col-md-6">
             <div class="main-heading left_text">
-              <h2>Contact us</h2>
+              <h2>Contactez nous</h2>
             </div>
-            <p>123 Second Street Fifth Avenue,<br>
-              Manhattan, New York<br>
-              <span style="font-size:18px;"><a href="{{ asset('images/icon/avatar-02.jpg') }}tel:+9876543210">+987 654 3210</a></span></p>
+           
+             
             <div class="footer_mail-section">
-              <form>
-                <fieldset>
+              
                 <div class="field">
-                  <input placeholder="Email" type="text">
-                  <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                  
+                 <a href="{{ url('/contact') }}"> <button href="{{ url('/contact') }}" class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button></a>
                 </div>
-                </fieldset>
-              </form>
+               
             </div>
           </div>
         </div>
       </div>
       <div class="cprt">
-        <p>ItNext © Copyrights 2019 Design by html.design</p>
+        <p>CoviData - plateforme de statistiques et d'informations sur le covid en Algérie</p>
       </div>
     </div>
   </div>
 </footer>
 <!-- end footer -->
 <!-- js section -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/dz/dz-all.js"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- menu js -->
@@ -202,6 +201,7 @@
 <!-- revolution js files -->
 <script src="{{ asset('revolution/js/jquery.themepunch.tools.min.js') }}"></script>
 <script src="{{ asset('revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('revolution/js/maps-javascript.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
@@ -211,6 +211,11 @@
 <script src="{{ asset('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
 <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/dz/dz-all.js"></script>
+
 <!-- map js -->
 <script>
          // This example adds a marker to indicate the position of Bondi Beach in Sydney,

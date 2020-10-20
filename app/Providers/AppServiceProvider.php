@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use View;
 use App\Stat;
 
@@ -44,8 +45,17 @@ class AppServiceProvider extends ServiceProvider
         $idees1 =   DB::table('idees')->where('etat', '=', 1)->get()->count();
         $signals1 =   DB::table('signals')->where('etat', '=', 1)->get()->count();
         $categories = DB::table('categories')->get();
+        $messagesnonluscount =   DB::table('messages')->where('is_read', '=', 0)->get()->count();
+        
         $communes = DB::table('communes')->get();
+        $wilayas = DB::table('wilayas')->get();
         $professions = DB::table('professions')->get();
+        $tags = DB::table('tags')->get();
+        $users = DB::table('citoyens')->get();
+        $maladies = DB::table('maladies')->get();
+        $sources = DB::table('sources')->get();
+        $notifications = $messagesnonluscount + $signals + $idees;
+         
 
         View::share('maladestotal', $maladestotal);
         View::share('guerristotal', $guerristotal);
@@ -63,10 +73,17 @@ class AppServiceProvider extends ServiceProvider
         View::share('signals1', $signals1);
         View::share('categories', $categories);
         View::share('communes', $communes);
+        View::share('wilayas', $wilayas);
         View::share('professions', $professions);
+        View::share('tags', $tags);
+        View::share('messagesnonluscount', $messagesnonluscount);
         
-        
+        View::share('users', $users);
+        View::share('notifications', $notifications);
+        View::share('maladies', $maladies);
+        View::share('sources', $sources);
 
+        
               Schema::defaultStringLength(191);
     }
 }

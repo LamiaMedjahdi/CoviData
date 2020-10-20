@@ -11,41 +11,112 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table coronavirus19.categories: ~4 rows (approximately)
+-- Dumping data for table coronavirus19.categories: ~3 rows (approximately)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` (`id`, `nom`, `created_at`, `updated_at`) VALUES
-	(1, 'commerce', '2020-09-09 01:13:56', '2020-09-09 01:13:56'),
+INSERT INTO `categories` (`id`, `label`, `created_at`, `updated_at`) VALUES
 	(2, 'parapharmacie', '2020-09-09 01:14:05', '2020-09-09 01:14:05'),
 	(3, 'hygiene', '2020-09-09 01:14:10', '2020-09-09 01:14:11'),
 	(4, 'securité', '2020-09-09 01:14:36', '2020-09-09 01:14:37');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.citoyens: ~11 rows (approximately)
+-- Dumping data for table coronavirus19.citoyens: ~6 rows (approximately)
 /*!40000 ALTER TABLE `citoyens` DISABLE KEYS */;
 INSERT INTO `citoyens` (`id`, `nom`, `prenom`, `email`, `password`, `image`, `com_id`, `pro_id`, `remember_token`, `roles`, `created_at`, `updated_at`) VALUES
-	(1, 'amine', 'amine', 'amine@gmail.com', '12345', 'gjgjggj', 1, 1, 'kjkjkjkj', 0, '2020-09-09 01:15:31', '2020-09-09 01:15:32'),
-	(2, 'salim', 'dzlimz', 'salim@gmail.com', '12345', 'fffff', 2, 5, 'fgfdfdfd', 0, '2020-09-11 02:38:03', '2020-09-11 02:38:04'),
-	(3, 'salut', 'cava', 'salut@gmail.com', '$2y$10$zcQM1qE//R3uE5fNCDYK5ukOP0ug3IC3gQq.U57pjZdFgFBn34QAq', '1', 1, 1, NULL, 0, '2020-09-11 02:10:35', '2020-09-11 02:10:35'),
-	(5, 'aminz', 'meghraoui', 'salut@gmail.fr', '$2y$10$wQM3GuLFNLCIBXFh8Pk5tuY7/2go5Hue/slbr61awM74e3pn3lKci', '1', 1, 1, NULL, 0, '2020-09-11 02:13:02', '2020-09-11 02:13:02'),
-	(6, 'cc', 'cc', 'cc@gmail.com', '$2y$10$riTxO0jsBv2LMoCMTPp6terj4n/SPvjjuE/nbPnUaehRpjrw.FS3i', '1', 1, 1, NULL, 0, '2020-09-11 02:32:22', '2020-09-11 02:32:22'),
-	(7, 'hello', 'itsme', 'itsme@gmail.com', '$2y$10$jRn5HZ3iqRxYeI9cugaB2O1FvkEdUNKXXeXl8f3heGLTt.PFnivzS', '1', 1, 1, NULL, 0, '2020-09-11 20:31:04', '2020-09-11 20:31:04'),
-	(8, 'cccc', 'ccc', 'cccc@gmail.com', '$2y$10$ziDKUnOYGXEjhKalVdNZC.hHfASS22dxWDmxWZwPWxWPig3oitAga', '1', 1, 1, NULL, 0, '2020-09-11 20:36:53', '2020-09-11 20:36:53'),
-	(10, 'cccccc', 'cccc', 'ccccc@gmail.com', '$2y$10$R7tXn9sJlMgdYj3a852POubd7sZ9FsvQ7nWk8wzl8e3v7DiP6E3ZW', '1', 1, 1, NULL, 0, '2020-09-11 20:37:13', '2020-09-11 20:37:13'),
-	(12, 'ccccccc', 'c', 'cccgcc@gmail.com', '$2y$10$7Hn.KcCyK9b1dD.N4GgM9eQZDtXttkIaY9MVsgCV7cf4K5nUirMia', '1', 1, 1, NULL, 0, '2020-09-11 20:40:26', '2020-09-11 20:40:26'),
-	(13, 'hi', 'how', 'are@gmail.com', '$2y$10$JpeRiQ5qgmBYZRPXLA5e2uYrsU50yzeN913.fN/l8Dsls8dxZbrai', '1', 1, 1, NULL, 0, '2020-09-11 22:02:40', '2020-09-11 22:02:40'),
-	(14, 'lamia', 'medjahdi', 'medj.lam@gmail.com', '$2y$10$T4leDsNKJSEATEwdBZr8purf1FE3H3ic5J47.3KWLgn.vuFzMs91C', '1', 1, 1, NULL, 1, '2020-09-11 22:12:51', '2020-09-11 22:12:51');
+	(31, 'mmm', 'salut', 'salut@gmail.com', '$2y$10$1qHkHtaFJpAPe6QnapUZdeiqbS/pQ9gHlkH2rXflN3kECA3IoIyom', '1', 1, 1, NULL, 0, '2020-10-14 02:19:41', '2020-10-14 02:19:41'),
+	(32, 'salut', 'ttlemonde', 'ttlemonde@gmail.com', '$2y$10$NyrsH4FG89/1SYZp2QAfzu0vbr/DrFkXwA7e65nqw86bYUlAEtf1m', '1', 1, 1, NULL, 0, '2020-10-14 02:20:04', '2020-10-14 02:20:04'),
+	(33, 'lol', 'lol', 'lol@gmail.com', '$2y$10$sudWpP78z2PjYY66j9Tml.mvOjt0s4pooAGhsPP2aFRIMmDQZI3VW', '1', 1, 1, NULL, 0, '2020-10-14 14:51:25', '2020-10-14 14:51:25'),
+	(34, 'mmm', 'lamia', 'medj.lam@gmail.com', '$2y$10$uIpVCAeqNTusvStx7lYqrOAHfpi18Cwp1Dc1iZGxKedBHElQAX60m', '1', 1, 1, NULL, 0, '2020-10-15 18:20:59', '2020-10-15 18:20:59'),
+	(35, 'lamia', 'medjahdi', 'lamia@gmail.com', '$2y$10$mLhAGe4KlerAV7A0HlyogexLZSk.lbcC.9VSWQe9WJnsc0lStAfNy', '1', 1, 1, NULL, 0, '2020-10-15 22:44:07', '2020-10-15 22:44:07'),
+	(36, 'medjahdi2', 'lamiaa', 'lamiaa.medjahdi@gmail.com', '$2y$10$iiT2HIhTlwZ2B6doFYz8Le8chGTJQa.DPp7I7m4kzB1PKi/fXO13i', '1', 1, 1, NULL, 0, '2020-10-15 22:47:54', '2020-10-15 22:47:54');
 /*!40000 ALTER TABLE `citoyens` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.citoyen_maladies: ~0 rows (approximately)
 /*!40000 ALTER TABLE `citoyen_maladies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `citoyen_maladies` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.communes: ~2 rows (approximately)
+-- Dumping data for table coronavirus19.communes: ~75 rows (approximately)
 /*!40000 ALTER TABLE `communes` DISABLE KEYS */;
 INSERT INTO `communes` (`id`, `nom`, `wilaya_id`, `created_at`, `updated_at`) VALUES
-	(1, 'imama', 13, '2020-09-09 01:04:37', '2020-09-09 01:04:38'),
-	(2, 'Beni Mestar', 13, '2020-09-09 01:04:53', '2020-09-09 01:04:53');
+	(3, 'Tlemcen', 13, '2020-10-14 02:07:21', '2020-10-14 02:07:22'),
+	(5, 'Beni Mester', 13, '2020-10-14 02:11:41', '2020-10-14 02:11:41'),
+	(6, 'Ain Tallout', 13, '2020-10-14 02:12:27', '2020-10-14 02:12:27'),
+	(7, 'Remchi', 13, '2020-10-14 02:12:50', '2020-10-14 02:12:50'),
+	(8, 'El Fehoul', 13, '2020-10-14 02:12:50', '2020-10-14 02:12:50'),
+	(9, 'Sabra', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(10, 'Ghazaouet', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(11, 'Souani', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(12, 'Djebala', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(13, 'El Gor', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(14, 'Oued Lakhdar', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(15, 'Ain Fezza', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(16, 'Ouled Mimoun', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(17, 'Amieur', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(18, 'Ain Youcef', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(19, 'Zenata', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(20, 'Beni Snous', 13, '2020-10-14 02:14:41', '2020-10-14 02:14:41'),
+	(21, 'Bab el Assa', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(22, 'Dar Yaghmouracene', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(23, 'Fellaoucene', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(24, 'Azails', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(25, 'Sebaa Chioukh', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(26, 'Terny Beni Hdiel', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(27, 'Bensekrane', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(28, 'Ain Nahala', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(29, 'Hennaya', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(30, 'Maghnia', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(31, 'Hammam Boughrara', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(32, 'Souahlia', 13, '2020-10-14 02:16:08', '2020-10-14 02:16:08'),
+	(33, 'El aricha', 13, '2020-10-14 02:18:08', '2020-10-14 02:18:08'),
+	(34, 'Msirda Fouaga', 13, '2020-10-14 02:18:08', '2020-10-14 02:18:08'),
+	(35, 'Sidi Abdelli', 13, '2020-10-14 02:18:08', '2020-10-14 02:18:08'),
+	(36, 'Sebdou', 13, '2020-10-14 02:18:08', '2020-10-14 02:18:08'),
+	(37, 'El aricha', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(38, 'Msirda Fouaga', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(39, 'Sidi Abdelli', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(40, 'Sebdou', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(41, 'Marsa Ben Mhidi', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(42, 'Nedroma', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(43, 'Honaine', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(44, 'Ouled Riyah', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(45, 'Chetouane', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(46, 'Mansourah', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(47, 'Beni Khellad', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(48, 'Beni Semiel', 13, '2020-10-14 02:18:29', '2020-10-14 02:18:29'),
+	(49, 'Bousfer', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(50, 'Bir el djir', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(51, 'Gdyel', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(52, 'Mers el kebir', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(53, 'Messreghine', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(54, 'Hassi Bounif', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(55, 'Boufatis', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(56, 'Oran', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(57, 'Ain el turk', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(58, 'Arzew', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(59, 'El Kerma', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(60, 'Boutlilis', 31, '2020-10-14 02:21:36', '2020-10-14 02:21:36'),
+	(61, 'Ain el benian', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(62, 'ain taya', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(63, 'alger centre', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(64, 'Bab el oued', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(65, 'Bab ezzouar', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(66, 'Bachdjerrah', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(67, 'Beni Messous', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(68, 'Bir mourad rais', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(69, 'Draria', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(70, 'Dely brahim', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(71, 'El biar', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(72, 'Hydra', 16, '2020-10-14 02:23:57', '2020-10-14 02:23:57'),
+	(73, 'Ain smara', 25, '2020-10-14 02:25:44', '2020-10-14 02:25:44'),
+	(74, 'Didouche Mourad', 25, '2020-10-14 02:25:44', '2020-10-14 02:25:44'),
+	(75, 'Ain smara', 25, '2020-10-14 02:25:44', '2020-10-14 02:25:44'),
+	(76, 'Constantine', 25, '2020-10-14 02:25:44', '2020-10-14 02:25:44'),
+	(77, 'El khroub', 25, '2020-10-14 02:25:44', '2020-10-14 02:25:44'),
+	(78, 'Ibn Badis', 25, '2020-10-14 02:25:44', '2020-10-14 02:25:44');
 /*!40000 ALTER TABLE `communes` ENABLE KEYS */;
+
+-- Dumping data for table coronavirus19.dislikes: ~0 rows (approximately)
+/*!40000 ALTER TABLE `dislikes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dislikes` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.failed_jobs: ~0 rows (approximately)
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
@@ -55,28 +126,37 @@ INSERT INTO `communes` (`id`, `nom`, `wilaya_id`, `created_at`, `updated_at`) VA
 /*!40000 ALTER TABLE `favoris` DISABLE KEYS */;
 /*!40000 ALTER TABLE `favoris` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.idees: ~2 rows (approximately)
+-- Dumping data for table coronavirus19.idees: ~4 rows (approximately)
 /*!40000 ALTER TABLE `idees` DISABLE KEYS */;
 INSERT INTO `idees` (`id`, `titre`, `contenu`, `image`, `etat`, `cat_id`, `cit_id`, `created_at`, `updated_at`) VALUES
-	(1, 'idee 1', 'flskjsdlkjlkjd', 'ljlkjlkjkj', 0, 4, 1, '2020-09-09 01:27:08', '2020-09-09 01:27:08'),
-	(2, 'idee 2 ', 'fdkgfjgkljfkgdjfklgjdlfkj', 'lfdgjdlfjk', 0, 2, 1, '2020-09-09 01:27:24', '2020-09-09 01:27:25');
+	(32, 'lklkllklkllk', 'Consectetur, assumenda provident lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae laboriosam sunt hic perspiciatis, ', NULL, 1, 3, 32, '2020-10-14 18:05:10', '2020-10-14 18:05:10'),
+	(33, 'nonjour', 'Consectetur, assumenda provident lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae laboriosam sunt hic perspiciatis, \r\n                asperiores mollitia excepturi voluptatibus sequi nostrum ipsam veniam omnis nihil! A ea maiores corporis. Lorem ipsum dolor sit amet, \r\n                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', NULL, 1, 2, 33, '2020-10-14 18:07:44', '2020-10-14 18:07:44'),
+	(34, 'non', 'non', NULL, 1, 3, 35, '2020-10-16 03:48:05', '2020-10-16 03:48:06'),
+	(35, 'mmmmmm', ' mllmmlmlmmlmlml', NULL, 1, 2, 35, '2020-10-16 23:13:22', '2020-10-16 23:13:23');
 /*!40000 ALTER TABLE `idees` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.informations: ~5 rows (approximately)
+-- Dumping data for table coronavirus19.informations: ~6 rows (approximately)
 /*!40000 ALTER TABLE `informations` DISABLE KEYS */;
 INSERT INTO `informations` (`id`, `titre`, `contenu`, `lien`, `image`, `date`, `mal_id`, `pro_id`, `sou_id`, `wilaya_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Covid 19 - mars 2020', 'dfgjdflkgjdflkgjflkgjfdlgjdlfkgjflkgjfjgdfklj', 'kfjdsfkjkk', 'kjkjkkj', '2020-09-09', NULL, 5, 1, 44, '2020-09-09 00:58:04', '2020-09-09 00:58:05'),
 	(2, 'Surcharge des Hopitaux', 'dflgkfdlgjfdlkgjfdlgjflhjfg;;n,g:;n,ghk:,hgn,gfb,f:;,gfh,fg;:bhf,gg;,fg:h;,:;,', ':;,:,:lljkkhjkhk', 'lkjlkjkj', '2020-09-09', NULL, 5, 2, 23, '2020-09-09 00:58:45', '2020-09-09 00:58:47'),
 	(3, 'Pénurie des matieres essentielles de réanimation', 'dflgjdkflgjlkhgmljumkjtmfhjtdlgjet:klhkmtlhklyfhfkhkfgljbdlkgkkrrtfmk', 'kk', 'juhh', '2020-09-09', NULL, 2, 2, 6, '2020-09-09 01:06:25', '2020-09-09 00:59:26'),
 	(4, 'Détresse respiratoire', 'gfldfkjgflkgdfjkgfj', 'fldgjdkflj', 'dlfgfgdjkgj', '2020-09-09', NULL, 5, 1, 44, '2020-09-09 01:21:04', '2020-09-09 01:21:06'),
-	(5, 'Covid 19 - avancement en algérie', 'sfksdmflkmldfksmdldk', 'sfkdsfskmdlk', 'dsmflksdmfkdsmlf', '2020-09-12', NULL, 4, 1, 16, '2020-09-12 02:50:14', '2020-09-12 02:50:15');
+	(5, 'Covid 19 - avancement en algérie', 'sfksdmflkmldfksmdldk', 'sfkdsfskmdlk', 'dsmflksdmfkdsmlf', '2020-09-12', NULL, 4, 1, 16, '2020-09-12 02:50:14', '2020-09-12 02:50:15'),
+	(6, 'Covid 19 - avancement en algérie', 'sfksdmflkmldfksmdldk', 'sfkdsfskmdlk', 'dsmflksdmfkdsmlf', '2020-10-12', NULL, 4, 1, 16, '2020-10-12 02:50:14', '2020-09-12 02:50:15');
 /*!40000 ALTER TABLE `informations` ENABLE KEYS */;
+
+-- Dumping data for table coronavirus19.likes: ~1 rows (approximately)
+/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+INSERT INTO `likes` (`id`, `user_id`, `idee_id`, `created_at`, `updated_at`) VALUES
+	(27, 34, 32, '2020-10-16 01:58:38', '2020-10-16 01:58:38');
+/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.maladies: ~0 rows (approximately)
 /*!40000 ALTER TABLE `maladies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `maladies` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.migrations: ~17 rows (approximately)
+-- Dumping data for table coronavirus19.migrations: ~19 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_100000_create_password_resets_table', 1),
@@ -95,22 +175,24 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(14, '2020_08_20_112047_create_signals_table', 8),
 	(15, '2020_08_20_112103_create_idees_table', 8),
 	(16, '2020_08_20_112029_create_favoris_table', 9),
-	(17, '2020_09_11_011945_add_roles_to_citoyens', 10);
+	(17, '2020_09_11_011945_add_roles_to_citoyens', 10),
+	(18, '2020_10_14_223244_create_likes_table', 11),
+	(19, '2020_10_15_162237_create_dislikes_table', 12);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.password_resets: ~0 rows (approximately)
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.poststag: ~2 rows (approximately)
+-- Dumping data for table coronavirus19.poststag: ~3 rows (approximately)
 /*!40000 ALTER TABLE `poststag` DISABLE KEYS */;
 INSERT INTO `poststag` (`id`, `information_id`, `tags_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1, '2020-09-09 01:03:33', '2020-09-09 01:03:34'),
-	(2, 3, 2, '2020-09-09 01:03:43', '2020-09-09 01:03:44'),
+	(2, 2, 2, '2020-09-09 01:03:43', '2020-09-09 01:03:44'),
 	(3, 1, 3, '2020-09-09 01:04:01', '2020-09-09 01:04:02');
 /*!40000 ALTER TABLE `poststag` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.professions: ~4 rows (approximately)
+-- Dumping data for table coronavirus19.professions: ~5 rows (approximately)
 /*!40000 ALTER TABLE `professions` DISABLE KEYS */;
 INSERT INTO `professions` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(1, 'architecte', '2020-09-09 00:56:38', '2020-09-09 00:56:38'),
@@ -120,10 +202,17 @@ INSERT INTO `professions` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(5, 'commerçant', NULL, NULL);
 /*!40000 ALTER TABLE `professions` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.signals: ~0 rows (approximately)
+-- Dumping data for table coronavirus19.signals: ~8 rows (approximately)
 /*!40000 ALTER TABLE `signals` DISABLE KEYS */;
 INSERT INTO `signals` (`id`, `contenu`, `localisation`, `image`, `etat`, `date`, `cat_id`, `wilaya_id`, `cit_id`, `created_at`, `updated_at`) VALUES
-	(1, 'hausse de prix', 'imama', 'kfdlkfdlfk', '0', '2020-09-12', 3, 46, 6, '2020-09-12 02:55:53', '2020-09-12 02:55:53');
+	(11, 'y3ayiiiiiiiw', 'Maghnia', '1602642081.png', '1', '2020-12-31', 3, 13, 32, '2020-10-14 02:21:21', '2020-10-14 02:21:21'),
+	(12, 'hiiiii', 'Tlemcen	  Mansourah', '1602642081.png', 'null', '2020-12-31', 2, 13, 32, '2020-10-14 02:35:22', '2020-10-14 02:35:22'),
+	(13, 'hhhhhhhhhhhhhhhhhhhhhhhh', 'Tlemcen	  ', NULL, 'null', '2020-01-01', 2, 13, 32, '2020-10-14 02:53:49', '2020-10-14 02:53:49'),
+	(14, 'hhhhhhhhhhhhhh', 'Tlemcen	  Tlemcen', NULL, 'null', '2020-12-31', 2, 13, 32, '2020-10-14 02:54:50', '2020-10-14 02:54:50'),
+	(15, 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 'Tlemcen	  Mansourah Ibn Tofeil', NULL, '1', '2020-01-01', 2, 13, 32, '2020-10-14 02:56:47', '2020-10-14 02:56:47'),
+	(16, 'medjahdi lamia medjahdi lamia medjahdi lamia', 'Tlemcen	  Mansourah  plateau lalla setti', NULL, '1', '2020-01-01', 2, 13, 33, '2020-10-14 14:58:13', '2020-10-14 14:58:13'),
+	(17, 'mmmmmmmmmmmmmmmmmmmm', 'Oran	  Oran  Ardis', NULL, 'null', '2020-12-31', 2, 31, 33, '2020-10-14 15:01:15', '2020-10-14 15:01:15'),
+	(18, 'mdr', 'Tlemcen	 Ain Tallout ', NULL, '1', '2020-12-31', 2, 13, 33, '2020-10-14 15:06:23', '2020-10-14 15:06:23');
 /*!40000 ALTER TABLE `signals` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.sources: ~2 rows (approximately)
@@ -133,7 +222,7 @@ INSERT INTO `sources` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 	(2, 'agence nationale des statistiques', '2020-09-09 00:56:29', '2020-09-09 00:56:29');
 /*!40000 ALTER TABLE `sources` ENABLE KEYS */;
 
--- Dumping data for table coronavirus19.stats: ~9 rows (approximately)
+-- Dumping data for table coronavirus19.stats: ~13 rows (approximately)
 /*!40000 ALTER TABLE `stats` DISABLE KEYS */;
 INSERT INTO `stats` (`id`, `nbrmal`, `nbrgue`, `nbrmort`, `date`, `wilaya_id`, `created_at`, `updated_at`) VALUES
 	(1, 25, 25, 25, '2020-09-09', 25, '2020-09-09 00:41:44', '2020-09-09 00:41:45'),
@@ -146,7 +235,9 @@ INSERT INTO `stats` (`id`, `nbrmal`, `nbrgue`, `nbrmort`, `date`, `wilaya_id`, `
 	(8, 15, 15, 15, '2020-09-12', 44, '2020-09-12 00:27:02', '2020-09-12 00:27:03'),
 	(9, 50, 50, 50, '2020-09-12', 16, '2020-09-12 15:32:22', '2020-09-12 00:32:23'),
 	(10, 15, 0, 0, '2020-09-12', 1, '2020-09-12 00:41:17', '2020-09-12 00:41:18'),
-	(11, 10, 25, 25, '2020-09-12', 44, '2020-09-12 01:06:43', '2020-09-12 01:06:44');
+	(11, 10, 25, 25, '2020-09-12', 44, '2020-09-12 01:06:43', '2020-09-12 01:06:44'),
+	(12, 15, 15, 15, '2020-09-14', 44, '2020-09-14 17:42:54', '2020-09-14 17:42:55'),
+	(13, 25, 20, 25, '2020-09-15', 46, '2020-09-15 21:41:35', '2020-09-15 21:41:36');
 /*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 
 -- Dumping data for table coronavirus19.tags: ~4 rows (approximately)

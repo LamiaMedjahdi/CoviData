@@ -35,6 +35,14 @@
 
 </head>
 
+@if(session()->has('message'))
+
+<script>
+  alert("<?php echo session()->get('message'); ?>")
+</script>
+  
+@endif
+
 <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
