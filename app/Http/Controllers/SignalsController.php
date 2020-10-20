@@ -182,7 +182,7 @@ class SignalsController extends Controller
 
 
 
-        return Redirect('/signals');
+        return redirect("/signals")->with('message', 'Votre signalement est envoyé aux administrateurs et est en cours de consultation');
     }
 
     public function signalbycat($cat,$id)

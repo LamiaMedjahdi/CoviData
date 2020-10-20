@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Stat;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeStatsController extends Controller
 {
@@ -32,7 +33,7 @@ class HomeStatsController extends Controller
 
     public function map()
     {
-       $test='100';
+       
         $adrar =   DB::table('stats')->where('wilaya_id', '1')->sum('nbrmal');
         $chlef =   DB::table('stats')->where('wilaya_id', '2')->sum('nbrmal');
         $laghouat =   DB::table('stats')->where('wilaya_id', '3')->sum('nbrmal');
@@ -85,7 +86,7 @@ class HomeStatsController extends Controller
 
 
 
-        return view('welcome', compact('adrar','chlef','laghouat','oumbouagui','batna','bedjaia','biskra','bechar','blida','bouira','tamnrasset','tebessa','tlemcen','tiaret','tizi','alger','djelfa','jijel','setif','saida','skikda','sba','annaba','guelma','constantine','medea','mosta','msila','mascara','ourgla','oran','lbayadh','illizi','bba','boumerdes','taref','tindouf','tissemsilt','loued','khenchela','soukahras','tipaza', 'adrar','mila','aindefla','naama','temouchent','ghardaia','relizane'));
+        return view('map', compact('adrar','chlef','laghouat','oumbouagui','batna','bedjaia','biskra','bechar','blida','bouira','tamnrasset','tebessa','tlemcen','tiaret','tizi','alger','djelfa','jijel','setif','saida','skikda','sba','annaba','guelma','constantine','medea','mosta','msila','mascara','ourgla','oran','lbayadh','illizi','bba','boumerdes','taref','tindouf','tissemsilt','loued','khenchela','soukahras','tipaza', 'adrar','mila','aindefla','naama','temouchent','ghardaia','relizane'));
     }
 
    
@@ -95,6 +96,7 @@ class HomeStatsController extends Controller
 
     public function indexinfosadmin()
     {
+        if (Auth::check()) {
        $subscribers =   DB::table('citoyens')->get()->count('id');
         $publications =   DB::table('informations')->whereDate('date', \Carbon\Carbon::today())->get()->count();
         $signals =   DB::table('signals')->where('etat','=', 0)->get()->count();
@@ -107,34 +109,58 @@ class HomeStatsController extends Controller
             ->limit(4)
             ->get();
 
-        $parwilayas = DB::table('stats')
-            ->join('wilayas', 'wilayas.id', '=', 'stats.wilaya_id')
-            ->whereDate('date', \Carbon\Carbon::today())->get();
-
-        $signals2 = DB::table('signals')
-        ->join('categories', 'categories.id', '=', 'signals.cat_id')
-        ->join('citoyens', 'citoyens.id', '=', 'signals.cit_id')
-        ->join('wilayas', 'wilayas.id', '=', 'signals.wilaya_id')
-        ->where('signals.etat', '=', 1)
-            ->limit(4)
-            ->get();  
-
       
 
-        return view('index', compact('subscribers', 'publications', 'signals', 'idees', 'idees2', 'parwilayas', 'signals2'));
+        $cases = Stat::select(DB::raw("SUM(nbrmal) as somme"))
+        ->WhereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('somme');
+
+        $mois = Stat::select(DB::raw("Month(created_at) as mois"))
+        ->WhereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('mois');
+
+
+        $datas = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+
+        foreach ($mois as $index => $moi) {
+            $datas[$moi] = $cases[$index];
+        }
+
+
+        $gueris = Stat::select(DB::raw("SUM(nbrgue) as somme2"))
+        ->WhereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('somme2');
+
+        $mois2 = Stat::select(DB::raw("Month(created_at) as mois2"))
+        ->WhereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('mois2');
+
+
+        $datas2 = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+
+        foreach ($mois2 as $index => $moi) {
+            $datas2[$moi] = $gueris[$index];
+        }
+
+  return view('index', compact('subscribers', 'publications', 'signals', 'idees', 'idees2', 'parwilayas', 'signals2','datas','datas2', 'datas3'));
     }
 
+    else return redirect('login');
 
 
-    
+   
 
-    // $result = self::select("*", DB::raw('SUM(,nbrmal) as malades') , DB::raw('SUM(,nbrguer) as gueris'), 
-    //         DB::raw('SUM(nbrmort) as morts'))
-    //         ->groupBy('wilaya_id')
-    //         ->get()
-    //         ->toArray();
 
 
 }
 
-//   
+
+}
+
+ 

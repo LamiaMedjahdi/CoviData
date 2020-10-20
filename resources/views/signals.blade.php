@@ -7,7 +7,13 @@
 
 
 
+@if(session()->has('message'))
 
+<script>
+  alert("<?php echo session()->get('message'); ?>")
+</script>
+  
+@endif
 <!-- end header -->
 <!-- inner page banner -->
 <div id="inner_banner" class="section inner_banner_section">
@@ -17,10 +23,10 @@
         <div class="full">
           <div class="title-holder">
             <div class="title-holder-cell text-left">
-              <h1 class="page-title">Idées</h1>
+              <h1 class="page-title">Signalements</h1>
               <ol class="breadcrumb">
                 <li><a href="{{ url('/acceuil') }}">Acceuil</a></li>
-                <li class="active">Idées</li>
+                <li class="active">Signalements</li>
               </ol>
             </div>
           </div>

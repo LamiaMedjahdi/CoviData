@@ -279,6 +279,10 @@
           </div>
           <h4 class="theme_color">{{ $guerris }}  Cas guéris</h4>
           <p>Total : {{$guerristotal}} cas guéris</p>
+          <br><br>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Voir les cas par wilaya sur la carte
+</button>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -303,11 +307,9 @@
                     <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Je contribues avec mes idées <i class="fa fa-angle-down"></i></a> </p>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
-                    </div>
+                    <div class="panel-body"><p> Faites-nous part de solutions, de produits ou de services qui pourraient contribuer à nos efforts d’intervention face au COVID-19 en Algérie Vous devez remplir le formulaire d’un seul coup. Il vous faudra environ que quelques minutes pour le remplir.</p>
+
+                   </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
@@ -316,9 +318,8 @@
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
+                      <p>Afin de permettre le suivi des cas COVID-19 au sein des établissements sociaux et médico-sociaux , un
+dispositif de signalement spécifique a été mis en place à l’aide d’une application en ligne :. </p>
                     </div>
                   </div>
                 </div>
@@ -333,19 +334,35 @@
           <h3>Vous voulez contribuer ?</h3>
           <p>Apportez votre contribution lors de cette crise sanitaire en proposant des idées pour réduire les risques de contaminations
               , ou pour améliorer un service sur votre ville  </p>
-          <p><a class="btn main_bt" href="#">Je propose</a></p>
-          <p><a class="btn main_bt" href="#">je dénonce</a></p>
+          <p><a class="btn main_bt" href="{{ url('/idees') }}">Je propose</a></p>
+          <p><a class="btn main_bt" href="{{ url('/signals') }}">je dénonce</a></p>
+          <p></p>
         </div>
       </div>
+<br><br>
+    
 
-       <div class="col-md-12">
-         <div class="main_heading text_align_center">
-        <div class="full" style="margin-top: 35px;">
-          <h3>Carte intéractive du nombres de cas dans les wilayas d'Algérie ?</h3>
-          <div id="maps-algerie" style="width: 100%; height:300px"></div>
-        </div>
-        </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <iframe src="{{ url('/map') }}" style="height: 500px; width: 500px" >
+      <div class="modal-body"  style="height: 800px; width: 800px">
+        
+      </div>
+      <div class="modal-footer" style="align: center;" >
+        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </div>
@@ -722,7 +739,7 @@
       </div>
       @endforeach
        
- <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ asset('it_contact.html') }}">Toutes les publications</a> </div>
+ 
      
     
      
@@ -761,3 +778,6 @@
 </div>
 
 @stop
+
+
+
