@@ -36,8 +36,8 @@
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
         <div class="full">
          @auth
-
-         @foreach ($postcondition as $postc)
+@if ($postcondition->count()>0)
+     @foreach ($postcondition as $postc)
               <div class="blog_section">
             <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postc->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
@@ -66,6 +66,20 @@
             </div>
           </div>
          @endforeach
+
+
+@else
+
+
+          <div class="alert alert-primary" role="alert">
+            <h4 class="alert-heading">Oups!</h4>
+            <p>  Aucune publication correspondante à votre profil n'est disponible pour le moment !</p>
+            <hr>
+            <p class="mb-0"><a href="javascript:history.back()">Retourner à la page de la publication</a>.</p>
+          </div>
+
+          @endif
+        
              
          @endauth
     
@@ -112,14 +126,7 @@
              
          @endguest 
          
-          <div class="center">
-            <ul class="pagination style_1">
-              <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="it_blog_grid.html">2</a></li>
-              <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
+         
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">

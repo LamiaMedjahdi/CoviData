@@ -367,21 +367,7 @@ dispositif de signalement spécifique a été mis en place à l’aide d’une a
   </div>
 </div>
  
-<div class="section padding_layout_1">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="main_heading text_align_center">
-            <h2>Les produits qui sont en rupture </h2>
-            <p class="large">Aidez vous les uns les autres en indiquant ou se vend un produit.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-</div> 
+
              
 <div class="section padding_layout_1">
   <div class="container">
@@ -399,7 +385,7 @@ dispositif de signalement spécifique a été mis en place à l’aide d’une a
       @foreach ($publications as $publication)
            <div class="col-md-4">
         <div class="full blog_colum">
-          <div class="blog_feature_img"> <img src="{{ asset('images/it_service/' . $publication->image) }}" alt="#" /> </div>
+          <div class="blog_feature_img"> <img src="images/publications/{{$publication->image}}" alt="#" /> </div>
           <div class="post_time">
             <p><i class="fa fa-clock-o"></i>  {{ Carbon\Carbon::parse($publication->created_at)->subHours(1)->diffForHumans() }}</p>
             

@@ -36,7 +36,7 @@
       
               <div class="blog_section">
                 @if ($postdetail->image)
-                     <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postdetail->image) }}" alt="#"> </div>
+                     <div class="blog_feature_img"> <img class="img-responsive" width="500px;" height="350px;" src="{{ URL::to('/images/publications/' . $postdetail->image) }}" alt="#"> </div>
                 @endif
            
             <div class="blog_feature_cantant">
@@ -51,12 +51,17 @@
               </div>
               <p>{{ $postdetail->contenu }} </p>
               <div class="bottom_info">
-           <?php
-           $userid=Auth::user()->id;
-           ?>
+               
           
-                  <div class="pull-left"><a class="btn sqaure_bt" href="{{ url('/publication/'.$postdetail->id) }}">Lire l'article<i class="fa fa-angle-right"></i></a></div>
-                   <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('/favoris/'.$postdetail->id.'/'.$userid) }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
+          
+                 
+                   @if (Auth::check())
+                
+ <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('/favoris/'.$postdetail->id.'/'.Auth::user()->id) }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
+                @else
+                  <div class="pull-left" style="padding-left: 20px;"><a class="btn sqaure_bt" href="{{ url('login') }}">ajouter aux favoris<i class="fa fa-angle-right"></i></a></div>
+                 @endif 
+                 
                   {{-- <a class="favoris" href="javascript:;" onClick="like(this);" rel="http://www.tumblr.com/like/fGKvAJgQ?id=16664837215">like it</a>
 
 
@@ -77,7 +82,7 @@ function like(placeholder) {
                   <div class="shr">Partager: </div>
                   <div class="social_icon">
                     <ul>
-                      <div class="addthis_inline_share_toolbox"></div>
+                      
                     </ul>
                   </div>
                 </div>

@@ -87,7 +87,7 @@
                     <li><a href="{{ asset('it_error.html') }}">Error 404</a></li>
                   </ul>
                 </li> --}}
-                <li> <a href="{{ asset('it_shop.html') }}">Boutique</a>
+                
                   <ul>
                     <li><a href="{{ asset('it_shop.html') }}">Shop List</a></li>
                     <li><a href="{{ asset('it_shop_detail.html') }}">Shop Detail</a></li>
