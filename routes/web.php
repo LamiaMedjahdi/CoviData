@@ -76,17 +76,16 @@ Route::post('informations-search', 'DisplayPublicationController@searchinformati
 Route::post('users-search', 'UsersController@searchusers');
 
 
-//make admins - users 
+//make admins - users
 Route::get('make-admin/{id}', 'UsersController@makeadmin');
 Route::get('remove-admin/{id}', 'UsersController@makeuser');
 //users list
 Route::get('users', 'UsersController@displayusers');
-//modifier compte 
+//modifier compte
 Route::get('/mon-compte', function () {
          return view('account');
      });
-
-
+Route::get('/products', 'ProductController@products');
 Route::get('/envoyer-message', 'MessagesController@showform');
 Route::post('modifier-compte', 'UsersController@modifyuser');
 Route::post('contact-admin', 'MessagesController@sendmessagetoadmin');
@@ -125,10 +124,10 @@ Route::post('/ajouter-source', 'DisplayPublicationController@ajouter_source');
 
 Route::get('/map', 'HomeStatsController@map');
 
-//  Route::get('/map', function ()
-//   {
-//    return view('map');
-//  });
+  Route::get('/pop', function ()
+   {
+    return view('popup');
+  });
 
 
 Route::get('/ajouter-publication', function()
@@ -139,7 +138,7 @@ Route::get('/ajouter-publication', function()
   return redirect("/index");
   elseif(!Auth::check())
   return redirect("/login");
-   
+
  });
 
 
@@ -157,12 +156,12 @@ Route::get('/statistiques', 'StatController@statistiquestoday');
 Route::post('/ajouter-stat', 'StatController@ajouter_stat');
 
 
-//modifier statistiques 
+//modifier statistiques
 
 Route::post('/modifier-statistique', 'StatController@statistiquebyid');
 Route::post('/supprimer-statistique', 'StatController@supprimer_stat');
 Route::post('/modifstat', 'StatController@modifier_stat');
-
+// Route::get('/bar-chart', 'HomeStatsController@barchart');
 
 // Auth::routes();
 

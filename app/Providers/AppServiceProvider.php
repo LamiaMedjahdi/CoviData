@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use View;
 use App\Stat;
 
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         $signals1 =   DB::table('signals')->where('etat', '=', 1)->get()->count();
         $categories = DB::table('categories')->get();
         $messagesnonluscount =   DB::table('messages')->where('is_read', '=', 0)->get()->count();
+        
         $communes = DB::table('communes')->get();
         $wilayas = DB::table('wilayas')->get();
         $professions = DB::table('professions')->get();
@@ -52,7 +54,8 @@ class AppServiceProvider extends ServiceProvider
         $users = DB::table('citoyens')->get();
         $maladies = DB::table('maladies')->get();
         $sources = DB::table('sources')->get();
-        $notifications = $messagesnonluscount + $signals + $idees; 
+        $notifications = $messagesnonluscount + $signals + $idees;
+         
 
         View::share('maladestotal', $maladestotal);
         View::share('guerristotal', $guerristotal);
@@ -74,6 +77,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('professions', $professions);
         View::share('tags', $tags);
         View::share('messagesnonluscount', $messagesnonluscount);
+        
         View::share('users', $users);
         View::share('notifications', $notifications);
         View::share('maladies', $maladies);

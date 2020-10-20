@@ -58,7 +58,7 @@
                     <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <textarea class="field_custom" name="message" placeholder="Message"></textarea>
                     </div>
-                    <div class="center">  <button type="submit" class="btn btn-success btn-sm">Modifier</button></div>
+                    <div class="center">  <button type="submit" class="btn btn-success btn-sm">Envoyer</button></div>
                   </div>
                   </fieldset>
                 </form>

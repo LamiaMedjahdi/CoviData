@@ -231,10 +231,10 @@ class DisplayPublicationController extends Controller
     {
 
          $this->validate(request(),[
-             'titre' => 'required|max:50|string',
+             'titre' => 'required|min:10|string',
              'contenu' => 'required|min:5|string',
               'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-            "lien" => "required|url"
+            
          ]);
 
 

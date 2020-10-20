@@ -21,6 +21,7 @@ class HomeStatsController extends Controller
         $guerristotal = DB::table('stats')->sum('nbrgue');
         $mortstotal = DB::table('stats')->sum('nbrmort');
         $publications =   DB::table('informations')->orderBy('created_at', 'desc')->limit(3)->get();
+      
 
 
         
@@ -109,6 +110,14 @@ class HomeStatsController extends Controller
             ->limit(4)
             ->get();
 
+            $ideescontrib = DB::table('idees')
+                ->where('cit_id', Auth::user()->id)
+                ->count();
+            $signalscontrib = DB::table('signals')
+                ->where('cit_id', Auth::user()->id)
+                ->count();   
+
+
       
 
         $cases = Stat::select(DB::raw("SUM(nbrmal) as somme"))
@@ -130,25 +139,7 @@ class HomeStatsController extends Controller
         }
 
 
-        $gueris = Stat::select(DB::raw("SUM(nbrgue) as somme2"))
-        ->WhereYear('created_at', date('Y'))
-            ->groupBy(DB::raw("Month(created_at)"))
-            ->pluck('somme2');
-
-        $mois2 = Stat::select(DB::raw("Month(created_at) as mois2"))
-        ->WhereYear('created_at', date('Y'))
-            ->groupBy(DB::raw("Month(created_at)"))
-            ->pluck('mois2');
-
-
-        $datas2 = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
-
-        foreach ($mois2 as $index => $moi) {
-            $datas2[$moi] = $gueris[$index];
-        }
-
-  return view('index', compact('subscribers', 'publications', 'signals', 'idees', 'idees2', 'parwilayas', 'signals2','datas','datas2', 'datas3'));
+  return view('index', compact('subscribers', 'publications', 'signals', 'idees', 'idees2', 'parwilayas', 'signals2','datas', 'signalscontrib', 'ideescontrib'));
     }
 
     else return redirect('login');
@@ -159,6 +150,8 @@ class HomeStatsController extends Controller
 
 
 }
+
+
 
 
 }
