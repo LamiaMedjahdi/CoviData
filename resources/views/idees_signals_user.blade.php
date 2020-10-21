@@ -68,6 +68,7 @@
                   <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ date('d F Y', strtotime($idee->created_at))}}</li>
                 </ul>
               </div>
+              
               <p>{{ \Illuminate\Support\Str::limit($idee->contenu, 50) }} </p>
               <div class="bottom_info">
                 <div class="pull-left"><a class="read_more" href="{{ url('/idee/'.$idee->id) }}">Lire la suite <i class="fa fa-angle-right"></i></a></div>
