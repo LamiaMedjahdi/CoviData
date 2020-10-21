@@ -39,7 +39,7 @@
 @if ($postcondition->count()>0)
      @foreach ($postcondition as $postc)
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $postc->image) }}" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" src="{{ URL::to('/images/publications/' . $postc->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $postc->titre}}</p>
               <div class="post_info">
@@ -104,7 +104,7 @@
 
          @foreach ($allposts as $post)
               <div class="blog_section">
-            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('images/it_service/' . $post->image) }}" alt="#"> </div>
+            <div class="blog_feature_img"> <img class="img-responsive" src="{{ URL::to('/images/publications/' . $post->image) }}" alt="#"> </div>
             <div class="blog_feature_cantant">
               <p class="blog_head">{{ $post->titre}}</p>
               <div class="post_info">

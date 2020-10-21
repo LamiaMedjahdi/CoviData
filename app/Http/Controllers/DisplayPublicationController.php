@@ -15,19 +15,27 @@ class DisplayPublicationController extends Controller
     {
         
         $allposts= DB::table('informations')->get();
-        $id= Auth::user()->id;
-        $wilaya_id=Auth::user()->wilaya_id;
-        $profession_id = Auth::user()->pro_id;
-        $commune_id = Auth::user()->com_id;
-        $wilaya_id = DB::table('communes')->find($commune_id);
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+            $wilaya_id = Auth::user()->wilaya_id;
+            $profession_id = Auth::user()->pro_id;
+            $commune_id = Auth::user()->com_id;
+            $wilaya_id = DB::table('communes')->find($commune_id);
+            $postcondition = DB::table("informations")->select('*')
+            ->whereIn('mal_id', function ($query) use ($id) {
+                $query->select('id')->from('citoyen_maladies')->where('cit_id', $id);
+            })->orWhere('pro_id', $profession_id)
+            ->orWhere('wilaya_id', $wilaya_id->wilaya_id)
+                ->get();
+        }
+        
+        
        
         
-         $postcondition = DB::table("informations")->select('*')
-         ->whereIn('mal_id', function ($query) use($id) {
-             $query->select('id')->from('citoyen_maladies')->where('cit_id', $id);
-         })->orWhere('pro_id',$profession_id)
-         ->orWhere('wilaya_id',$wilaya_id->wilaya_id)
-             ->get();
+       
+        
+        
                
     
 
